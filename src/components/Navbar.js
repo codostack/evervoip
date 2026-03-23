@@ -33,27 +33,27 @@ const Navbar = () => {
           {/* Social Icons */}
           <div className="absolute left-0 top-12 flex flex-col gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
 
-            <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1877F2] text-white shadow-md hover:scale-110 transition">
+            <a href="/" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1877F2] text-white shadow-md hover:scale-110 transition">
               <FaFacebookF size={16} />
             </a>
 
-            <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1DA1F2] text-white shadow-md hover:scale-110 transition">
+            <a href="/" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#1DA1F2] text-white shadow-md hover:scale-110 transition">
               <FaTwitter size={16} />
             </a>
 
-            <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#E4405F] text-white shadow-md hover:scale-110 transition">
+            <a href="/" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#E4405F] text-white shadow-md hover:scale-110 transition">
               <FaInstagram size={16} />
             </a>
 
-            <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#0A66C2] text-white shadow-md hover:scale-110 transition">
+            <a href="/" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#0A66C2] text-white shadow-md hover:scale-110 transition">
               <FaLinkedinIn size={16} />
             </a>
 
-            <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#FF0000] text-white shadow-md hover:scale-110 transition">
+            <a href="/" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#FF0000] text-white shadow-md hover:scale-110 transition">
               <FaYoutube size={16} />
             </a>
 
-            <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#171515] text-white shadow-md hover:scale-110 transition">
+            <a href="/" className="w-10 h-10 flex items-center justify-center rounded-md bg-[#171515] text-white shadow-md hover:scale-110 transition">
               <FaGithub size={16} />
             </a>
 

@@ -1,5 +1,4 @@
 import React from "react";
-import { FaQuinscape } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
 import { BsFillPatchQuestionFill } from "react-icons/bs";
 import { SiGooglebigquery } from "react-icons/si";

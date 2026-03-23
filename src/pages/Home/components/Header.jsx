@@ -1,5 +1,4 @@
 import { useState ,useEffect } from "react";
-import { Mail, Phone } from "lucide-react";
 import { IoMdMailUnread } from "react-icons/io";
 
 /* ── tiny SVG icons ── */

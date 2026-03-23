@@ -39,79 +39,9 @@ const SOCIAL = [
   },
 ];
 
-function Ornament({ icon, label, color, gradient, ropeH, delay }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div style={{
-      display: "flex", flexDirection: "column", alignItems: "center",
-      animation: `sway 3.8s ease-in-out infinite`,
-      animationDelay: delay,
-      transformOrigin: "top center",
-    }}>
-      {/* Thread */}
-      <div style={{
-        width: 1.5,
-        height: ropeH,
-        background: "linear-gradient(to bottom, rgba(203,213,225,0.25),  rgba(90,100,100,0.5))",
-        borderRadius: 1,
-      }} />
-
-      {/* Always filled gradient ball */}
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        style={{
-          width: 66, height: 66, borderRadius: "50%",
-          background: gradient,
-          boxShadow: hovered
-            ? `0 10px 36px ${color}66, 0 0 0 5px ${color}30`
-            : `0 6px 24px ${color}44, 0 2px 8px rgba(0,0,0,0.15)`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          cursor: "pointer",
-          transition: "all 0.32s cubic-bezier(.34,1.56,.64,1)",
-          transform: hovered ? "scale(1.2) translateY(-4px)" : "scale(1)",
-          position: "relative", overflow: "hidden",
-        }}
-        title={label}
-      >
-        {/* Top shine on ball */}
-        <div style={{
-          position: "absolute", top: 5, left: 8, right: 8, height: "30%",
-          background: "linear-gradient(to bottom, rgba(255,255,255,0.45), transparent)",
-          borderRadius: "50% 50% 0 0", pointerEvents: "none",
-        }} />
-        {/* Bottom depth shadow */}
-        <div style={{
-          position: "absolute", bottom: 4, left: 10, right: 10, height: "20%",
-          background: "linear-gradient(to top, rgba(0,0,0,0.15), transparent)",
-          borderRadius: "0 0 50% 50%", pointerEvents: "none",
-        }} />
-        {icon}
-      </div>
-
-      <span style={{
-        marginTop: 8, fontSize: 9.5, fontWeight: 800,
-        color: hovered ? color : "#64748b",
-        letterSpacing: "0.06em", textTransform: "uppercase",
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
-        transition: "color 0.25s", whiteSpace: "nowrap",
-      }}>{label}</span>
-    </div>
-  );
-}
-
 export default function ContactSection() {
   const [visible, setVisible] = useState(false);
   useEffect(() => { setTimeout(() => setVisible(true), 80); }, []);
-
-  const infoRows = [
-    { icon: "📞", label: "Phone", items: ["+91 98765 43210", "+91 91234 56789"], c: "#2563eb", bg: "#eff6ff", border: "#bfdbfe" },
-    { icon: "✉️", label: "Email", items: ["hello@yourcompany.com", "support@yourcompany.com"], c: "#db2777", bg: "#fdf2f8", border: "#fbcfe8" },
-    { icon: "🌐", label: "Website", items: ["www.yourcompany.com", "blog.yourcompany.com"], c: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe" },
-    { icon: "📍", label: "Address", items: ["MG Road, Malappuram", "Kerala – 676 505, India"], c: "#16a34a", bg: "#f0fdf4", border: "#bbf7d0" },
-    { icon: "⏰", label: "Business Hours", items: ["Mon – Fri: 9 AM – 6 PM", "Sat: 10 AM – 3 PM"], c: "#d97706", bg: "#fffbeb", border: "#fde68a" },
-    { icon: "💬", label: "WhatsApp", items: ["+91 98765 43210", "Chat available 24 / 7"], c: "#25D366", bg: "#f0fdf4", border: "#bbf7d0" },
-  ];
 
 const FLAGS = [
   { id: 1, name: "USA", img: "https://flagcdn.com/w80/us.png" },

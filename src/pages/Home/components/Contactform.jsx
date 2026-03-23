@@ -5,9 +5,6 @@ const FEATURES = [
 
 
 ];
-
-
-
 const STATS = [
   { val: "50K+",  label: "Registered Users" },
   { val: "99.9%", label: "Uptime Guarantee" },
@@ -87,7 +84,6 @@ export default function RegistrationPage() {
   const [form,      setForm]      = useState({ name: "", email: "", phone: "", description: "" });
   const [submitted, setSubmitted] = useState(false);
   const [hovBtn,    setHovBtn]    = useState(false);
-  const [tIdx,      setTIdx]      = useState(0);
   const [errors,    setErrors]    = useState({});
 
   const handleChange = (e) => {

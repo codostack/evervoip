@@ -1,24 +1,8 @@
 import { useState, useEffect } from "react";
 
-const CountUp = ({ to, suffix = "", decimals = 0 }) => {
-  const [val, setVal] = useState(0);
-  useEffect(() => {
-    const start = performance.now();
-    const tick = (now) => {
-      const p = Math.min((now - start) / 2000, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      setVal(parseFloat((ease * to).toFixed(decimals)));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [to]);
-  return <>{val.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}{suffix}</>;
-};
-
 export default function VOIPAboutHeader() {
   const [tick, setTick] = useState(0);
   const [callSec, setCallSec] = useState(0);
-  const [activeLine, setActiveLine] = useState(0);
   const [packetIdx, setPacketIdx] = useState(0);
 
   useEffect(() => {
@@ -26,7 +10,6 @@ export default function VOIPAboutHeader() {
       setTick(p => p + 1);
       setCallSec(p => p + 1);
     }, 1000);
-    const l = setInterval(() => setActiveLine(p => (p + 1) % 4), 1800);
     const pk = setInterval(() => setPacketIdx(p => (p + 1) % 6), 600);
     return () => { clearInterval(t); clearInterval(l); clearInterval(pk); };
   }, []);
@@ -36,13 +19,6 @@ export default function VOIPAboutHeader() {
 
   const phoneKeys = ["1","2","3","4","5","6","7","8","9","*","0","#"];
   const keyColors = ["#6366f1","#3b82f6","#06b6d4","#10b981","#f59e0b","#ef4444","#8b5cf6","#ec4899","#14b8a6","#f97316","#6366f1","#3b82f6"];
-
-  const callLog = [
-    { name:"Riya Sharma",    num:"+91 98765 43210", type:"in",     codec:"G.722", dur:"04:32", color:"#10b981" },
-    { name:"James Carter",   num:"+1 415 555 0192",  type:"out",    codec:"Opus",  dur:"12:07", color:"#6366f1" },
-    { name:"Lena Braun",     num:"+49 30 1234 5678", type:"missed", codec:"—",     dur:"—",     color:"#ef4444" },
-    { name:"Omar Hassan",    num:"+971 50 123 4567", type:"in",     codec:"G.711", dur:"02:18", color:"#f59e0b" },
-  ];
 
   const packets = [
     { label:"SIP INVITE",  color:"#6366f1", bg:"#eef2ff" },

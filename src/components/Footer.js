@@ -248,7 +248,7 @@ export default function AnimatedFooter() {
                     return (
                       <li key={i} className="fadeInLink" style={{ animationDelay: `${i * 0.05}s` }}>
                         <a
-                          href="#"
+                          href="/"
                           className="link-underline text-sm font-light"
                           onMouseEnter={() => setHoveredLink(key)}
                           onMouseLeave={() => setHoveredLink(null)}
