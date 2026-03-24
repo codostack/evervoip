@@ -249,7 +249,7 @@ export default function VoipScaleSection() {
   return (
     <div
       className="relative min-h-screen overflow-hidden font-dm"
-      style={{ backgroundColor: "#06768d" }}
+      style={{ backgroundColor: "#004c4c" }}
     >
       <AnimatedBackground />
 

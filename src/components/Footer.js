@@ -123,7 +123,7 @@ export default function AnimatedFooter() {
       <footer
         className="footer-font relative overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #0891b2 0%, #0891b2 30%, #0891b2 60%, #0891b2 100%)",
+          background: "linear-gradient(135deg, #004c4c 0%, #004c4c 30%, #004c4c 60%, #004c4c 100%)",
           minHeight: 480,
         }}
       >
