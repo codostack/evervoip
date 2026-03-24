@@ -1,30 +1,32 @@
 export default function ContactForm() {
+  const BRAND = "#004c4c";
+  const BRAND_DARK = "#003333";
+  const BRAND_LIGHT = "#e6f2f2";
+
   return (
-<div
-  className="min-h-screen flex items-center justify-center px-6 py-16"
-  style={{
-    background:
-      "linear-gradient(180deg, #f0fbff 0%, #ffffff 60%, #f8fdff 100%)",
-  }}
->
+    <div
+      className="min-h-screen flex items-center justify-center px-6 py-16"
+      style={{
+        background:
+          "linear-gradient(180deg, #f2f8f8 0%, #ffffff 60%, #f6fbfb 100%)",
+      }}
+    >
       <div className="max-w-6xl w-full grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
 
-        {/* LEFT SIDE — PREMIUM INFO PANEL */}
+        {/* LEFT SIDE */}
         <div
           className="relative p-12 text-white flex flex-col justify-between overflow-hidden"
           style={{
             background:
-              "linear-gradient(135deg, #0e7490 0%, #0891b2 50%, #06b6d4 80%, #67e8f9 100%)",
+              "linear-gradient(135deg, #003333 0%, #004c4c 50%, #006666 80%, #66b3b3 100%)",
           }}
         >
-
-          {/* Glow Background Effects */}
+          {/* Glow Effects */}
           <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-300/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
 
           {/* CONTENT */}
           <div className="relative z-10">
-
             <p className="uppercase tracking-widest text-white/70 text-xs font-bold mb-4">
               CONTACT US
             </p>
@@ -37,11 +39,10 @@ export default function ContactForm() {
 
             <p className="text-white/80 leading-relaxed max-w-md">
               Our VoIP experts help businesses deploy scalable,
-              secure, and crystal-clear communication systems
-              worldwide.
+              secure, and crystal-clear communication systems worldwide.
             </p>
 
-            {/* FEATURE POINTS */}
+            {/* FEATURES */}
             <div className="mt-10 space-y-4">
 
               <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-xl px-4 py-3">
@@ -62,7 +63,7 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* GET STARTED ADVERTISEMENT */}
+          {/* OFFER CARD */}
           <div className="relative z-10 mt-12">
             <div
               className="rounded-2xl p-6"
@@ -76,22 +77,22 @@ export default function ContactForm() {
                 className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4"
                 style={{
                   background: "rgba(255,255,255,0.2)",
-                  color: "#ecfeff",
+                  color: "#e6f2f2",
                 }}
               >
                 🎉 Limited Time Offer
               </span>
 
-              <h4 className="text-xl font-extrabold text-white leading-snug mb-2">
+              <h4 className="text-xl font-extrabold text-white mb-2">
                 Start Free for 30 Days
               </h4>
 
-              <p className="text-white/75 text-sm leading-relaxed mb-5">
-                No credit card required. Get full access to all features —
-                HD calling, analytics, and 24/7 support.
+              <p className="text-white/75 text-sm mb-5">
+                No credit card required. Get full access to HD calling,
+                analytics, and 24/7 support.
               </p>
 
-              {/* Stats Row */}
+              {/* Stats */}
               <div className="flex gap-4 mb-5">
                 <div className="text-center">
                   <p className="text-2xl font-black text-white">5K+</p>
@@ -113,19 +114,20 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              {/* CTA Button */}
               <button
-                className="w-full py-3 rounded-xl font-bold text-[#0891b2] transition-all hover:scale-[1.02]"
-                style={{ background: "#ffffff" }}
+                className="w-full py-3 rounded-xl font-bold transition-all hover:scale-[1.02]"
+                style={{
+                  background: "#ffffff",
+                  color: BRAND,
+                }}
               >
                 Get Started for Free →
               </button>
             </div>
           </div>
-
         </div>
 
-        {/* RIGHT SIDE — FORM */}
+        {/* RIGHT SIDE FORM */}
         <div className="bg-white p-12">
 
           <h3 className="text-3xl font-bold text-gray-900 mb-8">
@@ -134,55 +136,47 @@ export default function ContactForm() {
 
           <form className="space-y-6">
 
-            {/* Name */}
-            <div>
-              <label className="text-sm font-semibold text-gray-600">Name</label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0891b2] focus:ring-2 focus:ring-cyan-100 outline-none transition"
-              />
-            </div>
-
-            {/* Email */}
-            <div>
-              <label className="text-sm font-semibold text-gray-600">Email</label>
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0891b2] focus:ring-2 focus:ring-cyan-100 outline-none transition"
-              />
-            </div>
-
-            {/* Subject */}
-            <div>
-              <label className="text-sm font-semibold text-gray-600">Subject</label>
-              <input
-                type="text"
-                placeholder="Subject"
-                className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0891b2] focus:ring-2 focus:ring-cyan-100 outline-none transition"
-              />
-            </div>
-
-            {/* Phone */}
-            <div>
-              <label className="text-sm font-semibold text-gray-600">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                placeholder="+91 XXXXX XXXXX"
-                className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0891b2] focus:ring-2 focus:ring-cyan-100 outline-none transition"
-              />
-            </div>
+            {["Name", "Email", "Subject", "Phone Number"].map((label, i) => (
+              <div key={i}>
+                <label className="text-sm font-semibold text-gray-600">
+                  {label}
+                </label>
+                <input
+                  type="text"
+                  placeholder={label}
+                  className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 outline-none transition"
+                  style={{
+                    focusBorderColor: BRAND,
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = BRAND;
+                    e.target.style.boxShadow = `0 0 0 2px ${BRAND_LIGHT}`;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+            ))}
 
             {/* Message */}
             <div>
-              <label className="text-sm font-semibold text-gray-600">Message</label>
+              <label className="text-sm font-semibold text-gray-600">
+                Message
+              </label>
               <textarea
                 rows="4"
                 placeholder="Write your message..."
-                className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 focus:border-[#0891b2] focus:ring-2 focus:ring-cyan-100 outline-none transition resize-none"
+                className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 resize-none outline-none transition"
+                onFocus={(e) => {
+                  e.target.style.borderColor = BRAND;
+                  e.target.style.boxShadow = `0 0 0 2px ${BRAND_LIGHT}`;
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "#e5e7eb";
+                  e.target.style.boxShadow = "none";
+                }}
               />
             </div>
 
@@ -192,7 +186,7 @@ export default function ContactForm() {
               className="w-full py-3 rounded-xl font-bold text-white transition-all shadow-lg hover:scale-[1.02]"
               style={{
                 background:
-                  "linear-gradient(135deg, #0e7490 0%, #0891b2 60%, #06b6d4 100%)",
+                  "linear-gradient(135deg, #003333 0%, #004c4c 60%, #006666 100%)",
               }}
             >
               Send Message 🚀

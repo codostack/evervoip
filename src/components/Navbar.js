@@ -83,7 +83,7 @@ const Navbar = () => {
             ))}
           </select>
 
-          <button className="px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition">
+  <button className="border border-[#004c4c] text-[#004c4c] font-semibold px-6 py-3 rounded-md hover:bg-[#004c4c] hover:text-white transition-all duration-300">
             Get a Demo
           </button>
         </div>
@@ -121,7 +121,7 @@ const Navbar = () => {
               ))}
             </select>
 
-            <button className="px-4 py-2 rounded-lg bg-blue-500 text-white">
+  <button className="border border-[#004c4c] text-[#004c4c] font-semibold px-6 py-3 rounded-md hover:bg-[#004c4c] hover:text-white transition-all duration-300">
               Get a Demo
             </button>
           </div>

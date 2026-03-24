@@ -378,7 +378,7 @@ useEffect(() => {
   
 
   return (
-    <div className="relative min-h-screen w-full bg-white overflow-hidden">
+    <div className="relative min-h-[81vh] w-full bg-white overflow-hidden">
 
       {/* keyframes only — no inline style props on JSX elements */}
       <style>{`
@@ -409,7 +409,7 @@ useEffect(() => {
 
 
       {/* hero layout */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 min-h-screen px-8 md:px-16 py-20">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 min-h-[81vh] px-8 md:px-16 py-20">
 
         {/* ══ LEFT ══ */}
     <div className="space-y-8 z-10 ml-0 lg:ml-[12px] mt-[-60px]">

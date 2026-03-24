@@ -1,43 +1,58 @@
 import { useState } from "react";
 
+/* ───────────────── DATA ───────────────── */
 const FEATURES = [
-  { icon: "🚀", title: "Lightning Fast Setup", desc: "Get your account running in under 2 minutes."  },
-
-
+  {
+    icon: "🚀",
+    title: "Lightning Fast Setup",
+    desc: "Get your account running in under 2 minutes.",
+  },
 ];
+
 const STATS = [
-  { val: "50K+",  label: "Registered Users" },
+  { val: "50K+", label: "Registered Users" },
   { val: "99.9%", label: "Uptime Guarantee" },
-  { val: "4.9★",  label: "Average Rating"   },
-  { val: "180+",  label: "Countries"         },
+  { val: "4.9★", label: "Average Rating" },
+  { val: "180+", label: "Countries" },
 ];
 
-/* ── Field component ── */
-function Field({ label, name, type = "text", placeholder, value, onChange, onFocus, onBlur, error, icon, textarea }) {
-  const inputBase =
-    "w-full pl-10 pr-4 py-3 text-sm font-normal bg-gray-50 border rounded-xl text-gray-800 outline-none transition-all duration-200 placeholder-gray-300 hover:border-cyan-300 hover:bg-white focus:border-cyan-500 focus:bg-white focus:ring-2 focus:ring-cyan-100";
-  const inputErr  = "border-red-400 focus:border-red-400 focus:ring-red-100";
-  const inputOk   = "border-gray-200";
-
+/* ───────────────── FIELD ───────────────── */
+function Field({
+  label,
+  name,
+  type = "text",
+  placeholder,
+  value,
+  onChange,
+  error,
+  icon,
+  textarea,
+}) {
   return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-medium text-gray-600 tracking-wide">
+    <div className="flex flex-col gap-2">
+      <label className="text-xs font-semibold text-gray-600 tracking-wide">
         {label} <span className="text-red-400">*</span>
       </label>
-      <div className="relative">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm opacity-50 pointer-events-none select-none">
+
+      <div className="relative group">
+        <span className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50">
           {icon}
         </span>
+
         {textarea ? (
           <textarea
             name={name}
+            rows={4}
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            rows={4}
-            className={`${inputBase} ${error ? inputErr : inputOk} pt-3 resize-none leading-relaxed`}
+            className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl bg-gray-50 border transition-all
+            ${
+              error
+                ? "border-red-400"
+                : "border-gray-200 focus:border-[#004c4c]"
+            }
+            focus:ring-2 focus:ring-[#004c4c]/20 outline-none`}
           />
         ) : (
           <input
@@ -46,45 +61,52 @@ function Field({ label, name, type = "text", placeholder, value, onChange, onFoc
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            className={`${inputBase} ${error ? inputErr : inputOk}`}
+            className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl bg-gray-50 border transition-all
+            ${
+              error
+                ? "border-red-400"
+                : "border-gray-200 focus:border-[#004c4c]"
+            }
+            focus:ring-2 focus:ring-[#004c4c]/20 outline-none`}
           />
         )}
       </div>
-      {error && (
-        <span className="text-xs text-red-500 flex items-center gap-1">
-          ⚠ {error}
-        </span>
-      )}
+
+      {error && <span className="text-xs text-red-500">⚠ {error}</span>}
     </div>
   );
 }
 
-/* ── Success screen ── */
+/* ───────────────── SUCCESS ───────────────── */
 function SuccessScreen({ name, email }) {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="text-center bg-white rounded-3xl border border-gray-100 shadow-xl p-16 max-w-md w-full animate-bounce-in">
-        <span className="text-6xl block mb-5">🎉</span>
-        <h2 className="font-extrabold text-2xl text-gray-900 mb-3">You're all set!</h2>
-        <p className="text-sm text-gray-500 leading-7">
-          Welcome aboard, <strong className="text-gray-800">{name || "friend"}</strong>! We've received your details and will be in touch shortly at{" "}
-          <strong className="text-cyan-600">{email}</strong>.
+    <div className="min-h-screen bg-gradient-to-br from-[#004c4c] to-[#002626] flex items-center justify-center">
+      <div className="bg-white rounded-3xl p-16 text-center shadow-2xl max-w-md">
+        <span className="text-6xl">🎉</span>
+
+        <h2 className="text-2xl font-extrabold mt-5">You're all set!</h2>
+
+        <p className="text-gray-500 mt-3 text-sm leading-7">
+          Welcome <strong>{name}</strong>! We'll contact you at{" "}
+          <strong className="text-[#004c4c]">{email}</strong>.
         </p>
       </div>
     </div>
   );
 }
 
-/* ══════════════════════════════════════════════════
-   MAIN COMPONENT
-══════════════════════════════════════════════════ */
+/* ───────────────── MAIN ───────────────── */
 export default function RegistrationPage() {
-  const [form,      setForm]      = useState({ name: "", email: "", phone: "", description: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    description: "",
+  });
+
   const [submitted, setSubmitted] = useState(false);
-  const [hovBtn,    setHovBtn]    = useState(false);
-  const [errors,    setErrors]    = useState({});
+  const [errors, setErrors] = useState({});
+  const [hoverBtn, setHoverBtn] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -93,221 +115,161 @@ export default function RegistrationPage() {
 
   const validate = () => {
     const e = {};
-    if (!form.name.trim())         e.name        = "Full name is required";
-    if (!form.email.includes("@")) e.email       = "Enter a valid email";
-    if (!form.phone.trim())        e.phone       = "Phone number is required";
-    if (!form.description.trim())  e.description = "Please add a short description";
+    if (!form.name.trim()) e.name = "Full name required";
+    if (!form.email.includes("@")) e.email = "Invalid email";
+    if (!form.phone.trim()) e.phone = "Phone required";
+    if (!form.description.trim())
+      e.description = "Add short description";
     return e;
   };
 
   const handleSubmit = () => {
     const e = validate();
-    if (Object.keys(e).length) { setErrors(e); return; }
+    if (Object.keys(e).length) {
+      setErrors(e);
+      return;
+    }
     setSubmitted(true);
   };
 
-  if (submitted) return <SuccessScreen name={form.name} email={form.email} />;
+  if (submitted)
+    return <SuccessScreen name={form.name} email={form.email} />;
 
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
 
-      {/* ── dot-grid background via Tailwind pattern ── */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-40"
-           style={{ backgroundImage: "radial-gradient(circle, #a5f3fc 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+      {/* BACKGROUND GLOW */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#004c4c22,transparent_60%)]" />
 
-      {/* ── page layout ── */}
-      <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-10 py-12 grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 items-start">
+      <div className="relative max-w-7xl mx-auto px-6 py-14 grid lg:grid-cols-2 gap-12 items-center">
 
-        {/* ════════════════════════════════════════
-            LEFT — ADVERTISEMENT COLUMN
-        ════════════════════════════════════════ */}
-        <div className="flex flex-col gap-6">
+        {/* ───────── LEFT SIDE ───────── */}
+        <div className="space-y-10">
 
-          {/* ── Brand Hero Card ── */}
-          <div className="relative rounded-3xl p-10 overflow-hidden bg-gradient-to-br from-cyan-500 via-cyan-600 to-teal-700 shadow-2xl shadow-cyan-200">
-            {/* decorative overlay blobs */}
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white opacity-5 -translate-y-12 translate-x-12" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-teal-400 opacity-10 translate-y-16 -translate-x-16" />
-            </div>
-            {/* spinning accent */}
-            <div className="absolute right-6 top-4 text-7xl text-white opacity-5 select-none animate-spin [animation-duration:20s]">✦</div>
+          {/* HERO */}
+          <div>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+              Build Faster With{" "}
+              <span className="text-[#004c4c]">Modern Infrastructure</span>
+            </h1>
 
-            {/* logo row */}
-            <div className="relative z-10 flex items-center gap-3 mb-7">
-              <div className="w-12 h-12 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center text-xl animate-bounce">
-                🔷
-              </div>
-              <div>
-                <div className="text-white font-extrabold text-lg leading-tight">YourBrand</div>
-                <div className="text-cyan-100/70 text-[10px] uppercase tracking-widest">Premium Platform</div>
-              </div>
-            </div>
-
-            {/* headline */}
-            <h2 className="relative z-10 text-3xl font-extrabold text-white leading-snug mb-4">
-              Start Building<br />
-              <span className="bg-gradient-to-r from-cyan-200 to-teal-200 bg-clip-text text-transparent">
-                The Future
-              </span>
-              <br />Today
-            </h2>
-
-            {/* sub */}
-            <p className="relative z-10 text-sm text-cyan-100/80 leading-7 font-light mb-8 max-w-sm">
-              Join thousands of creators, developers, and enterprises who trust us to power their most ambitious projects. No credit card required.
+            <p className="text-gray-500 mt-5 max-w-lg leading-relaxed">
+              A premium platform trusted by developers and enterprises worldwide
+              to launch scalable digital experiences faster than ever.
             </p>
-
-            {/* stats 2×2 grid */}
-            <div className="relative z-10 grid grid-cols-2 gap-3">
-              {STATS.map((s, i) => (
-                <div key={i}
-                  className="bg-white/10 border border-white/15 rounded-2xl px-4 py-3 cursor-default transition-all duration-300 hover:bg-white/20 hover:-translate-y-0.5">
-                  <div className="text-xl font-extrabold text-white">{s.val}</div>
-                  <div className="text-[10px] text-cyan-100/65 tracking-wide mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* ── Features List Card ── */}
-          <div className="bg-white border border-cyan-100 rounded-2xl p-7 shadow-sm shadow-cyan-50">
-            <h3 className="text-base font-bold text-gray-900 mb-5">Why people choose us</h3>
-            <div className="flex flex-col divide-y divide-gray-100">
-              {FEATURES.map((f, i) => (
-                <div key={i} className="flex items-start gap-4 py-3 group">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
-                    {f.icon}
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-gray-800 mb-0.5">{f.title}</div>
-                    <div className="text-xs text-gray-400 leading-relaxed">{f.desc}</div>
-                  </div>
+          {/* STATS */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {STATS.map((s, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center hover:shadow-md transition"
+              >
+                <div className="text-xl font-extrabold text-[#004c4c]">
+                  {s.val}
                 </div>
-              ))}
-            </div>
+                <div className="text-xs text-gray-400 mt-1">
+                  {s.label}
+                </div>
+              </div>
+            ))}
           </div>
 
-         
+          {/* FEATURES */}
+          <div className="bg-white rounded-2xl border p-6 shadow-sm">
+            <h3 className="font-bold text-gray-900 mb-4">
+              Why people choose us
+            </h3>
 
-          {/* ── Promo Banner ── */}
-         
-
+            {FEATURES.map((f, i) => (
+              <div key={i} className="flex gap-4">
+                <div className="w-11 h-11 rounded-xl bg-[#004c4c]/10 flex items-center justify-center">
+                  {f.icon}
+                </div>
+                <div>
+                  <div className="font-medium text-gray-800">
+                    {f.title}
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    {f.desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* ════════════════════════════════════════
-            RIGHT — REGISTRATION FORM
-        ════════════════════════════════════════ */}
-        <div className="lg:sticky lg:top-8">
-          <div className="bg-white border border-cyan-100 rounded-3xl p-10 shadow-xl shadow-cyan-100">
+        {/* ───────── FORM CARD ───────── */}
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-2xl p-10">
 
-            {/* form header */}
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-xs font-semibold text-cyan-600 uppercase tracking-widest">Create Account</span>
-                <div className="flex-1 h-px bg-gradient-to-r from-cyan-200 to-transparent" />
-              </div>
-              <h2 className="text-2xl font-extrabold text-gray-900 leading-snug mb-2">Get Started Free</h2>
-              <p className="text-sm text-gray-400 font-light leading-relaxed">Fill in your details below. We'll reach out within 24 hours.</p>
-            </div>
+          <h2 className="text-2xl font-extrabold mb-6">
+            Create Free Account
+          </h2>
 
-            {/* fields */}
-            <div className="flex flex-col gap-5 mb-6">
+          <div className="space-y-5">
 
-              {/* name + email two-col */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field
-                  label="Full Name"
-                  name="name"
-                  type="text"
-                  placeholder="John Doe"
-                  icon="👤"
-                  value={form.name}
-                  onChange={handleChange}
-                  onFocus={() => {}}
-                  onBlur={() => {}}
-                  error={errors.name}
-                />
-                <Field
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  placeholder="john@example.com"
-                  icon="✉️"
-                  value={form.email}
-                  onChange={handleChange}
-                  onFocus={() => {}}
-                  onBlur={() => {}}
-                  error={errors.email}
-                />
-              </div>
-
-              {/* phone */}
+            <div className="grid sm:grid-cols-2 gap-4">
               <Field
-                label="Phone Number"
-                name="phone"
-                type="tel"
-                placeholder="+1 (555) 000-0000"
-                icon="📞"
-                value={form.phone}
+                label="Full Name"
+                name="name"
+                icon="👤"
+                placeholder="John Doe"
+                value={form.name}
                 onChange={handleChange}
-                onFocus={() => {}}
-                onBlur={() => {}}
-                error={errors.phone}
+                error={errors.name}
               />
 
-              {/* description */}
               <Field
-                label="Tell us about yourself"
-                name="description"
-                placeholder="Briefly describe your project or how you plan to use our platform…"
-                icon="💬"
-                value={form.description}
+                label="Email"
+                name="email"
+                type="email"
+                icon="✉️"
+                placeholder="john@email.com"
+                value={form.email}
                 onChange={handleChange}
-                onFocus={() => {}}
-                onBlur={() => {}}
-                error={errors.description}
-                textarea
+                error={errors.email}
               />
             </div>
 
-            {/* submit button */}
+            <Field
+              label="Phone"
+              name="phone"
+              icon="📞"
+              placeholder="+1 555 000"
+              value={form.phone}
+              onChange={handleChange}
+              error={errors.phone}
+            />
+
+            <Field
+              label="About You"
+              name="description"
+              icon="💬"
+              textarea
+              placeholder="Tell us about your project..."
+              value={form.description}
+              onChange={handleChange}
+              error={errors.description}
+            />
+
             <button
               onClick={handleSubmit}
-              onMouseEnter={() => setHovBtn(true)}
-              onMouseLeave={() => setHovBtn(false)}
-              className="w-full py-4 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold text-sm rounded-2xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan-200 active:scale-95 border-none cursor-pointer"
+              onMouseEnter={() => setHoverBtn(true)}
+              onMouseLeave={() => setHoverBtn(false)}
+              className="w-full py-4 rounded-2xl text-white font-semibold bg-gradient-to-r from-[#004c4c] to-[#002626] hover:shadow-xl hover:-translate-y-0.5 transition-all"
             >
-              {hovBtn ? "✨ Let's Go →" : "Create My Free Account"}
+              {hoverBtn ? "✨ Let's Go →" : "Create My Free Account"}
             </button>
 
-            {/* divider */}
-            <div className="flex items-center gap-3 my-5">
-              <div className="flex-1 h-px bg-gray-100" />
-              <span className="text-xs text-cyan-400 tracking-widest">or sign up with</span>
-              <div className="flex-1 h-px bg-gray-100" />
-            </div>
-
-            {/* social buttons */}
-            <div className="grid grid-cols-2 gap-3 mb-5">
-              <button className="flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-600 bg-white hover:border-cyan-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer">
-                <span>🌐</span> Google
-              </button>
-              <button className="flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-600 bg-white hover:border-cyan-400 hover:bg-cyan-50 hover:text-cyan-700 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer">
-                <span>🐙</span> GitHub
-              </button>
-            </div>
-
-            {/* trust strip */}
-            <div className="flex items-center justify-center gap-5 flex-wrap">
-              <span className="flex items-center gap-1.5 text-xs text-gray-400">🔒 SSL Secured</span>
-              <span className="flex items-center gap-1.5 text-xs text-gray-400">🛡 No Spam</span>
-              <span className="flex items-center gap-1.5 text-xs text-gray-400">✅ Free Forever</span>
+            <div className="flex justify-center gap-6 text-xs text-gray-400 pt-2">
+              <span>🔒 SSL Secured</span>
+              <span>🛡 No Spam</span>
+              <span>✅ Free Forever</span>
             </div>
 
           </div>
         </div>
-
       </div>
     </div>
   );

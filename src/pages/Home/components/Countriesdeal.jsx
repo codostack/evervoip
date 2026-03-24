@@ -90,7 +90,7 @@ export default function CountryScroller() {
       <div style={{
         position: "absolute", inset: 0, zIndex: 0,
 background:
-  "linear-gradient(135deg, #065f73 0%, #0891b2 50%, #22d3ee 100%)",      }} />
+  "linear-gradient(135deg, #004c4c 0%, #004c4c 50%, #004c4c 100%)",      }} />
 
       {/* ── Scattered floating icons & rings ── */}
       <div style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>

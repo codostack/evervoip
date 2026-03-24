@@ -1,300 +1,573 @@
 import { useState } from "react";
 
+const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --teal:       #004c4c;
+    --teal-mid:   #006666;
+    --teal-light: #cce5e5;
+    --teal-pale:  #e6f2f2;
+    --teal-faint: #f5fbfb;
+  }
+
+  .faq-root * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'DM Sans', sans-serif; }
+
+  /* ── SECTION ── */
+  .faq-section {
+    width: 100%;
+    background: #fff;
+    padding: 88px 24px;
+  }
+  .faq-container { max-width: 1200px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .faq-header { text-align: center; margin-bottom: 48px; }
+  .faq-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+  }
+  .faq-eyebrow::before, .faq-eyebrow::after {
+    content: '';
+    width: 28px; height: 1.5px;
+    background: var(--teal-light);
+    border-radius: 2px;
+  }
+  .faq-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 700;
+    color: #0a1a1a;
+    line-height: 1.18;
+  }
+  .faq-title span { color: var(--teal); }
+
+  /* ── SEARCH BAR ── */
+  .faq-search-wrap {
+    background: var(--teal);
+    border-radius: 18px;
+    padding: 22px 24px;
+    margin-bottom: 48px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 12px 40px rgba(0,76,76,0.22);
+    flex-wrap: wrap;
+  }
+  .faq-search-icon { color: rgba(255,255,255,0.5); flex-shrink: 0; }
+  .faq-search-input {
+    flex: 1;
+    min-width: 160px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-size: 14.5px;
+    color: #fff;
+    outline: none;
+    transition: border 0.2s, background 0.2s;
+  }
+  .faq-search-input::placeholder { color: rgba(255,255,255,0.5); }
+  .faq-search-input:focus { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.18); }
+  .faq-search-select {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    min-width: 140px;
+    transition: border 0.2s;
+  }
+  .faq-search-select option { color: #0a1a1a; background: #fff; }
+  .faq-search-select:focus { border-color: rgba(255,255,255,0.45); }
+
+  /* ── GRID ── */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 860px) { .faq-grid { grid-template-columns: 1fr; } }
+
+  /* ── LEFT PANEL ── */
+  .faq-left {
+    background: var(--teal);
+    border-radius: 20px;
+    padding: 36px 32px;
+    position: sticky;
+    top: 90px;
+    overflow: hidden;
+  }
+  .faq-left-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .faq-left-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .faq-left-circle-1 { width:220px;height:220px;top:-60px;right:-60px; }
+  .faq-left-circle-2 { width:130px;height:130px;bottom:-30px;left:-30px; }
+  .faq-left-circle-3 { width:70px;height:70px;top:50%;right:24px; }
+
+  .faq-left-inner { position: relative; z-index: 2; }
+  .faq-left-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+  .faq-left-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .faq-left-sub {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  /* Category pills */
+  .faq-cats { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+  .faq-cat-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.07);
+    transition: background 0.2s, border 0.2s, transform 0.15s;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .faq-cat-pill:hover { background: rgba(255,255,255,0.13); transform: translateX(3px); }
+  .faq-cat-pill.active {
+    background: #fff;
+    border-color: #fff;
+    color: var(--teal);
+    font-weight: 600;
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .faq-cat-count {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+  }
+  .faq-cat-pill.active .faq-cat-count {
+    background: var(--teal-pale);
+    color: var(--teal);
+  }
+
+  /* Stats row */
+  .faq-stats {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 24px;
+    margin-top: 4px;
+  }
+  .faq-stat {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.12);
+  }
+  .faq-stat:last-child { border-right: none; }
+  .faq-stat-num { font-size: 22px; font-weight: 700; color: #fff; font-family: 'Playfair Display', serif; }
+  .faq-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* ── RIGHT — ACCORDION ── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .faq-item {
+    border: 1.5px solid #eef5f5;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .faq-item:hover { border-color: var(--teal-light); box-shadow: 0 4px 20px rgba(0,76,76,0.07); }
+  .faq-item.open  { border-color: var(--teal); box-shadow: 0 6px 28px rgba(0,76,76,0.11); }
+
+  .faq-item-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  .faq-item-num {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--teal-faint);
+    color: var(--teal);
+    font-size: 11.5px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  .faq-item.open .faq-item-num { background: var(--teal); color: #fff; }
+
+  .faq-item-q {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a2e2e;
+    line-height: 1.4;
+  }
+  .faq-item-tag {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--teal-pale);
+    color: var(--teal);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .faq-item-icon {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    font-weight: 300;
+    transition: background 0.2s, color 0.2s, transform 0.25s;
+    background: #f0f4f4;
+    color: #667;
+  }
+  .faq-item.open .faq-item-icon { background: var(--teal); color: #fff; transform: rotate(45deg); }
+
+  .faq-item-body {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+  }
+  .faq-item-answer {
+    padding: 0 20px 20px 64px;
+    font-size: 14.5px;
+    color: #556;
+    line-height: 1.7;
+    border-top: 1px solid #f0f6f6;
+    padding-top: 14px;
+  }
+
+  .faq-empty {
+    text-align: center;
+    padding: 56px 24px;
+    color: #889;
+    font-size: 15px;
+  }
+  .faq-empty-icon { font-size: 36px; margin-bottom: 12px; opacity: 0.4; }
+`;
+
 const faqs = [
   {
     id: 1,
+    category: "General",
     question: "What is VoIP?",
     answer:
-      "VoIP (Voice over Internet Protocol) is a cloud-based communication platform that lets you make crystal-clear voice and video calls over the internet. It replaces traditional phone lines — enabling calls, conferencing, messaging, and workflow automation — all from one smart dashboard.",
-    color: "from-violet-500 to-purple-600",
-    accent: "#8B5CF6",
-    light: "#EDE9FE",
-    icon: "📞",
+      "VoIP allows you to make voice and video calls over the internet instead of traditional phone lines, delivering crystal-clear audio at a fraction of the cost.",
   },
   {
     id: 2,
-    question: "How does it work?",
+    category: "Technical",
+    question: "How does VoIP work?",
     answer:
-      "Simply create an account, configure your virtual phone numbers, and connect your devices — desktop, mobile, or desk phone. Your voice is converted into digital packets, transmitted over the internet, and reassembled at the other end in real time. No hardware needed. Sign in and start calling.",
-    color: "from-sky-500 to-blue-600",
-    accent: "#0EA5E9",
-    light: "#E0F2FE",
-    icon: "⚡",
+      "Your voice is converted into digital packets and transmitted securely over the internet using advanced codecs, ensuring minimal latency and maximum clarity.",
   },
   {
     id: 3,
+    category: "Security",
     question: "Is my data safe?",
     answer:
-      "Absolutely. We use enterprise-grade end-to-end encryption (TLS + SRTP) and ISO 27001-certified secure cloud infrastructure. Your calls, recordings, and data belong solely to you — always. We never sell or share your information with third parties.",
-    color: "from-emerald-500 to-green-600",
-    accent: "#10B981",
-    light: "#D1FAE5",
-    icon: "🔒",
+      "We use TLS and SRTP end-to-end encryption, backed by ISO-certified secure cloud infrastructure and continuous threat monitoring.",
   },
   {
     id: 4,
+    category: "Account",
     question: "Can I port my existing number?",
     answer:
-      "Yes! Number porting is fully supported. Bring your current business or personal phone number to our platform at no extra charge. The process typically takes 3–7 business days, and your existing number stays active throughout the transition so you never miss a call.",
-    color: "from-orange-500 to-amber-500",
-    accent: "#F59E0B",
-    light: "#FEF3C7",
-    icon: "🔄",
+      "Yes — you can transfer your existing business number with zero downtime. Our team manages the entire porting process.",
   },
   {
     id: 5,
+    category: "Features",
     question: "What features are included?",
     answer:
-      "Every plan includes HD voice & video calls, virtual phone numbers, IVR / auto-attendant, call recording, voicemail-to-email, SMS/MMS, call analytics, CRM integrations (Salesforce, HubSpot, Zoho), and 24/7 uptime monitoring — with advanced features like call queues and AI transcription on higher tiers.",
-    color: "from-rose-500 to-pink-600",
-    accent: "#F43F5E",
-    light: "#FFE4E6",
-    icon: "✨",
+      "HD calling, IVR systems, real-time analytics, recordings, CRM integrations, automation workflows, and collaboration tools are included.",
   },
   {
     id: 6,
+    category: "Billing",
     question: "Can I cancel anytime?",
     answer:
-      "Absolutely. There are no long-term contracts or cancellation fees. Upgrade, downgrade, or cancel your subscription at any time directly from your account dashboard. If you cancel, you keep access until the end of your billing period.",
-    color: "from-fuchsia-500 to-violet-600",
-    accent: "#A855F7",
-    light: "#F5F3FF",
-    icon: "✅",
+      "Yes. There are no long-term contracts. You can upgrade, downgrade, or cancel anytime from your dashboard.",
+  },
+
+  /* -------- NEW QUESTIONS -------- */
+
+  {
+    id: 7,
+    category: "Technical",
+    question: "What internet speed is required for VoIP?",
+    answer:
+      "A stable broadband connection with at least 100 kbps per call is recommended for optimal voice quality.",
+  },
+  {
+    id: 8,
+    category: "General",
+    question: "Can I use VoIP on mobile devices?",
+    answer:
+      "Yes, our platform works on smartphones, tablets, laptops, and desktop devices through apps and web browsers.",
+  },
+  {
+    id: 9,
+    category: "Features",
+    question: "Do you offer call recording?",
+    answer:
+      "Yes, automatic and on-demand call recording is available with secure cloud storage and playback access.",
+  },
+  {
+    id: 10,
+    category: "Security",
+    question: "Do you protect against fraud and spam calls?",
+    answer:
+      "We implement intelligent fraud detection, IP filtering, and traffic monitoring to prevent unauthorized access.",
+  },
+  {
+    id: 11,
+    category: "Account",
+    question: "Can multiple users share one account?",
+    answer:
+      "Yes, businesses can create multiple extensions and manage teams with role-based permissions.",
+  },
+  {
+    id: 12,
+    category: "Billing",
+    question: "Are there any hidden charges?",
+    answer:
+      "No hidden fees. Pricing is transparent with detailed usage reports available in your billing dashboard.",
+  },
+  {
+    id: 13,
+    category: "Features",
+    question: "Do you support IVR menus?",
+    answer:
+      "Yes, customizable IVR systems allow automated call routing, greetings, and department selection.",
+  },
+  {
+    id: 14,
+    category: "Technical",
+    question: "Does VoIP work during power outages?",
+    answer:
+      "VoIP can continue working using mobile networks or backup power systems like UPS devices.",
+  },
+  {
+    id: 15,
+    category: "General",
+    question: "Is VoIP suitable for small businesses?",
+    answer:
+      "Absolutely. VoIP reduces communication costs while offering enterprise-level features ideal for growing businesses.",
+  },
+  {
+    id: 16,
+    category: "Security",
+    question: "Is call data stored securely?",
+    answer:
+      "All recordings and logs are encrypted and stored in secure cloud environments with strict access control.",
+  },
+  {
+    id: 17,
+    category: "Account",
+    question: "How quickly can I set up my account?",
+    answer:
+      "Most accounts are activated within minutes, allowing you to start calling immediately after setup.",
+  },
+  {
+    id: 18,
+    category: "Billing",
+    question: "Do you provide usage reports?",
+    answer:
+      "Yes, detailed call analytics and billing reports are available for download anytime.",
+  },
+  {
+    id: 19,
+    category: "Features",
+    question: "Can I integrate with CRM software?",
+    answer:
+      "Our APIs support integration with popular CRM systems like Salesforce, HubSpot, and custom platforms.",
+  },
+  {
+    id: 20,
+    category: "Technical",
+    question: "Will call quality depend on location?",
+    answer:
+      "Our global routing network automatically selects the best path to ensure consistent call quality worldwide.",
   },
 ];
 
-function FAQCard({ faq, index }) {
+function FAQItem({ faq, index }) {
   const [open, setOpen] = useState(false);
-
   return (
-    <div
-      className="group relative bg-white rounded-3xl overflow-hidden cursor-pointer transition-all duration-500"
-      style={{
-        boxShadow: open
-          ? `0 20px 60px -10px ${faq.accent}33`
-          : "0 2px 20px rgba(0,0,0,0.07)",
-        transform: open ? "translateY(-2px)" : "none",
-        border: `1.5px solid ${open ? faq.accent + "44" : "#f1f1f1"}`,
-      }}
-      onClick={() => setOpen(!open)}
-    >
-      {/* Top color bar */}
-      <div
-        className={`h-1 w-full bg-gradient-to-r ${faq.color} transition-all duration-500`}
-        style={{ opacity: open ? 1 : 0.4 }}
-      />
-
-      <div className="p-6">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            {/* Icon bubble */}
-            <div
-              className="w-11 h-11 rounded-2xl flex items-center justify-center text-xl flex-shrink-0 transition-all duration-300"
-              style={{
-                background: open ? faq.light : "#f8f8fa",
-              }}
-            >
-              {faq.icon}
-            </div>
-            <h3
-              className="font-bold text-gray-800 text-[15px] leading-snug tracking-tight"
-              style={{ fontFamily: "'Sora', sans-serif" }}
-            >
-              {faq.question}
-            </h3>
-          </div>
-
-          {/* Toggle button */}
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300"
-            style={{
-              background: open ? faq.accent : "#f3f3f7",
-              transform: open ? "rotate(45deg)" : "rotate(0deg)",
-            }}
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-            >
-              <path
-                d="M7 2v10M2 7h10"
-                stroke={open ? "white" : "#888"}
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Answer */}
-        <div
-          className="overflow-hidden transition-all duration-500"
-          style={{ maxHeight: open ? "200px" : "0px", opacity: open ? 1 : 0 }}
-        >
-          <p
-            className="mt-4 text-sm text-gray-500 leading-relaxed pl-[60px]"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
-          >
-            {faq.answer}
-          </p>
-        </div>
+    <div className={`faq-item${open ? " open" : ""}`}>
+      <button className="faq-item-btn" onClick={() => setOpen(!open)}>
+        <span className="faq-item-num">{String(index + 1).padStart(2, "0")}</span>
+        <span className="faq-item-q">{faq.question}</span>
+        <span className="faq-item-tag">{faq.category}</span>
+        <span className="faq-item-icon">+</span>
+      </button>
+      <div className="faq-item-body" style={{ maxHeight: open ? "200px" : "0px", opacity: open ? 1 : 0 }}>
+        <p className="faq-item-answer">{faq.answer}</p>
       </div>
     </div>
   );
 }
 
 export default function VoipFAQ() {
+  const [search, setSearch]     = useState("");
+  const [category, setCategory] = useState("All");
+
+  const categories = ["All", ...new Set(faqs.map((f) => f.category))];
+
+  const countFor = (cat) =>
+    cat === "All" ? faqs.length : faqs.filter((f) => f.category === cat).length;
+
+  const filtered = faqs.filter((faq) => {
+    const q = search.toLowerCase();
+    const matchSearch = faq.question.toLowerCase().includes(q) || faq.answer.toLowerCase().includes(q);
+    const matchCat = category === "All" || faq.category === category;
+    return matchSearch && matchCat;
+  });
+
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+    <div className="faq-root">
+      <style>{styles}</style>
+      <section className="faq-section">
+        <div className="faq-container">
 
-        body { background: #fff; }
+          {/* HEADER */}
+          <div className="faq-header">
+            <div className="faq-eyebrow">Support Center</div>
+            <h2 className="faq-title">
+              Frequently Asked <span>Questions</span>
+            </h2>
+          </div>
 
-        .hero-badge {
-          background: linear-gradient(135deg, #ede9fe, #dbeafe);
-          color: #6d28d9;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          padding: 6px 14px;
-          border-radius: 100px;
-        }
-
-        .gradient-title span {
-          background: linear-gradient(135deg, #8B5CF6, #0EA5E9, #10B981);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .demo-btn {
-          background: linear-gradient(135deg, #8B5CF6, #6366F1);
-          color: white;
-          border: none;
-          border-radius: 14px;
-          padding: 14px 28px;
-          font-weight: 700;
-          font-size: 14px;
-          cursor: pointer;
-          transition: all 0.3s;
-          box-shadow: 0 8px 30px rgba(139,92,246,0.35);
-          letter-spacing: 0.01em;
-        }
-        .demo-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 14px 40px rgba(139,92,246,0.45);
-        }
-
-        .support-card {
-          background: linear-gradient(135deg, #faf5ff 0%, #eff6ff 100%);
-          border: 1.5px solid #e9d5ff;
-          border-radius: 28px;
-          padding: 36px 32px;
-        }
-
-        .dot-pattern {
-          background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
-          background-size: 24px 24px;
-        }
-      `}</style>
-
-      <div
-        className="min-h-screen bg-white py-16 px-4 relative"
-        style={{ fontFamily: "'DM Sans', sans-serif" }}
-      >
-        {/* Subtle dot bg */}
-        <div className="dot-pattern absolute inset-0 opacity-30 pointer-events-none" />
-
-        <div className="max-w-6xl mx-auto relative">
-
-          {/* Header */}
-          <div className="text-center mb-16">
-            <span className="hero-badge inline-block mb-5">
-              ✦ Your Questions, Answered
-            </span>
-            <h1
-              className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-5 leading-tight gradient-title"
-              style={{ fontFamily: "'Sora', sans-serif", letterSpacing: "-0.03em" }}
+          {/* SEARCH BAR */}
+          <div className="faq-search-wrap">
+            <svg className="faq-search-icon" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input
+              className="faq-search-input"
+              type="text"
+              placeholder="Search questions, topics, keywords…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <select
+              className="faq-search-select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
             >
-              Frequently Asked{" "}
-              <span>Questions</span>
-            </h1>
-            <p className="text-gray-400 text-lg max-w-xl mx-auto leading-relaxed">
-              Everything you need to know about our VoIP platform — from setup to
-              security, features to flexibility.
-            </p>
+              {categories.map((cat, i) => <option key={i}>{cat}</option>)}
+            </select>
           </div>
 
-          {/* Main grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          {/* GRID */}
+          <div className="faq-grid">
 
-            {/* Left: Support card */}
-            <div className="support-card flex flex-col gap-5 sticky top-8">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-2xl shadow-lg">
-                🎧
+            {/* LEFT PANEL */}
+            <div className="faq-left">
+              <div className="faq-left-bg">
+                <div className="faq-left-circle faq-left-circle-1" />
+                <div className="faq-left-circle faq-left-circle-2" />
+                <div className="faq-left-circle faq-left-circle-3" />
               </div>
-              <div>
-                <h2
-                  className="text-2xl font-bold text-gray-900 mb-2 leading-tight"
-                  style={{ fontFamily: "'Sora', sans-serif" }}
-                >
-                  Still Have Questions?
-                </h2>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  We understand every business has unique needs. If
-                  there&rsquo;s anything you&rsquo;d like to know about
-                  pricing, onboarding, or how VoIP fits into your workflow,
-                  our support team is here to help.
-                </p>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Reach out anytime — we&rsquo;ll guide you through every
-                detail to make sure you get the most out of our platform.
-              </p>
+              <div className="faq-left-inner">
+                <div className="faq-left-label">Browse by category</div>
+                <div className="faq-left-title">Find What You're Looking For</div>
+                <div className="faq-left-sub">Filter questions by topic to get to the right answer faster.</div>
 
-              {/* Stats row */}
-              <div className="grid grid-cols-2 gap-3 mt-2">
-                {[
-                  { label: "Uptime SLA", val: "99.99%", color: "#10B981" },
-                  { label: "Avg Response", val: "< 2 min", color: "#0EA5E9" },
-                  { label: "Countries", val: "160+", color: "#F59E0B" },
-                  { label: "Support", val: "24 / 7", color: "#8B5CF6" },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="bg-white rounded-2xl p-3 text-center"
-                    style={{ border: `1.5px solid ${s.color}22` }}
-                  >
+                <div className="faq-cats">
+                  {categories.map((cat) => (
                     <div
-                      className="font-extrabold text-lg"
-                      style={{ color: s.color, fontFamily: "'Sora', sans-serif" }}
+                      key={cat}
+                      className={`faq-cat-pill${category === cat ? " active" : ""}`}
+                      onClick={() => setCategory(cat)}
                     >
-                      {s.val}
+                      <span>{cat}</span>
+                      <span className="faq-cat-count">{countFor(cat)}</span>
                     </div>
-                    <div className="text-gray-400 text-xs mt-0.5">{s.label}</div>
+                  ))}
+                </div>
+
+                <div className="faq-stats">
+                  <div className="faq-stat">
+                    <div className="faq-stat-num">6</div>
+                    <div className="faq-stat-label">Questions</div>
                   </div>
-                ))}
+                  <div className="faq-stat">
+                    <div className="faq-stat-num">6</div>
+                    <div className="faq-stat-label">Categories</div>
+                  </div>
+                  <div className="faq-stat">
+                    <div className="faq-stat-num">24h</div>
+                    <div className="faq-stat-label">Support</div>
+                  </div>
+                </div>
               </div>
-
-              <button className="demo-btn w-full mt-2">
-                Book a Free Demo
-              </button>
             </div>
 
-            {/* Right: FAQ cards */}
-            <div className="lg:col-span-2 flex flex-col gap-4">
-              {faqs.map((faq, i) => (
-                <FAQCard key={faq.id} faq={faq} index={i} />
-              ))}
+            {/* RIGHT — FAQ LIST */}
+            <div className="faq-list">
+              {filtered.length > 0 ? (
+                filtered.map((faq, i) => <FAQItem key={faq.id} faq={faq} index={i} />)
+              ) : (
+                <div className="faq-empty">
+                  <div className="faq-empty-icon">🔍</div>
+                  <div>No questions match your search.</div>
+                </div>
+              )}
             </div>
+
           </div>
-
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 }
