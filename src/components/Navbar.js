@@ -7,6 +7,7 @@ import {
   FaYoutube,
   FaGithub,
 } from "react-icons/fa";
+import { Languages } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
     { name: "FAQ", href: "/faq" },
   ];
 
-  const languages = ["EN", "FR", "DE", "ES"];
+  const languages = ["English", "French", "Arabic", "Spanish"];
 
   return (
     <nav className="bg-white sticky top-0 z-50">
@@ -71,21 +72,43 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* RIGHT: Language + Button */}
         <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 w-24 appearance-none"
-          >
-            {languages.map((lang) => (
-              <option key={lang} value={lang}>{lang}</option>
-            ))}
-          </select>
 
-  <button className="border border-[#004c4c] text-[#004c4c] font-semibold px-6 py-3 rounded-md hover:bg-[#004c4c] hover:text-white transition-all duration-300">
+          <div className="relative w-40">
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+className="
+  w-full
+  pl-12 pr-4 py-2
+  rounded-lg
+  border border-gray-300
+  bg-white text-gray-700
+  appearance-none
+  outline-none
+  focus:outline-none
+  focus:ring-0
+  focus:border-gray-400
+"
+            >
+              {languages.map((lang) => (
+                <option key={lang} value={lang}>
+                  {lang}
+                </option>
+              ))}
+            </select>
+
+            <Languages
+              size={18}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500 pointer-events-none"
+            />
+          </div>
+
+          {/* Demo Button */}
+          <button className="px-5 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition flex items-center gap-2">
             Get a Demo
           </button>
+
         </div>
 
         {/* MOBILE MENU BUTTON */}
@@ -121,7 +144,7 @@ const Navbar = () => {
               ))}
             </select>
 
-  <button className="border border-[#004c4c] text-[#004c4c] font-semibold px-6 py-3 rounded-md hover:bg-[#004c4c] hover:text-white transition-all duration-300">
+            <button className="px-4 py-2 rounded-lg bg-blue-500 text-white">
               Get a Demo
             </button>
           </div>
