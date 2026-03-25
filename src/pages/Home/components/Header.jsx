@@ -7,6 +7,12 @@ const PhoneIcon = () => (
     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.06 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
   </svg>
 );
+const SignalIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="2" y1="20" x2="2" y2="14" /><line x1="8" y1="20" x2="8" y2="10" />
+    <line x1="14" y1="20" x2="14" y2="4" /><line x1="20" y1="20" x2="20" y2="2" />
+  </svg>
+);
 const ShieldIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -73,7 +79,7 @@ function Waveform({ bars = 32 }) {
 
 /* ── Tab panels ── */
 function TabQuality() {
-  const metrics = [ 
+  const metrics = [
     {
       label: "Voice Quality",
       pct: "",
