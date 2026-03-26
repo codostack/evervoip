@@ -107,7 +107,7 @@ export default function AnimatedFooter() {
         }
         .link-underline::after {
           content: ''; position: absolute; bottom: -2px; left: 0;
-          width: 0; height: 1px; background: #a5b4fc; transition: width 0.3s ease;
+          width: 0; height: 1px; background: #67e8f9; transition: width 0.3s ease;
         }
         .link-underline:hover::after { width: 100%; }
 
@@ -116,14 +116,14 @@ export default function AnimatedFooter() {
           outline: none;
           border-color: rgba(255,255,255,0.5) !important;
           background: rgba(255,255,255,0.18) !important;
-          box-shadow: 0 0 0 3px rgba(165,180,252,0.2);
+          box-shadow: 0 0 0 3px rgba(103,232,249,0.25);
         }
       `}</style>
 
       <footer
         className="footer-font relative overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #004c4c 0%, #004c4c 30%, #004c4c 60%, #004c4c 100%)",
+background: "#0891b2",
           minHeight: 480,
         }}
       >
@@ -134,17 +134,17 @@ export default function AnimatedFooter() {
             className="grid-pulse absolute inset-0"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(165,180,252,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(165,180,252,0.07) 1px, transparent 1px)",
+                "linear-gradient(rgba(103,232,249,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(103,232,249,0.08) 1px, transparent 1px)",
               backgroundSize: "60px 60px",
             }}
           />
 
           {/* Orbs */}
           {[
-            { size: 320, color: "#a5b4fc", top: -80, left: -60, dur: "18s", delay: "0s" },
-            { size: 200, color: "#e879f9", bottom: 20, right: 80, dur: "14s", delay: "-5s" },
-            { size: 150, color: "#67e8f9", top: 60, right: 220, dur: "20s", delay: "-9s" },
-            { size: 100, color: "#f9a8d4", bottom: 80, left: 200, dur: "12s", delay: "-3s" },
+            { size: 320, color: "#67e8f9", top: -80, left: -60, dur: "18s", delay: "0s" },
+            { size: 200, color: "#38bdf8", bottom: 20, right: 80, dur: "14s", delay: "-5s" },
+            { size: 150, color: "#22d3ee", top: 60, right: 220, dur: "20s", delay: "-9s" },
+            { size: 100, color: "#7dd3fc", bottom: 80, left: 200, dur: "12s", delay: "-3s" },
           ].map((o, i) => (
             <div
               key={i}
@@ -260,7 +260,7 @@ export default function AnimatedFooter() {
                           <span
                             className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all duration-300"
                             style={{
-                              background: hoveredLink === key ? "#a5b4fc" : "#818cf8",
+                              background: hoveredLink === key ? "#67e8f9" : "#22d3ee",
                               transform: hoveredLink === key ? "scale(1.5)" : "scale(1)",
                             }}
                           />
@@ -308,7 +308,7 @@ export default function AnimatedFooter() {
                 className="rounded-xl px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5"
                 style={{
                   background: subscribed ? "#a5f3fc" : "#fff",
-                  color: subscribed ? "#0e7490" : "#4338ca",
+                  color: subscribed ? "#0369a1" : "#4338ca",
                   boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
                   fontFamily: "inherit",
                 }}

@@ -41,8 +41,7 @@ const styles = `
     border-radius: 2px;
   }
   .faq-title {
-    font-size: clamp(32px, 4.5vw, 48px);
-    font-weight: 700;
+    font-size: clamp(32px, 4.5vw, 36px);
     color: #0a1a1a;
     line-height: 1.18;
   }
@@ -518,7 +517,7 @@ const categories = [
 
                                 <div className="faq-stats">
                                     <div className="faq-stat">
-                                        <div className="faq-stat-num">6</div>
+                                        <div className="faq-stat-num">16</div>
                                         <div className="faq-stat-label">Questions</div>
                                     </div>
                                     <div className="faq-stat">

@@ -282,7 +282,7 @@ function FeatureCard({ icon, title, desc, delay }) {
   return (
     <div
       ref={ref}
-      className="group relative bg-white border border-gray-200 hover:border-blue-500 rounded-2xl p-5 transition-all duration-500 hover:shadow-lg"
+      className="group relative bg-white border border-gray-200 hover:border-[#0891b2] rounded-2xl p-5 transition-all duration-500 hover:shadow-lg"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateX(0)" : "translateX(-30px)",
@@ -290,9 +290,16 @@ function FeatureCard({ icon, title, desc, delay }) {
       }}
     >
       <div className="flex items-start gap-4">
-        <div className="shrink-0 w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform duration-300">
+        <div className="shrink-0 w-14 h-14 rounded-2xl 
+          bg-[#0891b2]/10 
+          border border-[#0891b2]/30 
+          flex items-center justify-center 
+          text-[#0891b2]
+          group-hover:scale-110 transition-transform duration-300"
+        >
           <div className="w-7 h-7">{icon}</div>
         </div>
+
         <div>
           <h3 className="text-gray-900 font-semibold text-sm mb-1">{title}</h3>
           <p className="text-gray-600 text-xs leading-relaxed">{desc}</p>
@@ -301,7 +308,6 @@ function FeatureCard({ icon, title, desc, delay }) {
     </div>
   );
 }
-
 export default function VoIPLanding() {
   const [form, setForm] = useState({ name: "", phone: "", email: "", company: "", plan: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -313,28 +319,55 @@ export default function VoIPLanding() {
     setTimeout(() => { setLoading(false); setSubmitted(true); }, 1500);
   };
 
-  const features = [
-    {
-      icon: (<svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>),
-      title: "24×7 Live Support",
-      desc: "Round-the-clock expert assistance via chat, call, or ticket — real humans always.",
-    },
-    {
-      icon: (<svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>),
-      title: "Dedicated Account Manager",
-      desc: "Your personal VoIP expert handles setup and scaling.",
-    },
-    {
-      icon: (<svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>),
-      title: "Free Test Available",
-      desc: "Test our full platform risk-free for 14 days.",
-    },
-    {
-      icon: (<svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>),
-      title: "Enterprise-Grade Security",
-      desc: "End-to-end encryption and real-time monitoring.",
-    },
-  ];
+const features = [
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "24×7 Live Support",
+    desc: "Round-the-clock expert assistance via chat, call, or ticket — real humans always.",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    ),
+    title: "Dedicated Account Manager",
+    desc: "Your personal VoIP expert handles setup and scaling.",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "Free Test Available",
+    desc: "Test our full platform risk-free for 14 days.",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+    ),
+    title: "Enterprise-Grade Security",
+    desc: "End-to-end encryption and real-time monitoring.",
+  },
+
+  // ✅ NEW FEATURE ADDED
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-3 0-5 1.5-5 3s2 3 5 3 5 1.5 5 3-2 3-5 3m0-12V4m0 16v-2" />
+      </svg>
+    ),
+    title: "Cost Effective Pricing",
+    desc: "Flexible and affordable pricing plans designed to reduce communication costs without compromising quality.",
+  },
+];
 
   return (
     <>
@@ -360,17 +393,22 @@ export default function VoIPLanding() {
   className="mx-auto px-6 py-16 grid lg:grid-cols-[1.1fr_1.2fr] gap-16 lg:gap-24"
   style={{ maxWidth: "87rem" }}
 >          {/* LEFT */}
-          <div>
-            <p className="text-xs uppercase tracking-widest text-blue-600 mb-3">Why VoiceCore</p>
-            <div className="flex flex-col gap-4">
-              {features.map((f, i) => <FeatureCard key={i} {...f} delay={i * 120} />)}
-            </div>
-          </div>
+<div>
+  <p className="text-xs uppercase tracking-widest text-[#0891b2] mb-3">
+    Why VoiceCore
+  </p>
+
+  <div className="flex flex-col gap-4">
+    {features.map((f, i) => (
+      <FeatureCard key={i} {...f} delay={i * 120} />
+    ))}
+  </div>
+</div>
 
           {/* RIGHT FORM */}
           <div className="lg:sticky lg:top-8">
-            <div className="rounded-3xl overflow-hidden shadow-xl border border-cyan-100">
-              <div className="bg-[#0891b2] px-7 pt-7 pb-5">
+<div className="rounded-3xl overflow-hidden shadow-xl border border-cyan-100 h-[580px]">
+                <div className="bg-[#0891b2] px-7 pt-7 pb-5">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                   <span className="text-xs text-white/80 font-medium tracking-wide">FREE TEST AVAILABLE</span>
@@ -379,8 +417,8 @@ export default function VoIPLanding() {
                 <p className="text-white/70 text-sm mt-1">No credit card. No contracts. Cancel anytime.</p>
               </div>
 
-              <div className="bg-white px-7 py-6">
-                {submitted ? (
+<div className="bg-white px-7 py-6 overflow-y-auto h-[calc(580px-120px)]">
+                  {submitted ? (
                   <div className="text-center py-10">
                     <div className="w-14 h-14 rounded-full bg-green-50 border-2 border-green-200 flex items-center justify-center mx-auto mb-4">
                       <svg className="w-7 h-7 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
