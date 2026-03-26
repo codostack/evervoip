@@ -65,7 +65,6 @@ const features = [
 export default function AnimatedFooter() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-  const [hoveredSocial, setHoveredSocial] = useState(null);
   const [hoveredLink, setHoveredLink] = useState(null);
   const [hoveredFeat, setHoveredFeat] = useState(null);
   const [hoveredBadge, setHoveredBadge] = useState(null);
