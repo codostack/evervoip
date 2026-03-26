@@ -409,7 +409,7 @@ export default function VoipHeader() {
           <div className="anim-fade-up-2">
             <h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-[2.6rem] leading-[1.08] tracking-relaxing text-gray-600">
               The Empower of
-              <span className="text-blue-400"> Telecommunication</span>
+              <span className="text-blue-500"> Telecommunication</span>
             </h1>
           </div>
 
@@ -422,7 +422,7 @@ export default function VoipHeader() {
             <div className="anim-fade-up-4 flex items-center gap-3 flex-wrap pt-1">
 
               <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-white text-sm font-semibold 
-  bg-blue-400 hover:bg-blue-400 
+  bg-blue-500 hover:bg-blue-600 
   transition-all duration-200 border-0 cursor-pointer">
 
                 Get Started

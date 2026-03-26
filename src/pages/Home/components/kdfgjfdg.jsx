@@ -18,8 +18,8 @@ function VoIPHeroAnimation() {
             <feGaussianBlur stdDeviation="1.5" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
-          <path id="pktPath1" d="M125 170 Q340 100 450 170 Q600 240 820 170" />
-          <path id="pktPath2" d="M125 170 Q340 240 450 170 Q600 100 820 170" />
+          <path id="pktPath1" d="M155 170 Q340 100 450 170 Q560 240 745 170" />
+          <path id="pktPath2" d="M155 170 Q340 240 450 170 Q560 100 745 170" />
         </defs>
 
         {/* Background grid */}
@@ -32,79 +32,36 @@ function VoIPHeroAnimation() {
             stroke="#0891b2" strokeWidth="0.4" opacity="0.07" />
         ))}
 
-
-        <g transform="translate(10, 60)" filter="url(#softGlow)">
-          {/* Phone body (dark grey) */}
-          <rect x="0" y="20" width="110" height="200" rx="16" fill="#2b2b2b" opacity="0.95" />
-
-          {/* Screen (yellow) */}
-          <rect x="8" y="28" width="94" height="60" rx="8" fill="#facc15" opacity="0.9" />
-
-          {/* Screen text lines (grey tones) */}
-          <rect x="14" y="36" width="48" height="3" rx="1.5" fill="#374151" opacity="0.9" />
-          <rect x="14" y="43" width="64" height="2" rx="1" fill="#6b7280" opacity="0.6" />
-          <rect x="14" y="49" width="54" height="2" rx="1" fill="#6b7280" opacity="0.4" />
-
-          {/* Status dot (green stays same) */}
+        {/* LEFT: IP Phone */}
+        <g transform="translate(40, 60)" filter="url(#softGlow)">
+          <rect x="0" y="20" width="110" height="200" rx="16" fill="#1e3a5f" opacity="0.95" />
+          <rect x="8" y="28" width="94" height="60" rx="8" fill="#1d4ed8" opacity="0.9" />
+          <rect x="14" y="36" width="48" height="3" rx="1.5" fill="#93c5fd" opacity="0.9" />
+          <rect x="14" y="43" width="64" height="2" rx="1" fill="#60a5fa" opacity="0.6" />
+          <rect x="14" y="49" width="54" height="2" rx="1" fill="#60a5fa" opacity="0.4" />
           <circle cx="88" cy="37" r="4" fill="#22c55e" opacity="0.9">
             <animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.1s" repeatCount="indefinite" />
           </circle>
-
-          {/* Keypad (grey) */}
-          {[0, 1, 2].map(col => [0, 1, 2, 3].map(row => (
-            <rect key={`k${col}${row}`}
-              x={14 + col * 30}
-              y={98 + row * 26}
-              width="20"
-              height="14"
-              rx="4"
-              fill="#374151"
-              opacity={0.8 - row * 0.1}
-            />
+          {[0,1,2].map(col => [0,1,2,3].map(row => (
+            <rect key={`k${col}${row}`} x={14 + col * 30} y={98 + row * 26}
+              width="20" height="14" rx="4" fill="#1d4ed8" opacity={0.7 - row * 0.1} />
           )))}
-
-          {/* Bottom dots */}
-          {[0, 1, 2, 3, 4].map(i => (
-            <circle key={i}
-              cx={14 + i * 16}
-              cy={202}
-              r="2"
-              fill="#9ca3af"
-              opacity="0.5"
-            />
+          {[0,1,2,3,4].map(i => (
+            <circle key={i} cx={14 + i * 16} cy={202} r="2" fill="#93c5fd" opacity="0.5" />
           ))}
-
-          {/* Signal rings (yellow accent) */}
-          {[1, 2, 3].map(n => (
-            <circle key={`rn${n}`}
-              cx="55"
-              cy="170"
-              r="10"
-              stroke="#facc15"
-              strokeWidth="1.5"
-              fill="none"
-              opacity="0"
-            >
-              <animate attributeName="r"
-                from="12"
-                to={20 + 22 * n}
-                dur="2.6s"
-                begin={`${n * 0.7}s`}
-                repeatCount="indefinite"
-              />
-              <animate attributeName="opacity"
-                from="0.45"
-                to="0"
-                dur="2.6s"
-                begin={`${n * 0.7}s`}
-                repeatCount="indefinite"
-              />
+          {[1,2,3].map(n => (
+            <circle key={`rn${n}`} cx="55" cy="170" r="10"
+              stroke="#3b82f6" strokeWidth="1.5" fill="none" opacity="0">
+              <animate attributeName="r" from="12" to={20 + 22 * n}
+                dur="2.6s" begin={`${n * 0.7}s`} repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.45" to="0"
+                dur="2.6s" begin={`${n * 0.7}s`} repeatCount="indefinite" />
             </circle>
           ))}
         </g>
 
         {/* CENTER: Cloud node + waveform */}
-        <g transform="translate(390, 20)">
+        <g style={{margin:"10px"}} transform="translate(390, 60)">
           <rect x="0" y="0" width="120" height="64" rx="18" fill="#0891b2" opacity="0.12" />
           <rect x="0" y="0" width="120" height="64" rx="18" stroke="#0891b2" strokeWidth="1" fill="none" opacity="0.4" />
           {[16, 28, 40, 52, 64, 76, 88].map((bh, i) => {
@@ -117,7 +74,7 @@ function VoIPHeroAnimation() {
                   dur={`${1.2 + i * 0.18}s`} begin={`${i * 0.12}s`} repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" />
                 <animate attributeName="y"
-                  values={`${32 - h / 2};${32 - Math.max(6, h * 0.3) / 2};${32 - h / 2};${32 - Math.min(h * 1.4, 38) / 2};${32 - h / 2}`}
+                  values={`${32 - h/2};${32 - Math.max(6, h*0.3)/2};${32 - h/2};${32 - Math.min(h*1.4, 38)/2};${32 - h/2}`}
                   dur={`${1.2 + i * 0.18}s`} begin={`${i * 0.12}s`} repeatCount="indefinite"
                   calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" />
               </rect>
@@ -130,116 +87,66 @@ function VoIPHeroAnimation() {
         </g>
 
         {/* Big waveform */}
-        {[8, 18, 32, 48, 60, 72, 80, 72, 58, 44, 80, 68, 52, 76, 64, 48, 72, 54, 38, 22, 10].map((h, i) => {
+        {[8,18,32,48,60,72,80,72,58,44,80,68,52,76,64,48,72,54,38,22,10].map((h, i) => {
           const x = 325 + i * 13;
           const dur = (1.0 + (i % 5) * 0.22).toFixed(2);
           const delay = (i * 0.06).toFixed(2);
           return (
             <rect key={i} x={x} y={200 - h / 2} width="8" height={h} rx="3.5"
-              fill="#ff6a00" filter="url(#tinyGlow)" opacity="0.85">
+              fill="url(#barGradA)" filter="url(#tinyGlow)" opacity="0.85">
               <animate attributeName="height"
-                values={`${h};${Math.max(5, h * 0.2)};${h};${Math.min(h * 1.35, 90)};${h}`}
+                values={`${h};${Math.max(5, h * 0.2)};${h};${Math.min(h*1.35,90)};${h}`}
                 dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite"
                 calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" />
               <animate attributeName="y"
-                values={`${200 - h / 2};${200 - Math.max(5, h * 0.2) / 2};${200 - h / 2};${200 - Math.min(h * 1.35, 90) / 2};${200 - h / 2}`}
+                values={`${200 - h/2};${200 - Math.max(5, h*0.2)/2};${200 - h/2};${200 - Math.min(h*1.35, 90)/2};${200 - h/2}`}
                 dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite"
                 calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" />
             </rect>
           );
         })}
 
-        <g transform="translate(800, 55)" filter="url(#softGlow)">
-          {/* Headset band */}
-          <path d="M12 80 Q50 10 88 80"
-            stroke="#facc15"
-            strokeWidth="6"
-            strokeLinecap="round"
-            fill="none"
-          />
-
-          {/* Ear cups (grey) */}
-          <rect x="0" y="70" width="28" height="46" rx="14" fill="#374151" />
-          <rect x="76" y="70" width="28" height="46" rx="14" fill="#374151" />
-
-          {/* Ear cup lines (light grey) */}
-          {[0, 1, 2].map(i => (
-            <line key={i}
-              x1="7" y1={80 + i * 8}
-              x2="21" y2={80 + i * 8}
-              stroke="#d1d5db"
-              strokeWidth="1.8"
-              opacity="0.7"
-              strokeLinecap="round"
-            />
+        {/* RIGHT: Headset */}
+        <g transform="translate(745, 55)" filter="url(#softGlow)">
+          <path d="M12 80 Q50 10 88 80" stroke="#0891b2" strokeWidth="6" strokeLinecap="round" fill="none" />
+          <rect x="0" y="70" width="28" height="46" rx="14" fill="#0e7490" />
+          <rect x="76" y="70" width="28" height="46" rx="14" fill="#0e7490" />
+          {[0,1,2].map(i => (
+            <line key={i} x1="7" y1={80 + i*8} x2="21" y2={80 + i*8}
+              stroke="#67e8f9" strokeWidth="1.8" opacity="0.65" strokeLinecap="round" />
           ))}
-
-          {[0, 1, 2].map(i => (
-            <line key={i}
-              x1="83" y1={80 + i * 8}
-              x2="97" y2={80 + i * 8}
-              stroke="#d1d5db"
-              strokeWidth="1.8"
-              opacity="0.7"
-              strokeLinecap="round"
-            />
+          {[0,1,2].map(i => (
+            <line key={i} x1="83" y1={80 + i*8} x2="97" y2={80 + i*8}
+              stroke="#67e8f9" strokeWidth="1.8" opacity="0.65" strokeLinecap="round" />
           ))}
-
-          {/* Mic arm */}
-          <path d="M14 108 Q-10 132 -2 148"
-            stroke="#facc15"
-            strokeWidth="3.5"
-            strokeLinecap="round"
-            fill="none"
-          />
-
-          {/* Mic tip */}
-          <circle cx="-2" cy="150" r="7" fill="#facc15" opacity="0.9" />
-
-          {/* Signal waves */}
-          {[1, 2, 3].map(n => (
-            <circle key={n}
-              cx="50"
-              cy="90"
-              r="14"
-              stroke="#facc15"
-              strokeWidth="1.5"
-              fill="none"
-              opacity="0"
-            >
-              <animate attributeName="r"
-                from="14"
-                to={20 + 26 * n}
-                dur="2.6s"
-                begin={`${n * 0.8}s`}
-                repeatCount="indefinite"
-              />
-              <animate attributeName="opacity"
-                from="0.5"
-                to="0"
-                dur="2.6s"
-                begin={`${n * 0.8}s`}
-                repeatCount="indefinite"
-              />
+          <path d="M14 108 Q-10 132 -2 148" stroke="#0891b2" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+          <circle cx="-2" cy="150" r="7" fill="#22d3ee" opacity="0.9" />
+          {[1,2,3].map(n => (
+            <circle key={n} cx="50" cy="90" r="14"
+              stroke="#06b6d4" strokeWidth="1.5" fill="none" opacity="0">
+              <animate attributeName="r" from="14" to={20 + 26 * n}
+                dur="2.6s" begin={`${n * 0.8}s`} repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.5" to="0"
+                dur="2.6s" begin={`${n * 0.8}s`} repeatCount="indefinite" />
             </circle>
           ))}
         </g>
 
         {/* Connecting dashed lines */}
-        <path d="M155 170 Q300 120 390 170" stroke="#ec6b08" strokeWidth="1.2" strokeDasharray="7 5" opacity="0.3" fill="none" />
-        <path d="M510 170 Q650 120 820 170" stroke="#ec6b08" strokeWidth="1.2" strokeDasharray="7 5" opacity="0.3" fill="none" />
-        <path d="M155 170 Q300 220 390 170" stroke="#ec6b08" strokeWidth="0.8" strokeDasharray="5 7" opacity="0.15" fill="none" />
-        <path d="M510 170 Q650 220 820 170" stroke="#ec6b08" strokeWidth="0.8" strokeDasharray="5 7" opacity="0.15" fill="none" />
+        <path d="M155 170 Q300 120 390 170" stroke="#3b82f6" strokeWidth="1.2" strokeDasharray="7 5" opacity="0.3" fill="none" />
+        <path d="M510 170 Q620 120 745 170" stroke="#06b6d4" strokeWidth="1.2" strokeDasharray="7 5" opacity="0.3" fill="none" />
+        <path d="M155 170 Q300 220 390 170" stroke="#3b82f6" strokeWidth="0.8" strokeDasharray="5 7" opacity="0.15" fill="none" />
+        <path d="M510 170 Q620 220 745 170" stroke="#06b6d4" strokeWidth="0.8" strokeDasharray="5 7" opacity="0.15" fill="none" />
 
         {/* Data packets */}
-        {[0, 1, 2].map(i => (
+        {[0,1,2].map(i => (
           <circle key={`pa${i}`} r="5.5" fill="#3b82f6" filter="url(#tinyGlow)" opacity="0.9">
             <animateMotion dur="1.7s" repeatCount="indefinite" begin={`${i * 0.52}s`}>
               <mpath href="#pktPath1" />
             </animateMotion>
           </circle>
         ))}
-        {[0, 1, 2].map(i => (
+        {[0,1,2].map(i => (
           <circle key={`pb${i}`} r="4" fill="#06b6d4" filter="url(#tinyGlow)" opacity="0.7">
             <animateMotion dur="2.1s" repeatCount="indefinite" begin={`${i * 0.65 + 0.3}s`}>
               <mpath href="#pktPath2" />
@@ -248,23 +155,23 @@ function VoIPHeroAnimation() {
         ))}
 
         {/* Status labels */}
-        <text x="95" y="310" textAnchor="middle" fontSize="10" fill="#3b82f6" fontFamily="monospace" letterSpacing="1.5" opacity="0.8">CALLER</text>
-        <text x="452" y="270" textAnchor="middle" fontSize="10" fill="#34353a" fontFamily="monospace" letterSpacing="1.5" opacity="0.8">VOICE CORE</text>
-        <text x="860" y="230" textAnchor="middle" fontSize="10" fill="#67e8f9" fontFamily="monospace" letterSpacing="1.5" opacity="0.8">AGENT</text>
+        <text x="95" y="290" textAnchor="middle" fontSize="10" fill="#3b82f6" fontFamily="monospace" letterSpacing="1.5" opacity="0.8">CALLER</text>
+        <text x="452" y="256" textAnchor="middle" fontSize="10" fill="#22d3ee" fontFamily="monospace" letterSpacing="1.5" opacity="0.8">VOICE CORE</text>
+        <text x="804" y="290" textAnchor="middle" fontSize="10" fill="#67e8f9" fontFamily="monospace" letterSpacing="1.5" opacity="0.8">AGENT</text>
 
         {/* Codec badges */}
-        <rect x="340" y="284" width="84" height="22" rx="11" fill="#0891b2" opacity="0.12" stroke="#0891b2" strokeWidth="0.8" />
-        <text x="382" y="299" textAnchor="middle" fontSize="10" fill="#374151" fontFamily="monospace" letterSpacing="0.5">G.711 · PCM</text>
-        <rect x="450" y="284" width="74" height="22" rx="11" fill="#06b6d4" opacity="0.12" stroke="#06b6d4" strokeWidth="0.8" />
-        <text x="487" y="299" textAnchor="middle" fontSize="10" fill="#374151" fontFamily="monospace" letterSpacing="0.5">G.729 . PCM</text>
+        <rect x="340" y="275" width="84" height="22" rx="11" fill="#0891b2" opacity="0.12" stroke="#0891b2" strokeWidth="0.8" />
+        <text x="382" y="289" textAnchor="middle" fontSize="10" fill="#0891b2" fontFamily="monospace" letterSpacing="0.5">G.711 · PCM</text>
+        <rect x="450" y="275" width="74" height="22" rx="11" fill="#06b6d4" opacity="0.12" stroke="#06b6d4" strokeWidth="0.8" />
+        <text x="487" y="289" textAnchor="middle" fontSize="10" fill="#06b6d4" fontFamily="monospace" letterSpacing="0.5">~18ms RTT</text>
 
         {/* Signal quality bar */}
         {[...Array(28)].map((_, i) => (
-          <rect key={i} x={280 + i * 13} y={322} width="8" height="8" rx="2"
+          <rect key={i} x={280 + i * 13} y={315} width="8" height="8" rx="2"
             fill={i < 22 ? "#0891b2" : "#e2e8f0"} opacity={i < 22 ? 0.7 : 0.3} />
         ))}
-        <text x="280" y="340" fontSize="9" fill="#94a3b8" fontFamily="monospace">SIGNAL QUALITY</text>
-        <text x="638" y="340" fontSize="9" fill="#0891b2" fontFamily="monospace">EXCELLENT</text>
+        <text x="280" y="334" fontSize="9" fill="#94a3b8" fontFamily="monospace">SIGNAL QUALITY</text>
+        <text x="638" y="334" fontSize="9" fill="#0891b2" fontFamily="monospace">EXCELLENT</text>
       </svg>
     </div>
   );
@@ -326,7 +233,7 @@ export default function VoIPLanding() {
     },
     {
       icon: (<svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>),
-      title: "Free Test Available",
+      title: "Free Trial Available",
       desc: "Test our full platform risk-free for 14 days.",
     },
     {
@@ -347,19 +254,20 @@ export default function VoIPLanding() {
         {/* HERO */}
         <div className="bg-white border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-6 py-10 text-center">
-            {/* <div className="max-w-7xl mx-auto px-6 pt-6 pb-10 text-center"> */}
-            <h1 className="text-3xl md:text-4xl mb-10">
+            <h1 className="text-3xl md:text-4xl">
               Communication that{" "}
               <span className="text-blue-600">scales with you</span>
             </h1>
-            <VoIPHeroAnimation />
+            {/* <div className="h-72 mt-8"> */}
+              <VoIPHeroAnimation />
+            {/* </div> */}
           </div>
         </div>
 
-<div
-  className="mx-auto px-6 py-16 grid lg:grid-cols-[1.1fr_1.2fr] gap-16 lg:gap-24"
-  style={{ maxWidth: "87rem" }}
->          {/* LEFT */}
+        {/* CONTENT */}
+        <div className="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12">
+
+          {/* LEFT */}
           <div>
             <p className="text-xs uppercase tracking-widest text-blue-600 mb-3">Why VoiceCore</p>
             <div className="flex flex-col gap-4">
@@ -368,13 +276,12 @@ export default function VoIPLanding() {
           </div>
 
           {/* RIGHT FORM */}
-          {/* <div className="lg:col-span-2 lg:sticky lg:top-8"> */}
-          <div className="lg:sticky lg:top-8">
+          <div className="lg:col-span-2 lg:sticky lg:top-8">
             <div className="rounded-3xl overflow-hidden shadow-xl border border-cyan-100">
               <div className="bg-[#0891b2] px-7 pt-7 pb-5">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-xs text-white/80 font-medium tracking-wide">FREE TEST AVAILABLE</span>
+                  <span className="text-xs text-white/80 font-medium tracking-wide">FREE 14-DAY TRIAL</span>
                 </div>
                 <h2 className="text-xl font-bold text-white leading-snug">Start calling in minutes</h2>
                 <p className="text-white/70 text-sm mt-1">No credit card. No contracts. Cancel anytime.</p>
@@ -413,35 +320,23 @@ export default function VoIPLanding() {
                         placeholder="alex@company.com"
                         className="w-full text-sm text-gray-800 placeholder-gray-300 border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 focus:border-[#0891b2] transition-all" />
                     </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label className="text-xs text-gray-500 font-medium block mb-1">Country Name *</label>
-                        <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-                          placeholder="Country Name"
-                          className="w-full text-sm text-gray-800 placeholder-gray-300 border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 focus:border-[#0891b2] transition-all" />
-                      </div>
-                      <div>
-                        <label className="text-xs text-gray-500 font-medium block mb-1">Company Name *</label>
-                        <input
-                          value={form.company}
-                          onChange={e => setForm({ ...form, company: e.target.value })}
-                          placeholder="Acme Corp"
-                          className="col-span-2 w-full text-sm text-gray-800 placeholder-gray-300 border border-gray-200 rounded-xl px-3 py-2.5
-      focus:outline-none focus:ring-2 focus:ring-cyan-400/40 focus:border-[#0891b2] transition-all"
-                        />
-
-                      </div>
+                    <div>
+                      <label className="text-xs text-gray-500 font-medium block mb-1">Company</label>
+                      <input value={form.company} onChange={e => setForm({ ...form, company: e.target.value })}
+                        placeholder="Acme Corp"
+                        className="w-full text-sm text-gray-800 placeholder-gray-300 border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 focus:border-[#0891b2] transition-all" />
                     </div>
                     <div>
                       <label className="text-xs text-gray-500 font-medium block mb-1">Team Size</label>
                       <div className="grid grid-cols-4 gap-2">
-                        {["1-10", "11-50", "51-200", "200+"].map(size => (
+                        {["1-10","11-50","51-200","200+"].map(size => (
                           <button key={size} type="button"
                             onClick={() => setForm({ ...form, plan: size })}
-                            className={`text-xs py-2 rounded-lg border font-medium transition-all ${form.plan === size
-                              ? "bg-[#0891b2] text-white border-[#0891b2]"
-                              : "bg-white text-gray-500 border-gray-200 hover:border-[#0891b2]"
-                              }`}>
+                            className={`text-xs py-2 rounded-lg border font-medium transition-all ${
+                              form.plan === size
+                                ? "bg-[#0891b2] text-white border-[#0891b2]"
+                                : "bg-white text-gray-500 border-gray-200 hover:border-[#0891b2]"
+                            }`}>
                             {size}
                           </button>
                         ))}
@@ -455,7 +350,7 @@ export default function VoIPLanding() {
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3V4a10 10 0 100 20v-2a8 8 0 01-8-8z" />
                         </svg>Processing...</>
                       ) : (
-                        <>Submit
+                        <>Start Free Trial
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
@@ -471,6 +366,21 @@ export default function VoIPLanding() {
                     </div>
                   </form>
                 )}
+              </div>
+            </div>
+
+            {/* Testimonial */}
+            <div className="mt-4 bg-gray-50 rounded-2xl p-4 border border-gray-100">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#0891b2]/10 flex items-center justify-center shrink-0">
+                  <span className="text-xs font-bold text-[#0891b2]">SA</span>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-600 leading-relaxed italic">
+                    "Switched from our old PBX in 2 days. Call quality is night and day."
+                  </p>
+                  <p className="text-xs text-gray-400 mt-1">Sarah A. · CTO, Nexio Logistics</p>
+                </div>
               </div>
             </div>
           </div>
