@@ -1,4 +1,19 @@
 import { useState } from "react";
+import {
+  FaLinkedinIn,
+  FaFacebookF,
+  FaTwitter,
+  FaWhatsapp,
+  FaMicrosoft
+} from "react-icons/fa";
+
+const socials = [
+  { icon: <FaLinkedinIn />, title: "LinkedIn", color: "#0A66C2" },
+  { icon: <FaFacebookF />, title: "Facebook", color: "#1877F2" },
+  { icon: <FaTwitter />, title: "Twitter", color: "#1DA1F2" },
+  { icon: <FaWhatsapp />, title: "WhatsApp", color: "#25D366" },
+  { icon: <FaMicrosoft />, title: "Microsoft Teams", color: "#6264A7" },
+];
 
 const bgIcons = [
   { symbol: "✦", style: "top-[12%] left-[8%] text-[32px]", delay: "0s", duration: "6s" },
@@ -14,9 +29,29 @@ const bgIcons = [
 ];
 
 const links = {
-  Product: ["Features", "Pricing", "Changelog", "Roadmap", "Integrations"],
-  Company: ["About Us", "Careers", "Blog", "Press", "Contact"],
-  Support: ["Help Center", "Documentation", "Community", "Status Page", "API Docs"],
+  Product: [
+    "VoIP Calling",
+    "Virtual Numbers",
+    "Call Routing",
+    "SIP Trunking",
+    "Call Analytics"
+  ],
+
+  Company: [
+    "Home",
+    "About Us",
+    "Services",
+    "Contact",
+    "FAQ"
+  ],
+
+  Support: [
+    "Setup Guide",
+    "VoIP Documentation",
+    "Network Status",
+    "Technical Support",
+    "API & Developer Docs"
+  ],
 };
 
 const features = [
@@ -25,14 +60,6 @@ const features = [
   { icon: "🌍", title: "Global CDN", sub: "30+ edge locations" },
   { icon: "🤖", title: "AI Powered", sub: "Smart automation" },
   { icon: "💎", title: "Premium Quality", sub: "Award-winning design" },
-];
-
-const socials = [
-  { label: "𝕏", title: "Twitter" },
-  { label: "in", title: "LinkedIn" },
-  { label: "gh", title: "GitHub" },
-  { label: "▶", title: "YouTube" },
-  { label: "ds", title: "Discord" },
 ];
 
 export default function AnimatedFooter() {
@@ -111,13 +138,14 @@ export default function AnimatedFooter() {
         }
         .link-underline:hover::after { width: 100%; }
 
-        .nl-input::placeholder { color: rgba(199,210,254,0.5); }
-        .nl-input:focus {
-          outline: none;
-          border-color: rgba(255,255,255,0.5) !important;
-          background: rgba(255,255,255,0.18) !important;
-          box-shadow: 0 0 0 3px rgba(103,232,249,0.25);
-        }
+/* DEFAULT INPUT */
+.nl-input {
+  color: #908f8f;                 /* text color */
+  border: 1px solid #0891b2;      /* border color */
+  outline: none;
+  box-shadow: none;
+}
+
       `}</style>
 
       <footer
@@ -207,39 +235,35 @@ background: "#0891b2",
 
             {/* About */}
             <div>
-              <h4 className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "rgba(199,210,254,0.7)" }}>
+              <h4 className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "rgb(255, 255, 255)" }}>
                 About
               </h4>
               <p className="text-sm font-light leading-7 max-w-[260px]" style={{ color: "rgba(199,210,254,0.85)" }}>
                 Building the future one pixel at a time. We craft beautiful, high-performance digital experiences that connect brands with the people they serve.
               </p>
               {/* Socials */}
-              <div className="flex gap-2.5 mt-5">
-                {socials.map((s, i) => (
-                  <button
-                    key={i}
-                    title={s.title}
-                    onMouseEnter={() => setHoveredSocial(i)}
-                    onMouseLeave={() => setHoveredSocial(null)}
-                    className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-medium cursor-pointer transition-all duration-300"
-                    style={{
-                      background: hoveredSocial === i ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.1)",
-                      border: `1px solid ${hoveredSocial === i ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.2)"}`,
-                      color: "#e0e7ff",
-                      transform: hoveredSocial === i ? "translateY(-3px)" : "translateY(0)",
-                      boxShadow: hoveredSocial === i ? "0 8px 20px rgba(0,0,0,0.2)" : "none",
-                    }}
-                  >
-                    {s.label}
-                  </button>
-                ))}
-              </div>
+<div className="flex gap-2.5 mt-5">
+  {socials.map((s, i) => (
+<button
+  key={i}
+  title={s.title}
+  className="w-9 h-9 rounded-xl flex items-center justify-center text-base cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+  style={{
+    background: s.color,
+    border: `1px solid ${s.color}`,
+    color: "#fff",
+  }}
+>
+  {s.icon}
+</button>
+  ))}
+</div>
             </div>
 
             {/* Link Columns */}
             {Object.entries(links).map(([heading, items]) => (
               <div key={heading}>
-                <h4 className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "rgba(199,210,254,0.7)" }}>
+                <h4 className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "rgb(255, 255, 255)" }}>
                   {heading}
                 </h4>
                 <ul className="space-y-2.5">
@@ -275,48 +299,51 @@ background: "#0891b2",
           </div>
 
           {/* Newsletter */}
-          <div
-            className="slide-up-3 flex items-center justify-between gap-6 mt-11 rounded-2xl px-8 py-6 flex-wrap"
-            style={{
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              backdropFilter: "blur(10px)",
-            }}
-          >
-            <div className="flex-1 min-w-[200px]">
-              <h3 className="text-base font-semibold text-white mb-1">Stay in the loop ✨</h3>
-              <p className="text-sm font-light" style={{ color: "rgba(199,210,254,0.75)" }}>
-                Get updates, articles &amp; exclusive deals.
-              </p>
-            </div>
-            <div className="flex gap-2.5 flex-1 min-w-[280px]">
-              <input
-                type="email"
-                className="nl-input flex-1 rounded-xl px-4 py-2.5 text-sm text-white transition-all duration-300"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  fontFamily: "inherit",
-                }}
-              />
-              <button
-                onClick={handleSubscribe}
-                className="rounded-xl px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5"
-                style={{
-                  background: subscribed ? "#a5f3fc" : "#fff",
-                  color: subscribed ? "#0369a1" : "#4338ca",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
-                  fontFamily: "inherit",
-                }}
-              >
-                {subscribed ? "Subscribed ✓" : "Subscribe →"}
-              </button>
-            </div>
-          </div>
+<div
+  className="slide-up-3 flex items-center justify-between gap-6 mt-11 rounded-2xl px-8 py-6 flex-wrap"
+  style={{
+    background: "#ffffff", // ✅ MAIN BOX WHITE
+    border: "1px solid rgba(0,0,0,0.08)",
+    backdropFilter: "blur(10px)",
+  }}
+>
+  <div className="flex-1 min-w-[200px]">
+    <h3 className="text-base font-semibold text-gray-900 mb-1">
+      Stay in the loop ✨
+    </h3>
+
+    <p
+      className="text-sm font-light"
+      style={{ color: "rgba(0,0,0,0.6)" }}
+    >
+      Get updates, articles & exclusive deals.
+    </p>
+  </div>
+
+  <div className="flex gap-2.5 flex-1 min-w-[280px]">
+<input
+  type="email"
+  className="nl-input flex-1 rounded-xl px-4 py-2.5 text-sm "
+  placeholder="your@email.com"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
+/>
+
+    <button
+      onClick={handleSubscribe}
+      className="rounded-xl px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5"
+      style={{
+        background: subscribed ? "#a5f3fc" : "#da7e06",
+        color: "#ffffff",
+        boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
+        fontFamily: "inherit",
+      }}
+    >
+      {subscribed ? "Subscribed ✓" : "Subscribe"}
+    </button>
+  </div>
+</div>
 
           {/* Features Strip */}
           <div
@@ -358,7 +385,7 @@ background: "#0891b2",
           style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
         >
           <span className="text-xs font-light" style={{ color: "rgba(165,180,252,0.7)" }}>
-            © 2026 YourBrand Inc. — Made with 💜 and a lot of coffee.
+© 2026 Codostack. Empowering modern communication solutions.
           </span>
           <div className="flex gap-2 flex-wrap">
             {["Privacy Policy", "Terms of Service", "Cookie Settings", "Accessibility"].map((b, i) => (
