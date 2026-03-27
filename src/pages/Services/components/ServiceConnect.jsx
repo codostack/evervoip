@@ -73,7 +73,7 @@ export default function VoIPPage() {
       className="min-h-screen text-white pt-[70px]"
       style={{
         background:
-          "linear-gradient(135deg, #004c4c 0%, #004c4c 40%, #004c4c 100%)",
+          "linear-gradient(135deg, #0891b2 0%, #0891b2 40%, #0891b2 100%)",
         fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
       }}
     >

@@ -6,7 +6,7 @@ import {
   FaWhatsapp,
   FaMicrosoft
 } from "react-icons/fa";
-
+import logo from "../assets/footerLogo.png";
 const socials = [
   { icon: <FaLinkedinIn />, title: "LinkedIn", color: "#0A66C2" },
   { icon: <FaFacebookF />, title: "Facebook", color: "#1877F2" },
@@ -210,24 +210,20 @@ background: "#0891b2",
         <div className="relative z-10 max-w-7xl mx-auto px-12 pt-12">
 
           {/* Logo */}
-          <div className="slide-up-1 flex items-center gap-4 mb-9">
-            <div
-              className="logo-bounce w-14 h-14 rounded-2xl flex items-center justify-center text-2xl cursor-pointer transition-all duration-300 hover:scale-110"
-              style={{
-                background: "rgba(255,255,255,0.15)",
-                border: "1.5px solid rgba(255,255,255,0.3)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              🔷
-            </div>
-            <div>
-              <div className="logo-font font-bold text-2xl text-white tracking-tight">YourBrand</div>
-              <div className="text-xs font-normal tracking-widest uppercase mt-0.5" style={{ color: "rgba(199,210,254,0.8)" }}>
-                Place your logo here
-              </div>
-            </div>
-          </div>
+<div className="slide-up-1 flex items-center gap-4 mb-9">
+  <a href="/">
+    <div
+      className="p-2 rounded-lg shadow-sm"
+      style={{ background: "#ffffff" }}
+    >
+      <img
+        src={logo}
+        alt="Company Logo"
+        className="h-12 w-auto object-contain cursor-pointer hover:opacity-90 transition"
+      />
+    </div>
+  </a>
+</div>
 
           {/* Columns */}
           <div className="slide-up-2 grid gap-10" style={{ gridTemplateColumns: "2fr 1fr 1fr 1fr" }}>

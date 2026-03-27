@@ -5,7 +5,7 @@ export default function VOIPAboutHeader() {
   const [callSec, setCallSec] = useState(0);
   const [activeLine, setActiveLine] = useState(0);
   const [packetIdx, setPacketIdx] = useState(0);
-console.log(activeLine);
+  console.log(activeLine);
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -26,21 +26,21 @@ console.log(activeLine);
   const mins = String(Math.floor(callSec / 60)).padStart(2, "0");
   const secs = String(callSec % 60).padStart(2, "0");
 
-  const phoneKeys = ["1","2","3","4","5","6","7","8","9","*","0","#"];
+  const phoneKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"];
 
   const keyColors = [
-    "#6366f1","#3b82f6","#06b6d4","#10b981",
-    "#f59e0b","#ef4444","#8b5cf6","#ec4899",
-    "#14b8a6","#f97316","#6366f1","#3b82f6"
+    "#6366f1", "#3b82f6", "#06b6d4", "#10b981",
+    "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899",
+    "#14b8a6", "#f97316", "#6366f1", "#3b82f6"
   ];
 
   const packets = [
-    { label:"SIP INVITE", color:"#6366f1", bg:"#eef2ff" },
-    { label:"100 Trying", color:"#06b6d4", bg:"#ecfeff" },
-    { label:"180 Ringing", color:"#f59e0b", bg:"#fffbeb" },
-    { label:"200 OK", color:"#10b981", bg:"#ecfdf5" },
-    { label:"ACK", color:"#8b5cf6", bg:"#f5f3ff" },
-    { label:"RTP Stream", color:"#ef4444", bg:"#fff1f2" },
+    { label: "SIP INVITE", color: "#6366f1", bg: "#eef2ff" },
+    { label: "100 Trying", color: "#06b6d4", bg: "#ecfeff" },
+    { label: "180 Ringing", color: "#f59e0b", bg: "#fffbeb" },
+    { label: "200 OK", color: "#10b981", bg: "#ecfdf5" },
+    { label: "ACK", color: "#8b5cf6", bg: "#f5f3ff" },
+    { label: "RTP Stream", color: "#ef4444", bg: "#fff1f2" },
   ];
 
   const waveH = (i) =>
@@ -49,8 +49,8 @@ console.log(activeLine);
     Math.abs(Math.cos((i + tick * 0.3) * 0.85)) * 10;
 
   const waveColors = [
-    "#6366f1","#8b5cf6","#3b82f6","#06b6d4",
-    "#10b981","#f59e0b","#ef4444","#ec4899"
+    "#6366f1", "#8b5cf6", "#3b82f6", "#06b6d4",
+    "#10b981", "#f59e0b", "#ef4444", "#ec4899"
   ];
 
   return (
@@ -100,12 +100,12 @@ console.log(activeLine);
           {/* ================= LEFT SIDE ================= */}
           <div className="flex flex-col gap-7">
 
-<h1 className="font-['Syne',sans-serif] text-4xl md:text-[2.6rem] leading-[1.2] text-gray-600">
-  Power of the{" "}
-  <span style={{ color: "#004c4c" }}>
-    Telecommunication
-  </span>
-</h1>
+            <h1 className="font-['Syne',sans-serif] text-4xl md:text-[2.6rem] leading-[1.2] text-gray-600">
+              Power of the{" "}
+              <span className="text-blue-500">
+                Telecommunication
+              </span>
+            </h1>
             <p className="text-gray-600 text-base leading-relaxed text-justify mt-4">
               Intelligent, cloud-powered telecom built for modern communication.
               Experience ultra-clear voice with AI optimization and real-time routing.
@@ -113,43 +113,29 @@ console.log(activeLine);
               Experience ultra-clear voice with AI optimization and real-time routing.
             </p>
 
-<div
-  style={{
-    animation: "fadeUp .6s ease forwards",
-    animationDelay: ".75s",
-    opacity: 0,
-  }}
-  className="flex flex-wrap gap-3 mt-6"
->
-  <button
-    className="text-white font-semibold px-7 py-3.5 shadow-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 text-sm"
-    style={{
-      backgroundColor: "#004c4c",
-    }}
-    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#003636")}
-    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#004c4c")}
-  >
-    Get Started Free
-  </button>
+            <div
+              style={{
+                animation: "fadeUp .6s ease forwards",
+                animationDelay: ".75s",
+                opacity: 0,
+              }}
+              className="flex flex-wrap gap-3 mt-6"
+            >
 
-  <button
-    className="border font-semibold px-7 py-3.5 transition-all duration-300 text-sm"
-    style={{
-      borderColor: "#004c4c33",
-      color: "#004c4c",
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.backgroundColor = "#004c4c10";
-      e.currentTarget.style.borderColor = "#004c4c";
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.backgroundColor = "transparent";
-      e.currentTarget.style.borderColor = "#004c4c33";
-    }}
-  >
-    More Details
-  </button>
-</div>
+              <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-white text-sm font-semibold 
+  bg-blue-500 hover:bg-blue-600 
+  transition-all duration-200 border-0 cursor-pointer">
+
+                Get Started
+              </button>
+              <button className="inline-flex items-center gap-2 px-5 py-3 squared-xl text-sm font-medium 
+  text-gray-700 border border-gray-300 bg-gray-100 
+  hover:bg-gray-200 hover:border-gray-400 
+  transition-all duration-200 cursor-pointer">
+
+                More Details
+              </button>
+            </div>
           </div>
 
           {/* ================= RIGHT SIDE ================= */}

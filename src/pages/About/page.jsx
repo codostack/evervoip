@@ -12,9 +12,6 @@ const AboutPage = () => {
 <Openaccount/>
 <Content3/>
 <RegistrationPage/>
-
-
-
     </div>
   )
 }

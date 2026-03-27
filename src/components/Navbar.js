@@ -8,6 +8,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import { Languages } from "lucide-react";
+import logo from "../assets/logo.jpeg"; // ✅ import logo
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -28,8 +29,14 @@ const Navbar = () => {
       <div className="w-full px-6 py-4 relative flex items-center">
 
         {/* LEFT: Logo + Social */}
-        <div className="flex-1 relative group">
-          <h1 className="text-xl font-bold cursor-pointer">MyApp</h1>
+        <div className="flex-1 relative group flex items-center">
+
+          {/* ✅ Logo Image */}
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-12 w-auto cursor-pointer object-contain"
+          />
 
           {/* Social Icons */}
           <div className="absolute left-0 top-12 flex flex-col gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
@@ -78,18 +85,13 @@ const Navbar = () => {
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-className="
-  w-full
-  pl-12 pr-4 py-2
-  rounded-lg
-  border border-gray-300
-  bg-white text-gray-700
-  appearance-none
-  outline-none
-  focus:outline-none
-  focus:ring-0
-  focus:border-gray-400
-"
+              className="
+                w-full pl-12 pr-4 py-2
+                rounded-lg border border-gray-300
+                bg-white text-gray-700
+                appearance-none outline-none
+                focus:ring-0 focus:border-gray-400
+              "
             >
               {languages.map((lang) => (
                 <option key={lang} value={lang}>
@@ -104,7 +106,6 @@ className="
             />
           </div>
 
-          {/* Demo Button */}
           <button className="px-5 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition flex items-center gap-2">
             Get a Demo
           </button>

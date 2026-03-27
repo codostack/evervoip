@@ -34,7 +34,7 @@ export default function Features() {
           to   { opacity: 1; transform: translateY(0); }
         }
         .animated-bg {
-          background: linear-gradient(135deg, #004c4c 0%, #004c4c 50%, #004c4c 100%);
+          background: linear-gradient(135deg, #0891b2 0%, #0891b2 50%, #0891b2 100%);
           background-size: 200% 200%;
           animation: gradShift 6s ease infinite;
         }
