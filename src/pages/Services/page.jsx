@@ -1,7 +1,8 @@
-import RegistrationPage from "../../components/Contactform";
-import Content4 from "./components/Content4";
-import VoIPPage from "./components/ServiceConnect";
+import Content4 from "./components/Content1";
 import VoipHeader from "./components/ServiceHeader";
+import VoipCommonPage from "../../components/Animationpage"
+import VoipFeatures from "../../components/FeatureAnimation";
+import ServiceContent2 from "./components/Content2";
 
 export default function Services() {
 
@@ -9,9 +10,13 @@ export default function Services() {
 
     <div>
       <VoipHeader/>
-      <VoIPPage/>
+      <VoipCommonPage/>
+      {/* <VoIPPage/> */}
 <Content4/>
-<RegistrationPage/>
+<VoipFeatures/>
+<ServiceContent2/>
+
+{/* <RegistrationPage/> */}
     </div>
 
   );

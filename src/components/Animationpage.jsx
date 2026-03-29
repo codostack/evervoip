@@ -48,15 +48,15 @@ export default function VoipFeaturesWithForm() {
 
   return (
     <section className="py-24 bg-gradient-to-b from-[#e6f6f9] via-white to-[#e6f6f9]">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-start">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-start">
 
         {/* LEFT SIDE — FEATURES */}
-        <div>
+        <div style={{marginTop:"38px"}}>
           <h2 className="text-4xl font-bold text-gray-800 mb-6">
             Powerful <span className="text-[#0891b2]">VoIP Features</span>
           </h2>
 
-          <p className="text-gray-500 mb-10">
+          <p className="text-gray-500 mb-7">
             Upgrade your communication with modern cloud VoIP solutions
             designed for performance, scalability, and reliability.
           </p>
@@ -82,7 +82,7 @@ export default function VoipFeaturesWithForm() {
         </div>
 
         {/* RIGHT SIDE — FORM */}
-        <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-8 sticky top-24">
+        <div className="bg-white rounded-2xl border border-slate-100 p-8 sticky top-24">
 
           <h3 className="text-2xl font-bold text-gray-800 mb-2">
             Request a Free Demo
@@ -120,7 +120,7 @@ export default function VoipFeaturesWithForm() {
 
             <textarea
               name="message"
-              rows="4"
+              rows="3"
               placeholder="Your Requirement"
               onChange={handleChange}
               className="border rounded-lg px-4 py-3 focus:outline-none focus:border-[#0891b2]"
