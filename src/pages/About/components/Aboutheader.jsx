@@ -28,12 +28,6 @@ export default function VOIPAboutHeader() {
 
   const phoneKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#"];
 
-  const keyColors = [
-    "#ffffff", "#bcbaba", "#bcbaba", "#bcbaba",
-    "#bcbaba", "#bcbaba", "#bcbaba", "#bcbaba",
-    "#bcbaba", "#bcbaba", "#bcbaba", "#bcbaba"
-  ];
-
   const packets = [
     { label: "SIP INVITE", color: "#6366f1", bg: "#eef2ff" },
     { label: "100 Trying", color: "#06b6d4", bg: "#ecfeff" },
