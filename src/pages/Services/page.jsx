@@ -9,14 +9,14 @@ export default function Services() {
   return (
 
     <div>
-      <VoipHeader/>
-      <VoipCommonPage/>
+      <VoipHeader />
+      <VoipCommonPage />
       {/* <VoIPPage/> */}
-<Content4/>
-<VoipFeatures/>
-<ServiceContent2/>
+      <Content4 />
+      <VoipFeatures />
+      <ServiceContent2 />
 
-{/* <RegistrationPage/> */}
+      {/* <RegistrationPage/> */}
     </div>
 
   );

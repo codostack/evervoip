@@ -4,8 +4,8 @@ const tabs = [
     {
         letter: "V",
         word: "VOICE",
-        color: "#1a3a5c",
-        accent: "#2196F3",
+    color: "#0F8FA6",
+    accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <path d="M32 8 L44 28 L20 28 Z" />
@@ -20,8 +20,8 @@ const tabs = [
     {
         letter: "O",
         word: "OVER",
-        color: "#e67e00",
-        accent: "#FF9800",
+    color: "#0A5E6E",
+    accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <path d="M10 32 Q20 18 32 26 Q44 34 54 20" />
@@ -35,8 +35,8 @@ const tabs = [
     {
         letter: "I",
         word: "INTERNET",
-        color: "#1565c0",
-        accent: "#42A5F5",
+    color: "#13A3B8",
+    accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <circle cx="32" cy="28" r="14" />
@@ -53,8 +53,8 @@ const tabs = [
     {
         letter: "P",
         word: "PROTOCOL",
-        color: "#1b5e20",
-        accent: "#4CAF50",
+    color: "#084C5A",
+    accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <rect x="14" y="10" width="36" height="44" rx="3" />
@@ -73,8 +73,7 @@ export default function VoipLanding() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-        <div className="min-h-screen max-w-8xl w-full bg-white font-sans flex flex-col">
-
+<div className="min-h-screen w-full font-sans flex flex-col">
             {/* Hero Section */}
             <main className="flex-1 flex flex-col lg:flex-row items-center gap-12 px-20 py-16 mx-auto w-full">
 
@@ -91,7 +90,7 @@ export default function VoipLanding() {
 
                     {/* CTAs */}
                     <div className="flex flex-wrap gap-4 mt-2">
-                        <button className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-7 py-3.5 transition-all shadow-lg shadow-blue-200 text-sm">
+                        <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold px-7 py-3.5 transition-all text-sm">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
@@ -126,7 +125,6 @@ export default function VoipLanding() {
                                     style={{
                                         backgroundColor: activeTab === i ? "white" : "#f8f9fa",
                                         borderColor: tab.color,
-                                        boxShadow: activeTab === i ? `0 6px 25px ${tab.color}33` : "none",
                                         transform: activeTab === i
                                             ? "translateY(-15px) rotate(45deg)"
                                             : "translateY(-20px) rotate(45deg)",

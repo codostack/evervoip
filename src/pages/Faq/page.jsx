@@ -1,12 +1,12 @@
+import VoipFAQ from "../../components/Faq"
 import Faqheader from "./components/Faqheader"
-import VoipFAQ from "./components/FaqQueAns"
 
 
 const FaqPage = () => {
   return (
     <div>
 <Faqheader/>
-<VoipFAQ/>
+      <VoipFAQ/>
     </div>
   )
 }

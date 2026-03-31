@@ -1,13 +1,13 @@
 export default function ContactForm() {
-  const BRAND = "#004c4c";
-  const BRAND_LIGHT = "#e6f2f2";
+  const BRAND = "#0891b2";        // NEW MAIN COLOR
+  const BRAND_LIGHT = "#cffafe";  // light cyan focus glow
 
   return (
     <div
       className="min-h-screen flex items-center justify-center px-6 py-16"
       style={{
         background:
-          "linear-gradient(180deg, #f2f8f8 0%, #ffffff 60%, #f6fbfb 100%)",
+          "linear-gradient(180deg, #f0f9ff 0%, #ffffff 60%, #ecfeff 100%)",
       }}
     >
       <div className="max-w-6xl w-full grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
@@ -17,7 +17,7 @@ export default function ContactForm() {
           className="relative p-12 text-white flex flex-col justify-between overflow-hidden"
           style={{
             background:
-              "linear-gradient(135deg, #003333 0%, #004c4c 50%, #006666 80%, #66b3b3 100%)",
+              "linear-gradient(135deg, #075985 0%, #0891b2 50%, #06b6d4 80%, #67e8f9 100%)",
           }}
         >
           {/* Glow Effects */}
@@ -43,7 +43,6 @@ export default function ContactForm() {
 
             {/* FEATURES */}
             <div className="mt-10 space-y-4">
-
               <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-xl px-4 py-3">
                 <span className="text-xl">⚡</span>
                 <p className="text-sm">99.9% Network Uptime</p>
@@ -58,7 +57,6 @@ export default function ContactForm() {
                 <span className="text-xl">🌍</span>
                 <p className="text-sm">Global Coverage & Support</p>
               </div>
-
             </div>
           </div>
 
@@ -76,7 +74,7 @@ export default function ContactForm() {
                 className="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4"
                 style={{
                   background: "rgba(255,255,255,0.2)",
-                  color: "#e6f2f2",
+                  color: "#ecfeff",
                 }}
               >
                 🎉 Limited Time Offer
@@ -91,7 +89,6 @@ export default function ContactForm() {
                 analytics, and 24/7 support.
               </p>
 
-              {/* Stats */}
               <div className="flex gap-4 mb-5">
                 <div className="text-center">
                   <p className="text-2xl font-black text-white">5K+</p>
@@ -128,25 +125,21 @@ export default function ContactForm() {
 
         {/* RIGHT SIDE FORM */}
         <div className="bg-white p-12">
-
           <h3 className="text-3xl font-bold text-gray-900 mb-8">
             Send a Message
           </h3>
 
           <form className="space-y-6">
-
             {["Name", "Email", "Subject", "Phone Number"].map((label, i) => (
               <div key={i}>
                 <label className="text-sm font-semibold text-gray-600">
                   {label}
                 </label>
+
                 <input
                   type="text"
                   placeholder={label}
                   className="w-full mt-2 px-4 py-3 rounded-xl border border-gray-200 outline-none transition"
-                  style={{
-                    focusBorderColor: BRAND,
-                  }}
                   onFocus={(e) => {
                     e.target.style.borderColor = BRAND;
                     e.target.style.boxShadow = `0 0 0 2px ${BRAND_LIGHT}`;
@@ -159,11 +152,11 @@ export default function ContactForm() {
               </div>
             ))}
 
-            {/* Message */}
             <div>
               <label className="text-sm font-semibold text-gray-600">
                 Message
               </label>
+
               <textarea
                 rows="4"
                 placeholder="Write your message..."
@@ -179,18 +172,16 @@ export default function ContactForm() {
               />
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               className="w-full py-3 rounded-xl font-bold text-white transition-all shadow-lg hover:scale-[1.02]"
               style={{
                 background:
-                  "linear-gradient(135deg, #003333 0%, #004c4c 60%, #006666 100%)",
+                  "linear-gradient(135deg, #075985 0%, #0891b2 60%, #06b6d4 100%)",
               }}
             >
               Send Message 🚀
             </button>
-
           </form>
         </div>
       </div>
