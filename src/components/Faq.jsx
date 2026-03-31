@@ -19,7 +19,7 @@ const styles = `
     background: #fff;
     padding: 88px 24px;
   }
-  .faq-container { max-width: 1360px; margin: 0 auto; }
+  .faq-container { max-width: 1350px; margin: 0 auto; }
 
   /* ── HEADER ── */
   .faq-header { text-align: center; margin-bottom: 48px; }

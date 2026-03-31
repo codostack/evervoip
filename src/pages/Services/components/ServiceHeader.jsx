@@ -4,8 +4,8 @@ const tabs = [
     {
         letter: "V",
         word: "VOICE",
-    color: "#0F8FA6",
-    accent: "#2EC4D6",
+        color: "#0F8FA6",
+        accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <path d="M32 8 L44 28 L20 28 Z" />
@@ -20,8 +20,8 @@ const tabs = [
     {
         letter: "O",
         word: "OVER",
-    color: "#0A5E6E",
-    accent: "#2EC4D6",
+        color: "#0A5E6E",
+        accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <path d="M10 32 Q20 18 32 26 Q44 34 54 20" />
@@ -35,8 +35,8 @@ const tabs = [
     {
         letter: "I",
         word: "INTERNET",
-    color: "#13A3B8",
-    accent: "#2EC4D6",
+        color: "#13A3B8",
+        accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <circle cx="32" cy="28" r="14" />
@@ -53,8 +53,8 @@ const tabs = [
     {
         letter: "P",
         word: "PROTOCOL",
-    color: "#084C5A",
-    accent: "#2EC4D6",
+        color: "#084C5A",
+        accent: "#2EC4D6",
         icon: (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="2.5" className="w-10 h-10">
                 <rect x="14" y="10" width="36" height="44" rx="3" />
@@ -73,37 +73,47 @@ export default function VoipLanding() {
     const [activeTab, setActiveTab] = useState(0);
 
     return (
-<div className="min-h-screen w-full font-sans flex flex-col">
+        <div className="h-[85vh] w-full font-sans flex flex-col">
             {/* Hero Section */}
             <main className="flex-1 flex flex-col lg:flex-row items-center gap-12 px-20 py-16 mx-auto w-full">
 
                 {/* LEFT CONTENT */}
                 <div className="flex-1 flex flex-col gap-7 lg:pr-8">
 
-                    <h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-[2.6rem] leading-[1.2] tracking-relaxing text-gray-600 whitespace-nowrap">
-                        Talk Smarter, <span className="text-blue-400">Connect Faster</span>
-                    </h1>
-                    {/* Description */}
-                    <p className="text-gray-600 text-base leading-relaxed text-justify mt-4">
-                        Intelligent, cloud-powered telecom built for modern communication. Experience ultra-clear voice with AI optimization and real-time routing. Intelligent, cloud-powered telecom built for modern communication. Experience ultra-clear voice with AI optimization and real-time routing.
-                    </p>
+<h1 className="font-['Syne',sans-serif] text-4xl md:text-4xl leading-[1.08] text-gray-700">
+    Smart Communication 
+
+  <span className="text-blue-500"> Solutions</span>
+</h1>
+
+<p className="font-sans text-gray-600 text-sm sm:text-base md:text-[17px]
+leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]">
+  Empower your business with secure, scalable, and intelligent
+  communication services. Our platform combines cloud technology,
+  automation, and real-time performance optimization to deliver
+  faster connections, clearer conversations, and better customer experiences.
+</p>
 
                     {/* CTAs */}
-                    <div className="flex flex-wrap gap-4 mt-2">
-                        <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold px-7 py-3.5 transition-all text-sm">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                            Get Started Free
-                        </button>
-                        <button className="flex items-center gap-2 border-2 border-gray-200 hover:border-blue-300 text-gray-700 font-bold px-7 py-3.5 transition-all text-sm group">
-                            <span className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                                <svg className="w-3.5 h-3.5 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                                </svg>
-                            </span>
+                    <div className="anim-fade-up-4 flex items-center gap-3 flex-wrap pt-1">
+
+                        <div className="anim-fade-up-4 flex items-center gap-3 flex-wrap pt-1">
+
+                            <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-white text-sm font-semibold 
+  bg-blue-500 hover:bg-blue-600 
+  transition-all duration-200 border-0 cursor-pointer">
+
+                                Get Started Free
+                            </button>
+                        </div>
+                        <button className="inline-flex items-center gap-2 px-5 py-3 squared-xl text-sm font-medium 
+  text-gray-700 border border-gray-300 bg-gray-100 
+  hover:bg-gray-200 hover:border-gray-400 
+  transition-all duration-200 cursor-pointer">
+
                             Watch Demo
                         </button>
+
                     </div>
                 </div>
 
@@ -155,10 +165,10 @@ export default function VoipLanding() {
                     </div>
 
                     {/* Active Tab Detail Card */}
-<div
-  className="w-full max-w-3xl rounded-2xl p-8 text-white transition-all duration-300"
-  style={{ backgroundColor: tabs[activeTab].color }}
->
+                    <div
+                        className="w-full max-w-3xl rounded-2xl p-8 text-white transition-all duration-300"
+                        style={{ backgroundColor: tabs[activeTab].color }}
+                    >
                         <div className="flex items-center gap-4 mb-4">
                             {tabs[activeTab].icon}
                             <div>

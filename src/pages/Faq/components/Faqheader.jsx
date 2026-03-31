@@ -73,31 +73,47 @@ export default function ContactFAQSection() {
 
   return (
     <section className="w-full bg-white py-24 px-6 md:px-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-
+<div
+  className="grid md:grid-cols-2 items-center"
+  style={{
+    maxWidth: "1360px",
+    margin: "0 auto",
+    gap: "10rem",
+  }}
+>
         {/* LEFT TEXT CONTENT — exactly as original */}
-        <div className="z-10">
-            <h1 className="font-['Syne',sans-serif] text-4xl md:text-[2.6rem] leading-[1.2] text-gray-600">
-            Let's Start a{" "}
-            <span className="text-blue-500">Conversation</span>
-          </h1>
-          <p className="text-gray-600 text-base leading-relaxed text-justify mt-4 w-[92%]">
-            We're here to help you with your business, support, or partnership
-            inquiries. Reach out to our team anytime and we'll get back to you
-            quickly. Our team is ready to connect and help you grow your business.
-          </p>
-          <div className="flex gap-4 mt-6">
-            <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-white text-sm font-semibold
-              bg-blue-500 hover:bg-blue-600 transition-all duration-200 border-0 cursor-pointer">
-              Get Connected
-            </button>
-            <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-sm font-medium
-              text-gray-700 border border-gray-300 bg-gray-100
-              hover:bg-gray-200 hover:border-gray-400 transition-all duration-200 cursor-pointer">
-              Get Started
-            </button>
-          </div>
-        </div>
+{/* LEFT TEXT CONTENT */}
+<div className="flex flex-col gap-7 ml-[10px]">
+
+  <h1 className="font-['Syne',sans-serif] text-4xl md:text-4xl leading-[1.08] text-gray-700">
+    Frequently Asked{" "}
+    <span className="text-blue-500">Questions</span>
+  </h1>
+
+  <p className="font-sans text-gray-600 text-sm sm:text-base md:text-[17px]
+    leading-6 sm:leading-7 text-justify max-w-full lg:max-w-[620px]">
+
+    Find quick answers to the most common questions about our platform,
+    services, and integrations. We’ve gathered helpful information to guide
+    you through setup, features, and support so you can get started with
+    confidence and make the most of your experience.
+  </p>
+
+  <div className="flex gap-4 mt-6">
+    <button className="inline-flex items-center gap-2 px-6 py-3
+      text-white text-sm font-semibold bg-blue-500 hover:bg-blue-600 transition">
+      View All FAQs
+    </button>
+
+    <button className="inline-flex items-center gap-2 px-6 py-3
+      text-sm font-medium text-gray-700 border border-gray-300 bg-gray-100
+      hover:bg-gray-200 transition">
+      Contact Support
+    </button>
+  </div>
+
+</div>
+
 
         {/* RIGHT — Gear Cluster: distinct colors + spin animations */}
         <div className="relative h-[420px] flex items-center justify-center">

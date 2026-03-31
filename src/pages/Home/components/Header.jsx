@@ -404,19 +404,23 @@ export default function VoipHeader() {
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 min-h-[81vh] px-8 md:px-16 py-20">
 
         {/* ══ LEFT ══ */}
-        <div className="space-y-8 z-10 ml-0 lg:ml-[12px] mt-[-60px]">
+        <div className="space-y-8 z-10 ml-[25px] lg: mt-[-60px]">
 
           <div className="anim-fade-up-2">
-            <h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-[2.6rem] leading-[1.08] tracking-relaxing text-gray-600">
-              The Empower of
-              <span className="text-blue-500"> Telecommunication</span>
-            </h1>
-          </div>
+<h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-4xl leading-[1.08] tracking-relaxing text-gray-700">
+  Empowering Modern
+  <span className="text-blue-500"> Telecommunication</span>
+</h1>
+</div>
 
-          {/* sub content */}
-<p className="text-gray-600 text-base leading-relaxed max-w-[43rem] text-justify text-sm">
-              Intelligent, cloud-powered telecom built for modern communication. Experience ultra-clear voice with AI optimization and real-time routing. Intelligent, cloud-powered telecom built for modern communication. Experience ultra-clear voice with AI optimization and real-time routing.
-          </p>
+{/* sub content */}
+<p className="font-sans text-gray-600 text-sm sm:text-base md:text-[17px]
+leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]">
+  Transform the way your business connects with intelligent, cloud-powered
+  communication solutions. Our VoIP platform delivers crystal-clear voice,
+  smart call routing, and reliable global connectivity designed for speed,
+  scalability, and seamless collaboration in today’s digital world.
+</p>
           <div className="anim-fade-up-4 flex items-center gap-3 flex-wrap pt-1">
 
             <div className="anim-fade-up-4 flex items-center gap-3 flex-wrap pt-1">
@@ -441,7 +445,7 @@ export default function VoipHeader() {
         </div>
 
         {/* ══ RIGHT CARD ══ */}
-        <div className="anim-fade-right flex flex-col gap-3 w-[600px] -mt-8">
+        <div className="anim-fade-right flex flex-col gap-3 mr-[25px] w-[600px] -mt-8">
 
           {/* main glass card */}
           <div className="card-shine relative rounded-[20px] bg-white/80 border border-gray-400 backdrop-blur-2xl p-6 overflow-hidden flex-1">

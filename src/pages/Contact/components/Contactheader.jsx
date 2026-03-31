@@ -273,7 +273,7 @@ function Hub() {
           fontFamily: "'Sora',sans-serif",
         }}
       >
-       Contact
+        Contact
       </span>
     </div>
   );
@@ -285,7 +285,6 @@ function IntegrationHub() {
     <div style={{ position: "relative", width: "100%", paddingBottom: "100%" }}>
       <div>
 
-        {/* Background SVG: radial grid + connector lines + dots */}
         <svg
           viewBox={`0 0 ${SIZE} ${SIZE}`}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
@@ -363,7 +362,7 @@ export default function ContactSection() {
           <div key={i} style={{
             position: "absolute", width: o.w, height: o.h,
             top: o.top, left: o.left, right: o.right, bottom: o.bottom,
-            borderRadius: "50%", background: o.c,
+            borderRadius: "50%",
             filter: "blur(65px)", opacity: .35,
             animation: `bgOrb ${o.dur} ease-in-out infinite`,
             animationDelay: o.d, pointerEvents: "none",
@@ -385,47 +384,38 @@ export default function ContactSection() {
         }}>
 
           {/* ══ LEFT ══ */}
-          <div style={{
-            opacity: visible ? 1 : 0,
-            animation: visible ? "fadeUp 0.75s ease both" : "none",
-          }}>
-            {/* Badge */}
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "#eff6ff", border: "1px solid #bfdbfe",
-              borderRadius: 999, padding: "5px 14px", marginBottom: 22,
-            }}>
-              <div style={{ position: "relative", width: 8, height: 8, flexShrink: 0 }}>
-                <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "#2563eb", animation: "pulseRing 2s ease-out infinite" }} />
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#2563eb" }} />
-              </div>
-              <span style={{ fontSize: 12, fontWeight: 700, color: "#1d4ed8", letterSpacing: "0.03em" }}>
-                Available 24 / 7
-              </span>
-            </div>
-            <h1 className="font-['Syne',sans-serif] text-4xl md:text-[2.6rem] leading-[1.2] text-gray-600">
+
+          <div className="flex flex-col gap-7">
+            <h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-4xl leading-[1.08] tracking-relaxing text-gray-600">
               Let's Start a{" "}
               <span className="text-blue-500">
                 Conversation
               </span>
             </h1>
-            <p className="text-gray-600 text-base leading-relaxed text-justify mt-4 w-[92%]">
-
-              We connect with the tools you already love — from social media
-              to e-commerce. Every integration works seamlessly through one hub.
+            <p className="font-sans text-gray-600 text-sm sm:text-base md:text-[17px] leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]">
+              Whether you're managing customer support, sales inquiries, or internal
+              collaboration, our platform helps you stay connected effortlessly.
+              Integrate popular communication channels like social media, messaging apps,
+              and business tools into one intelligent workspace designed for speed,
+              clarity, and productivity.
             </p>
 
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div
+              className="flex flex-wrap gap-3 mt-4"
+            >
+
               <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-white text-sm font-semibold 
   bg-blue-500 hover:bg-blue-600 
   transition-all duration-200 border-0 cursor-pointer">
-                Get Connected
+
+                Get Started
               </button>
               <button className="inline-flex items-center gap-2 px-5 py-3 squared-xl text-sm font-medium 
   text-gray-700 border border-gray-300 bg-gray-100 
   hover:bg-gray-200 hover:border-gray-400 
   transition-all duration-200 cursor-pointer">
-                Learn More
+
+                More Details
               </button>
             </div>
           </div>

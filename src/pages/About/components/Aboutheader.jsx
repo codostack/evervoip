@@ -94,27 +94,22 @@ export default function VOIPAboutHeader() {
           {/* ================= LEFT SIDE ================= */}
 <div className="flex flex-col gap-7 ml-[25px]">
 
-            <h1 className="font-['Syne',sans-serif] text-4xl md:text-[2.6rem] leading-[1.2] text-gray-600">
-              Power of the{" "}
-              <span className="text-blue-500">
-                Telecommunication
-              </span>
-            </h1>
-<p className="text-gray-600 text-base leading-relaxed text-justify mt-4 w-[92%]">
-  Intelligent, cloud-powered telecom built for modern communication.
-  Experience ultra-clear voice with AI optimization and real-time routing.
-  Intelligent, cloud-powered telecom built for modern communication.
-  Experience ultra-clear voice with AI optimization and real-time routing.
-</p>
+<h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-4xl leading-[1.08] tracking-relaxing text-gray-700">
+  Power of the{" "}
+  <span className="text-blue-500">
+    Telecommunication
+  </span>
+</h1>
 
-            <div
-              style={{
-                animation: "fadeUp .6s ease forwards",
-                animationDelay: ".75s",
-                opacity: 0,
-              }}
-              className="flex flex-wrap gap-3 mt-6"
-            >
+<p className="font-sans text-gray-600 text-sm sm:text-base md:text-[17px]
+leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]">
+  Our mission is to simplify business communication through powerful VoIP
+  technology built for speed, reliability, and scalability. By combining
+  cloud infrastructure with intelligent call management, we deliver clear,
+  secure communication experiences that empower teams and support business
+  growth worldwide.
+</p>
+            <div className="flex flex-wrap gap-3 mt-4"  >
 
               <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-white text-sm font-semibold 
   bg-blue-500 hover:bg-blue-600 
@@ -134,7 +129,7 @@ export default function VOIPAboutHeader() {
 
           {/* ================= RIGHT SIDE ================= */}
           {/* DESIGN UNCHANGED — only alignment wrapper fixed */}
-          <div className="relative" style={{ animation: "popIn .9s ease forwards", animationDelay: ".2s", opacity: 0 }}>
+          <div className="relative mr-[25px]" style={{ animation: "popIn .9s ease forwards", animationDelay: ".2s", opacity: 0 }}>
             <div className="grid grid-cols-2 gap-4">
 
               {/* ── CARD 1: Softphone Dialpad ── */}
