@@ -52,6 +52,14 @@ export default function AboutUs() {
   voice delivery, improved call success rates, and enhanced customer
   interaction experiences.
 </p>
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+  Our routing architecture is built with redundancy and real-time quality
+  monitoring to ensure uninterrupted communication across global networks.
+  By continuously analyzing call performance and optimizing routing paths,
+  Dial Infinity delivers consistent voice clarity, reduced latency, and
+  dependable connectivity that businesses can rely on for both daily
+  operations and large-scale communication demands.
+</p>
         </div>
       </div>
 
@@ -78,6 +86,14 @@ export default function AboutUs() {
   monitoring tools, organizations can manage communication activities
   confidently while maintaining compliance and operational transparency
   across departments.
+</p>
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+  Designed for scalability and flexibility, our dialer solutions adapt to
+  businesses of all sizes, from growing teams to large enterprise call
+  centers. With seamless integration capabilities and real-time performance
+  insights, organizations can optimize calling strategies, improve agent
+  efficiency, and deliver more personalized customer interactions while
+  maintaining operational control and communication excellence.
 </p>
         </div>
 
@@ -117,6 +133,14 @@ export default function AboutUs() {
   right destination efficiently. This improves response times, strengthens
   brand presence, and creates a professional communication experience for
   customers worldwide.
+</p>
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+  With instant activation and easy scalability, Dial Infinity’s DID services
+  allow businesses to quickly adapt to changing communication needs across
+  multiple regions. Our reliable infrastructure ensures high availability,
+  clear voice quality, and seamless connectivity, helping organizations
+  deliver consistent customer experiences while expanding their global
+  presence with confidence.
 </p>
         </div>
       </div>

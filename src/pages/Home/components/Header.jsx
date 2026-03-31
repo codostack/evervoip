@@ -408,8 +408,8 @@ export default function VoipHeader() {
 
           <div className="anim-fade-up-2">
 <h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-4xl leading-[1.08] tracking-relaxing text-gray-700">
-  Empowering Modern
-  <span className="text-blue-500"> Telecommunication</span>
+  Connecting Through 
+  <span className="text-blue-500"> Smart VoIP</span>
 </h1>
 </div>
 

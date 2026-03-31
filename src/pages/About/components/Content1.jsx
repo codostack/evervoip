@@ -1,8 +1,8 @@
 import React from "react";
 
-import aboutImg from "../../../assets/Images/5121056.jpg";
-import aboutImg2 from "../../../assets/Images/5101602.jpg";
-import aboutImg3 from "../../../assets/Images/5132728.jpg";
+import aboutImg from "../../../assets/Images/about1.jpg";
+import aboutImg2 from "../../../assets/Images/about2.jpg";
+import aboutImg3 from "../../../assets/Images/about3.jpg";
 
 export default function AboutUs() {
   return (
@@ -31,7 +31,7 @@ export default function AboutUs() {
           className="w-full h-[450px] object-cover rounded-xl"
         />
 
-        <div className="max-w-xl">
+        <div className="max-w-[41rem]">
           <h2 className="text-2xl font-default mb-4">
             <span className="text-gray-600">Who</span>{" "}
             <span className="text-blue-500">We Are</span>
@@ -52,13 +52,21 @@ export default function AboutUs() {
             DialInfinity, we believe communication should be simple, powerful,
             and accessible from anywhere in the world.
           </p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+            By combining innovation with customer-focused solutions, DialInfinity
+            empowers businesses to streamline communication workflows and adapt to
+            rapidly evolving digital environments. Our commitment to reliability,
+            scalability, and continuous improvement enables organizations to stay
+            connected, enhance operational efficiency, and build stronger relationships
+            with customers across global markets.
+          </p>
         </div>
       </div>
 
       {/* SECTION 2 — MISSION */}
       <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
 
-        <div className="max-w-xl">
+        <div className="max-w-[41rem]">
           <h2 className="text-2xl font-default mb-4">
             <span className="text-gray-600">Our</span>{" "}
             <span className="text-blue-500">Mission</span>
@@ -78,12 +86,20 @@ export default function AboutUs() {
             productivity, support remote collaboration, and enable organizations
             to grow confidently in an increasingly digital business landscape.
           </p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+            We are committed to delivering communication solutions that not only meet
+            present business needs but also prepare organizations for future growth.
+            By leveraging advanced VoIP technologies, automation, and secure cloud
+            infrastructure, DialInfinity helps businesses operate more efficiently,
+            respond faster to customer demands, and maintain seamless connectivity
+            in an ever-evolving global marketplace.
+          </p>
         </div>
 
         <img
           src={aboutImg2}
           alt="DialInfinity Mission"
-          className="w-full h-[680px] object-cover rounded-xl mt-[40px]"
+          className="w-full h-[570px] object-cover rounded-xl mt-[40px]"
         />
       </div>
 
@@ -93,10 +109,10 @@ export default function AboutUs() {
         <img
           src={aboutImg3}
           alt="DialInfinity Vision"
-          className="w-full h-[450px] object-cover rounded-xl"
+          className="w-full h-[460px] object-cover rounded-xl"
         />
 
-        <div className="max-w-xl">
+        <div className="max-w-[41rem]">
           <h2 className="text-2xl font-default mb-4">
             <span className="text-gray-600">Our</span>{" "}
             <span className="text-blue-500">Vision</span>
@@ -114,6 +130,14 @@ export default function AboutUs() {
             setting new standards for communication quality, reliability, and user
             experience. By continuously evolving with technology, we help businesses
             stay connected, competitive, and ready for the future.
+          </p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+            Looking ahead, DialInfinity envisions a world where communication is
+            intelligent, seamless, and accessible across every device and location.
+            By investing in emerging technologies and continuously enhancing our
+            platform capabilities, we aim to create communication solutions that
+            empower businesses to innovate, collaborate globally, and achieve
+            sustainable growth in the digital era.
           </p>
         </div>
       </div>

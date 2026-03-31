@@ -1,7 +1,7 @@
 import React from "react";
 
-import aboutImg from "../../../assets/Images/about.jpg";
-import aboutImg2 from "../../../assets/Images/about4.jpg";
+import aboutImg from "../../../assets/Images/about4.jpg";
+import aboutImg2 from "../../../assets/Images/about5.jpg";
 
 export default function AboutUsContent2() {
   return (
@@ -26,7 +26,7 @@ export default function AboutUsContent2() {
         <img
           src={aboutImg}
           alt="About"
-          className="w-full h-[450px] object-cover rounded-xl"
+          className="w-full h-[500px] object-cover rounded-xl"
         />
 
 <div className="max-w-xl">
