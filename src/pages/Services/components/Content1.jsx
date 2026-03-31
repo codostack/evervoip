@@ -35,7 +35,7 @@ export default function AboutUs() {
             <span className="text-blue-500">VoIP Infrastructure</span>
           </h2>
 
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             At Dial Infinity, we build powerful VoIP infrastructures that ensure
             stable, high-quality voice communication across global networks.
             Our platform is engineered using modern cloud architecture and
@@ -43,13 +43,13 @@ export default function AboutUs() {
             low latency, and exceptional call clarity for businesses of all sizes.
           </p>
 
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             Whether supporting call centers, enterprise communication systems,
             or international operations, our infrastructure adapts dynamically
             to traffic demands. This guarantees uninterrupted connectivity,
             improved call success rates, and a seamless communication experience
             that businesses can depend on every day.
-            <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
               Our infrastructure is also designed with security and compliance in mind, incorporating encrypted voice channels, redundant systems, and real-time monitoring. Dial Infinity ensures that businesses not only experience high-quality communication but also benefit from a secure and resilient network that protects sensitive information and supports continuous operations around the clock.
             </p>
 
@@ -66,20 +66,20 @@ export default function AboutUs() {
             <span className="text-blue-500">Communication Solutions</span>
           </h2>
 
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             Dial Infinity provides intelligent communication tools designed to
             improve productivity and collaboration. Our VoIP systems integrate
             seamlessly with modern workflows, enabling teams to manage inbound
             and outbound communication efficiently through centralized platforms.
           </p>
 
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             With advanced monitoring, analytics, and automation capabilities,
             businesses gain complete visibility into communication performance.
             These insights help optimize operations, enhance customer interactions,
             and support data-driven decision-making for long-term growth.
           </p>
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             Our solutions are built to scale with your organization, supporting both small teams and large enterprises. Dial Infinity’s communication platforms offer flexible deployment options, easy integration with CRM systems, and customizable features that adapt to evolving business needs, ensuring a seamless and future-ready communication experience.
           </p>
         </div>
@@ -105,20 +105,20 @@ export default function AboutUs() {
             <span className="text-blue-500">Connectivity Network</span>
           </h2>
 
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             Dial Infinity empowers businesses to expand globally through secure
             and scalable telecom connectivity. Our international network enables
             organizations to establish a strong presence in multiple regions
             without investing in physical communication infrastructure.
           </p>
 
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             By leveraging optimized carrier partnerships and intelligent traffic
             management, we deliver reliable voice transmission and consistent
             communication quality worldwide. Our goal is to help businesses stay
             connected with customers, partners, and teams — anytime and anywhere.
           </p>
-          <p className="text-[#4d5156] text-[16px] leading-[1.75] text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             Our global network also supports advanced features such as DID numbers, flexible call routing, and seamless integration with existing VoIP systems. Dial Infinity ensures that businesses can manage international communications efficiently, maintain brand credibility, and provide a professional experience for customers across all regions.
           </p>
         </div>

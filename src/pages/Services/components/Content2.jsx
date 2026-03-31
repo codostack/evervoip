@@ -36,7 +36,7 @@ export default function ServiceContent2() {
             <span className="text-blue-500">VoIP Solutions</span>
           </h2>
 
-          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
             Dial Infinity delivers enterprise-grade VoIP services that ensure crystal-clear voice communication, minimal latency, and uninterrupted connectivity. Our solutions are optimized for call centers, corporate communication, and international business operations.
           </p>
 
