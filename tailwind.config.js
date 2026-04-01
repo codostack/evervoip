@@ -5,6 +5,9 @@ module.exports = {
   ],  
   theme: {  
     extend: {  
+            screens: {
+        'xl2': '1250px', // custom breakpoint
+      },
       animation: {  
         'fade-in-up': 'fadeInUp 1s ease-out',  
       },  

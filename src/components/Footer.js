@@ -7,6 +7,7 @@ import {
   FaMicrosoft
 } from "react-icons/fa";
 import logo from "../assets/footerLogo.png";
+
 const socials = [
   { icon: <FaLinkedinIn />, title: "LinkedIn", color: "#0A66C2" },
   { icon: <FaFacebookF />, title: "Facebook", color: "#1877F2" },
@@ -36,7 +37,6 @@ const links = {
     "SIP Trunking",
     "Call Analytics"
   ],
-
   Company: [
     "Home",
     "About Us",
@@ -44,7 +44,6 @@ const links = {
     "Contact",
     "FAQ"
   ],
-
   Support: [
     "Setup Guide",
     "VoIP Documentation",
@@ -68,6 +67,7 @@ export default function AnimatedFooter() {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [hoveredFeat, setHoveredFeat] = useState(null);
   const [hoveredBadge, setHoveredBadge] = useState(null);
+  const [openSection, setOpenSection] = useState(null);
 
   const handleSubscribe = () => {
     if (email) {
@@ -75,6 +75,10 @@ export default function AnimatedFooter() {
       setTimeout(() => setSubscribed(false), 3000);
       setEmail("");
     }
+  };
+
+  const toggleSection = (section) => {
+    setOpenSection(openSection === section ? null : section);
   };
 
   return (
@@ -116,6 +120,10 @@ export default function AnimatedFooter() {
           from { opacity: 0; transform: translateX(-8px); }
           to   { opacity: 1; transform: translateX(0); }
         }
+        @keyframes accordionOpen {
+          from { opacity: 0; transform: translateY(-6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
 
         .float-orb      { animation: floatOrb linear infinite; }
         .drift-icon     { animation: driftIcon ease-in-out infinite; }
@@ -126,6 +134,7 @@ export default function AnimatedFooter() {
         .slide-up-2     { animation: slideUp 0.8s ease 0.1s both; }
         .slide-up-3     { animation: slideUp 0.9s ease 0.2s both; }
         .slide-up-4     { animation: slideUp 1.0s ease 0.3s both; }
+        .accordion-open { animation: accordionOpen 0.25s ease both; }
 
         .link-underline {
           position: relative; display: inline-flex; align-items: center; gap: 6px;
@@ -137,20 +146,204 @@ export default function AnimatedFooter() {
         }
         .link-underline:hover::after { width: 100%; }
 
-/* DEFAULT INPUT */
-.nl-input {
-  color: #908f8f;                 /* text color */
-  border: 1px solid #0891b2;      /* border color */
-  outline: none;
-  box-shadow: none;
-}
+        .nl-input {
+          color: #908f8f;
+          border: 1px solid #0891b2;
+          outline: none;
+          box-shadow: none;
+        }
 
+        /* ── MOBILE STYLES (≤ 640px) ── */
+        @media (max-width: 640px) {
+
+          /* Reduce horizontal padding on mobile */
+          .footer-main-content {
+            padding-left: 1.25rem !important;
+            padding-right: 1.25rem !important;
+            padding-top: 2rem !important;
+          }
+
+          /* Stack columns into single column */
+          .footer-columns-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
+          }
+
+          /* About section stays visible, slight bottom spacing */
+          .footer-about-col {
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 0.5rem;
+          }
+
+          /* Hide desktop link columns, show accordion instead */
+          .footer-link-col-desktop {
+            display: none !important;
+          }
+
+          /* Accordion wrapper */
+          .footer-accordion {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+          }
+
+          .footer-accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.875rem 0;
+            cursor: pointer;
+            user-select: none;
+          }
+
+          .footer-accordion-header h4 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin: 0;
+          }
+
+          .footer-accordion-chevron {
+            font-size: 0.75rem;
+            color: rgba(224,231,255,0.7);
+            transition: transform 0.25s ease;
+          }
+
+          .footer-accordion-chevron.open {
+            transform: rotate(180deg);
+          }
+
+          .footer-accordion-body {
+            padding-bottom: 1rem;
+          }
+
+          .footer-accordion-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1rem;
+          }
+
+          /* Newsletter: stack vertically */
+          .footer-newsletter {
+            flex-direction: column !important;
+            gap: 1rem !important;
+            padding: 1.25rem !important;
+          }
+
+          .footer-newsletter-input-row {
+            flex-direction: column !important;
+            gap: 0.625rem !important;
+            min-width: unset !important;
+            flex: none !important;
+            width: 100%;
+          }
+
+          .footer-newsletter-input-row input {
+            width: 100%;
+            box-sizing: border-box;
+          }
+
+          .footer-newsletter-input-row button {
+            width: 100%;
+          }
+
+          /* Features strip: 2-column grid */
+          .footer-features-strip {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 0.5rem !important;
+          }
+
+          .footer-feature-item {
+            border-right: none !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            border-radius: 0.75rem !important;
+            padding: 0.625rem 0.75rem !important;
+          }
+
+          /* Bottom bar: center-stack */
+          .footer-bottom-bar {
+            padding-left: 1.25rem !important;
+            padding-right: 1.25rem !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 0.75rem !important;
+          }
+
+          .footer-bottom-badges {
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+          }
+
+          /* Socials: slightly larger tap targets */
+          .footer-social-btn {
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+          }
+
+          /* Margin before newsletter */
+          .footer-newsletter-wrapper {
+            margin-top: 1.5rem !important;
+          }
+        }
+
+        /* ── TABLET STYLES (641px – 1023px) ── */
+        @media (min-width: 641px) and (max-width: 1023px) {
+
+          .footer-main-content {
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+          }
+
+          /* 2-column layout on tablet */
+          .footer-columns-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+          }
+
+          /* Hide accordion on tablet, show normal columns */
+          .footer-link-col-desktop {
+            display: block !important;
+          }
+
+          .footer-accordion {
+            display: none !important;
+          }
+
+          /* Newsletter: keep row but allow wrap */
+          .footer-newsletter {
+            flex-wrap: wrap !important;
+          }
+
+          /* Features: 3 per row */
+          .footer-features-strip {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.5rem !important;
+          }
+
+          .footer-feature-item {
+            border-right: none !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            border-radius: 0.75rem !important;
+          }
+
+          .footer-bottom-bar {
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+          }
+        }
       `}</style>
 
       <footer
         className="footer-font relative overflow-hidden"
         style={{
-background: "#0891b2",
+          background: "#0891b2",
           minHeight: 480,
         }}
       >
@@ -207,29 +400,31 @@ background: "#0891b2",
         </div>
 
         {/* ── Main Content ── */}
-        <div className="relative z-10 max-w-7xl mx-auto px-12 pt-12">
+        <div className="footer-main-content relative z-10 max-w-7xl mx-auto px-12 pt-12">
 
           {/* Logo */}
-<div className="slide-up-1 flex items-center gap-4 mb-9">
-  <a href="/">
-    <div
-      className="p-2 rounded-lg shadow-sm"
-      style={{ background: "#ffffff" }}
-    >
-      <img
-        src={logo}
-        alt="Company Logo"
-        className="h-12 w-auto object-contain cursor-pointer hover:opacity-90 transition"
-      />
-    </div>
-  </a>
-</div>
+          <div className="slide-up-1 flex items-center gap-4 mb-9">
+            <a href="/">
+              <div
+                className="p-2 rounded-lg shadow-sm"
+                style={{ background: "#ffffff" }}
+              >
+                <img
+                  src={logo}
+                  alt="Company Logo"
+                  className="h-12 w-auto object-contain cursor-pointer hover:opacity-90 transition"
+                />
+              </div>
+            </a>
+          </div>
 
-          {/* Columns */}
-          <div className="slide-up-2 grid gap-10" style={{ gridTemplateColumns: "2fr 1fr 1fr 1fr" }}>
-
+          {/* ── Desktop / Tablet Columns ── */}
+          <div
+            className="footer-columns-grid slide-up-2 grid gap-10"
+            style={{ gridTemplateColumns: "2fr 1fr 1fr 1fr" }}
+          >
             {/* About */}
-            <div>
+            <div className="footer-about-col">
               <h4 className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "rgb(255, 255, 255)" }}>
                 About
               </h4>
@@ -237,27 +432,27 @@ background: "#0891b2",
                 Building the future one pixel at a time. We craft beautiful, high-performance digital experiences that connect brands with the people they serve.
               </p>
               {/* Socials */}
-<div className="flex gap-2.5 mt-5">
-  {socials.map((s, i) => (
-<button
-  key={i}
-  title={s.title}
-  className="w-9 h-9 rounded-xl flex items-center justify-center text-base cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-110"
-  style={{
-    background: s.color,
-    border: `1px solid ${s.color}`,
-    color: "#fff",
-  }}
->
-  {s.icon}
-</button>
-  ))}
-</div>
+              <div className="flex gap-2.5 mt-5 flex-wrap">
+                {socials.map((s, i) => (
+                  <button
+                    key={i}
+                    title={s.title}
+                    className="footer-social-btn w-9 h-9 rounded-xl flex items-center justify-center text-base cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-110"
+                    style={{
+                      background: s.color,
+                      border: `1px solid ${s.color}`,
+                      color: "#fff",
+                    }}
+                  >
+                    {s.icon}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Link Columns */}
+            {/* Desktop Link Columns */}
             {Object.entries(links).map(([heading, items]) => (
-              <div key={heading}>
+              <div key={heading} className="footer-link-col-desktop">
                 <h4 className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "rgb(255, 255, 255)" }}>
                   {heading}
                 </h4>
@@ -294,61 +489,56 @@ background: "#0891b2",
           </div>
 
           {/* Newsletter */}
-<div
-  className="slide-up-3 flex items-center justify-between gap-6 mt-11 rounded-2xl px-8 py-6 flex-wrap"
-  style={{
-    background: "#ffffff", // ✅ MAIN BOX WHITE
-    border: "1px solid rgba(0,0,0,0.08)",
-    backdropFilter: "blur(10px)",
-  }}
->
-  <div className="flex-1 min-w-[200px]">
-    <h3 className="text-base font-semibold text-gray-900 mb-1">
-      Stay in the loop ✨
-    </h3>
+          <div
+            className="footer-newsletter-wrapper slide-up-3 flex items-center justify-between gap-6 mt-11 rounded-2xl px-8 py-6 flex-wrap"
+            style={{
+              background: "#ffffff",
+              border: "1px solid rgba(0,0,0,0.08)",
+              backdropFilter: "blur(10px)",
+            }}
+          >
+            <div className="flex-1 min-w-[200px]">
+              <h3 className="text-base font-semibold text-gray-900 mb-1">
+                Stay in the loop ✨
+              </h3>
+              <p className="text-sm font-light" style={{ color: "rgba(0,0,0,0.6)" }}>
+                Get updates, articles & exclusive deals.
+              </p>
+            </div>
 
-    <p
-      className="text-sm font-light"
-      style={{ color: "rgba(0,0,0,0.6)" }}
-    >
-      Get updates, articles & exclusive deals.
-    </p>
-  </div>
-
-  <div className="flex gap-2.5 flex-1 min-w-[280px]">
-<input
-  type="email"
-  className="nl-input flex-1 rounded-xl px-4 py-2.5 text-sm "
-  placeholder="your@email.com"
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-  onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
-/>
-
-    <button
-      onClick={handleSubscribe}
-      className="rounded-xl px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5"
-      style={{
-        background: subscribed ? "#a5f3fc" : "#da7e06",
-        color: "#ffffff",
-        boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
-        fontFamily: "inherit",
-      }}
-    >
-      {subscribed ? "Subscribed ✓" : "Subscribe"}
-    </button>
-  </div>
-</div>
+            <div className="footer-newsletter-input-row flex gap-2.5 flex-1 min-w-[280px]">
+              <input
+                type="email"
+                className="nl-input flex-1 rounded-xl px-4 py-2.5 text-sm"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
+              />
+              <button
+                onClick={handleSubscribe}
+                className="rounded-xl px-5 py-2.5 text-sm font-semibold whitespace-nowrap transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  background: subscribed ? "#a5f3fc" : "#da7e06",
+                  color: "#ffffff",
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
+                  fontFamily: "inherit",
+                }}
+              >
+                {subscribed ? "Subscribed ✓" : "Subscribe"}
+              </button>
+            </div>
+          </div>
 
           {/* Features Strip */}
           <div
-            className="slide-up-4 flex flex-wrap mt-9 pt-7"
+            className="footer-features-strip slide-up-4 flex flex-wrap mt-9 pt-7"
             style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
           >
             {features.map((f, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl cursor-default flex-1 min-w-[140px] transition-all duration-300"
+                className="footer-feature-item flex items-center gap-2.5 px-4 py-2.5 rounded-xl cursor-default flex-1 min-w-[140px] transition-all duration-300"
                 style={{
                   borderRight: i < features.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none",
                   background: hoveredFeat === i ? "rgba(255,255,255,0.06)" : "transparent",
@@ -376,13 +566,13 @@ background: "#0891b2",
 
         {/* ── Bottom Bar ── */}
         <div
-          className="relative z-10 max-w-6xl mx-auto px-12 py-4 mt-8 flex items-center justify-between flex-wrap gap-3"
+          className="footer-bottom-bar relative z-10 max-w-6xl mx-auto px-12 py-4 mt-8 flex items-center justify-between flex-wrap gap-3"
           style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
         >
           <span className="text-xs font-light" style={{ color: "rgba(165,180,252,0.7)" }}>
-© 2026 Codostack. Empowering modern communication solutions.
+            © 2026 Codostack. Empowering modern communication solutions.
           </span>
-          <div className="flex gap-2 flex-wrap">
+          <div className="footer-bottom-badges flex gap-2 flex-wrap">
             {["Privacy Policy", "Terms of Service", "Cookie Settings", "Accessibility"].map((b, i) => (
               <span
                 key={i}

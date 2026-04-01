@@ -116,7 +116,7 @@ export default function ContactFAQSection() {
 
 
         {/* RIGHT — Gear Cluster: distinct colors + spin animations */}
-        <div className="relative h-[420px] flex items-center justify-center">
+<div className="relative h-[420px] flex items-center justify-center hidden xl:flex">
           <div className="float-anim relative w-full h-full max-w-[470px]">
 
             {/* CENTER — Indigo */}

@@ -80,40 +80,11 @@ function Waveform({ bars = 32 }) {
 /* ── Tab panels ── */
 function TabQuality() {
   const metrics = [
-    {
-      label: "Voice Quality",
-      pct: "",
-      w: "98%",
-      color: "from-green-500 to-emerald-400",
-      bg: "bg-green-100",
-      text: "text-green-600"
-    },
-    {
-      label: "Packet Loss",
-      pct: "",
-      w: "3%",
-      color: "from-red-500 to-rose-400",
-      bg: "bg-red-100",
-      text: "text-red-600"
-    },
-    {
-      label: "Jitter",
-      pct: "",
-      w: "10%",
-      color: "from-yellow-500 to-amber-400",
-      bg: "bg-yellow-100",
-      text: "text-yellow-600"
-    },
-    {
-      label: "Latency",
-      pct: "",
-      w: "18%",
-      color: "from-purple-500 to-violet-400",
-      bg: "bg-purple-100",
-      text: "text-purple-600"
-    },
+    { label: "Voice Quality", pct: "", w: "98%", color: "from-green-500 to-emerald-400", bg: "bg-green-100", text: "text-green-600" },
+    { label: "Packet Loss", pct: "", w: "3%", color: "from-red-500 to-rose-400", bg: "bg-red-100", text: "text-red-600" },
+    { label: "Jitter", pct: "", w: "10%", color: "from-yellow-500 to-amber-400", bg: "bg-yellow-100", text: "text-yellow-600" },
+    { label: "Latency", pct: "", w: "18%", color: "from-purple-500 to-violet-400", bg: "bg-purple-100", text: "text-purple-600" },
   ];
-
   return (
     <div className="grid grid-cols-2 gap-3">
       {metrics.map(({ label, pct, w, color, bg, text }) => (
@@ -122,85 +93,40 @@ function TabQuality() {
             <span className={`text-[0.68rem] ${text}/70`}>{label}</span>
             <span className={`text-[0.68rem] font-semibold ${text}`}>{pct}</span>
           </div>
-
           <div className={`h-1 rounded-full ${bg} overflow-hidden`}>
-            <div
-              className={`h-full rounded-full bg-gradient-to-r ${color} shadow-[0_0_6px_rgba(0,0,0,0.2)]`}
-              style={{ width: w }}
-            />
+            <div className={`h-full rounded-full bg-gradient-to-r ${color} shadow-[0_0_6px_rgba(0,0,0,0.2)]`} style={{ width: w }} />
           </div>
         </div>
       ))}
     </div>
   );
 }
+
 function TabTeam() {
   const members = [
-    {
-      name: "Email",
-      role: "business@evershine.com",
-      status: "online",
-      icon: IoMdMailUnread,
-      bg: "bg-yellow-50",
-      border: "border-yellow-100",
-      text: "text-gray-400", // 👈 gray email text
-      avatar: "from-yellow-500 to-amber-400"
-    },
-    {
-      name: "Number",
-      role: "+1 (218) 220-9130",
-      status: "online",
-      icon: PhoneIcon,
-      bg: "bg-green-50",
-      border: "border-blue-100",
-      text: "text-blue-600",
-      avatar: "from-blue-500 to-emerald-400"
-    },
+    { name: "Email", role: "business@evershine.com", status: "online", icon: IoMdMailUnread, bg: "bg-yellow-50", border: "border-yellow-100", text: "text-gray-400", avatar: "from-yellow-500 to-amber-400" },
+    { name: "Number", role: "+1 (218) 220-9130", status: "online", icon: PhoneIcon, bg: "bg-green-50", border: "border-blue-100", text: "text-blue-600", avatar: "from-blue-500 to-emerald-400" },
   ];
-
-  const dot = {
-    online: "bg-green-400",
-    busy: "bg-orange-400",
-    away: "bg-slate-400"
-  };
-
+  const dot = { online: "bg-green-400", busy: "bg-orange-400", away: "bg-slate-400" };
   return (
     <div className="flex flex-col gap-2">
       {members.map(m => {
         const Icon = m.icon;
-
         return (
-          <div
-            key={m.name}
-            className={`flex items-center justify-between px-3 py-2 rounded-xl ${m.bg} border ${m.border}`}
-          >
-
+          <div key={m.name} className={`flex items-center justify-between px-3 py-2 rounded-xl ${m.bg} border ${m.border}`}>
             <div className="flex items-center gap-2">
-
-              {/* 👇 ICON instead of letter */}
               <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${m.avatar} flex items-center justify-center text-white`}>
                 <Icon size={14} />
               </div>
-
               <div>
-                <div className="text-[0.72rem] font-semibold text-slate-800">
-                  {m.name}
-                </div>
-
-                {/* 👇 Email now gray */}
-                <div className={`text-[0.64rem] ${m.text}`}>
-                  {m.role}
-                </div>
+                <div className="text-[0.72rem] font-semibold text-slate-800">{m.name}</div>
+                <div className={`text-[0.64rem] ${m.text}`}>{m.role}</div>
               </div>
             </div>
-
             <div className="flex items-center gap-2">
-              <span className="text-[0.64rem] text-slate-500">
-                Active
-              </span>
+              <span className="text-[0.64rem] text-slate-500">Active</span>
               <div className={`w-1.5 h-1.5 rounded-full ${dot[m.status]}`} />
             </div>
-
           </div>
         );
       })}
@@ -210,60 +136,20 @@ function TabTeam() {
 
 function TabRegions() {
   const regions = [
-    {
-      name: "US East",
-      load: 78,
-      ms: "",
-      bar: "from-green-500 to-emerald-400",
-      bg: "bg-green-100",
-      text: "text-green-600"
-    },
-    {
-      name: "EU West",
-      load: 61,
-      ms: "",
-      bar: "from-yellow-500 to-amber-400",
-      bg: "bg-yellow-100",
-      text: "text-yellow-600"
-    },
-    {
-      name: "Asia Pacific",
-      load: 44,
-      ms: "",
-      bar: "from-purple-500 to-violet-400",
-      bg: "bg-purple-100",
-      text: "text-purple-600"
-    },
-    {
-      name: "South Asia",
-      load: 33,
-      ms: "",
-      bar: "from-red-500 to-rose-400",
-      bg: "bg-red-100",
-      text: "text-red-600"
-    },
+    { name: "US East", load: 78, ms: "", bar: "from-green-500 to-emerald-400", bg: "bg-green-100", text: "text-green-600" },
+    { name: "EU West", load: 61, ms: "", bar: "from-yellow-500 to-amber-400", bg: "bg-yellow-100", text: "text-yellow-600" },
+    { name: "Asia Pacific", load: 44, ms: "", bar: "from-purple-500 to-violet-400", bg: "bg-purple-100", text: "text-purple-600" },
+    { name: "South Asia", load: 33, ms: "", bar: "from-red-500 to-rose-400", bg: "bg-red-100", text: "text-red-600" },
   ];
-
   return (
     <div className="flex flex-col gap-2.5">
       {regions.map(r => (
         <div key={r.name} className="flex items-center gap-3">
-
-          <span className={`w-20 text-[0.67rem] ${r.text}/70 shrink-0`}>
-            {r.name}
-          </span>
-
+          <span className={`w-20 text-[0.67rem] ${r.text}/70 shrink-0`}>{r.name}</span>
           <div className={`flex-1 h-1.5 rounded-full ${r.bg} overflow-hidden`}>
-            <div
-              className={`h-full rounded-full bg-gradient-to-r ${r.bar} transition-all duration-500`}
-              style={{ width: `${r.load}%` }}
-            />
+            <div className={`h-full rounded-full bg-gradient-to-r ${r.bar} transition-all duration-500`} style={{ width: `${r.load}%` }} />
           </div>
-
-          <span className={`w-8 text-right text-[0.65rem] font-semibold ${r.text}`}>
-            {r.ms}
-          </span>
-
+          <span className={`w-8 text-right text-[0.65rem] font-semibold ${r.text}`}>{r.ms}</span>
         </div>
       ))}
     </div>
@@ -274,31 +160,19 @@ function TabConfig() {
   const [noise, setNoise] = useState(true);
   const [hd, setHd] = useState(true);
   const [encrypt, setEncrypt] = useState(true);
-
   const Toggle = ({ val, onChange, label }) => (
     <div className="flex items-center justify-between py-2 border-b border-slate-200">
-
       <span className="text-[0.72rem] text-slate-700">{label}</span>
-
-      <button
-        onClick={() => onChange(!val)}
-        className={`relative w-8 h-4 rounded-full transition ${val ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]" : "bg-slate-200"
-          }`}
-      >
-        <div
-          className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow transition ${val ? "left-[18px]" : "left-0.5"
-            }`}
-        />
+      <button onClick={() => onChange(!val)} className={`relative w-8 h-4 rounded-full transition ${val ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]" : "bg-slate-200"}`}>
+        <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow transition ${val ? "left-[18px]" : "left-0.5"}`} />
       </button>
     </div>
   );
-
   return (
     <div>
       <Toggle val={noise} onChange={setNoise} label="AI Noise Cancellation" />
       <Toggle val={hd} onChange={setHd} label="HD Voice (Opus 48kHz)" />
       <Toggle val={encrypt} onChange={setEncrypt} label="E2E Encryption" />
-
       <p className="mt-2.5 text-center text-[0.65rem] text-slate-600 bg-slate-50 rounded-lg py-1.5 px-2 border">
         Codec: Opus · Bitrate: 32–128 kbps adaptive
       </p>
@@ -307,72 +181,34 @@ function TabConfig() {
 }
 
 const TABS = [
-  {
-    id: "quality",
-    label: "Quality",
-    Icon: ActivityIcon,
-    active: "bg-green-100 text-green-600",
-    inactive: "text-green-500/70 hover:bg-green-50"
-  },
-  {
-    id: "team",
-    label: "Contact",
-    Icon: UsersIcon,
-    active: "bg-yellow-100 text-yellow-600",
-    inactive: "text-yellow-500/70 hover:bg-yellow-50"
-  },
-  {
-    id: "regions",
-    label: "Regions",
-    Icon: GlobeIcon,
-    active: "bg-orange-100 text-orange-600",
-    inactive: "text-orange-500/70 hover:bg-orange-50"
-  },
-  {
-    id: "config",
-    label: "Config",
-    Icon: SettingsIcon,
-    active: "bg-purple-100 text-purple-600",
-    inactive: "text-purple-500/70 hover:bg-purple-50"
-  }
+  { id: "quality", label: "Quality", Icon: ActivityIcon, active: "bg-green-100 text-green-600", inactive: "text-green-500/70 hover:bg-green-50" },
+  { id: "team", label: "Contact", Icon: UsersIcon, active: "bg-yellow-100 text-yellow-600", inactive: "text-yellow-500/70 hover:bg-yellow-50" },
+  { id: "regions", label: "Regions", Icon: GlobeIcon, active: "bg-orange-100 text-orange-600", inactive: "text-orange-500/70 hover:bg-orange-50" },
+  { id: "config", label: "Config", Icon: SettingsIcon, active: "bg-purple-100 text-purple-600", inactive: "text-purple-500/70 hover:bg-purple-50" },
 ];
 
 /* ══════════════ MAIN COMPONENT ══════════════ */
 export default function VoipHeader() {
   const [activeTab, setActiveTab] = useState("quality");
+  const tabContent = { quality: <TabQuality />, team: <TabTeam />, regions: <TabRegions />, config: <TabConfig /> };
 
-  const tabContent = {
-    quality: <TabQuality />,
-    team: <TabTeam />,
-    regions: <TabRegions />,
-    config: <TabConfig />,
-  };
-
-  const [count, setCount] = useState(550); // start in middle
-
+  const [count, setCount] = useState(550);
   useEffect(() => {
     const timer = setInterval(() => {
-      setCount((prev) => {
+      setCount(prev => {
         const direction = Math.random() > 0.5 ? 1 : -1;
         let next = prev + direction;
-
-        // keep between 500 - 1000
         if (next < 500) next = 500;
         if (next > 1000) next = 1000;
-
         return next;
       });
-    }, 900); // slow
-
+    }, 900);
     return () => clearInterval(timer);
   }, []);
-
-
 
   return (
     <div className="relative min-h-[81vh] w-full bg-white overflow-hidden">
 
-      {/* keyframes only — no inline style props on JSX elements */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'DM Sans', sans-serif; }
@@ -381,7 +217,6 @@ export default function VoipHeader() {
         @keyframes shimmer   { to{background-position:200% center} }
         @keyframes fadeUp    { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
         @keyframes fadeRight { from{opacity:0;transform:translateX(38px)} to{opacity:1;transform:translateX(0)} }
-       
         .shimmer-text {
           background: linear-gradient(110deg,#0077ff 0%,#00aaff 45%,#0055dd 100%);
           background-size: 200% auto;
@@ -397,55 +232,75 @@ export default function VoipHeader() {
         }
       `}</style>
 
-      {/* static grid overlay — pure Tailwind */}
+      {/* ── Hero layout ── */}
+      {/*
+        Mobile / tablet (< 1300px):
+          - Single column, centered
+          - Right card hidden
+          - Left content centered with text-center on small screens
 
-
-      {/* hero layout */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 min-h-[81vh] px-8 md:px-16 py-20">
+        Desktop (≥ 1300px):
+          - Two columns side by side (original layout)
+          - Right card visible
+      */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[81vh] px-6 py-16 sm:px-10 sm:py-20
+                      [@media(min-width:1300px)]:flex-row [@media(min-width:1300px)]:items-center
+                      [@media(min-width:1300px)]:justify-between [@media(min-width:1300px)]:px-16">
 
         {/* ══ LEFT ══ */}
-        <div className="space-y-8 z-10 ml-[25px] lg: mt-[-60px]">
+        <div className="flex flex-col items-center text-center gap-6 w-full max-w-2xl
+                        [@media(min-width:1300px)]:items-start [@media(min-width:1300px)]:text-left
+                        [@media(min-width:1300px)]:ml-[25px] [@media(min-width:1300px)]:-mt-[60px]
+                        [@media(min-width:1300px)]:max-w-none [@media(min-width:1300px)]:w-auto">
 
-          <div className="anim-fade-up-2">
-<h1 className="font-['Syne',sans-serif] font-default text-4xl md:text-4xl leading-[1.08] tracking-relaxing text-gray-700">
-  Connecting Through 
-  <span className="text-blue-500"> Smart VoIP</span>
-</h1>
-</div>
+          {/* Heading */}
+          <h1 className="font-['Syne',sans-serif] font-default text-3xl sm:text-4xl leading-[1.08] tracking-relaxing text-gray-700">
+            Connecting Through
+            <span className="text-blue-500"> Smart VoIP</span>
+          </h1>
 
-{/* sub content */}
-<p className="font-sans text-gray-600 text-sm sm:text-base md:text-[17px]
-leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]">
+{/* Subtext */}
+<p className="font-sans text-gray-600 text-sm md:text-[17px] leading-6 sm:leading-7 tracking-normal
+              text-justify
+              max-w-[600px] [@media(min-width:1300px)]:max-w-[620px]">
   Transform the way your business connects with intelligent, cloud-powered
   communication solutions. Our VoIP platform delivers crystal-clear voice,
   smart call routing, and reliable global connectivity designed for speed,
-  scalability, and seamless collaboration in today’s digital world.
+  scalability, and seamless collaboration in today's digital world.
 </p>
-          <div className="anim-fade-up-4 flex items-center gap-3 flex-wrap pt-1">
-
-            <div className="anim-fade-up-4 flex items-center gap-3 flex-wrap pt-1">
-
-              <button className="inline-flex items-center gap-2 px-6 py-3 squared-xl text-white text-sm font-semibold 
-  bg-blue-500 hover:bg-blue-600 
-  transition-all duration-200 border-0 cursor-pointer">
-
-                Get Started
-              </button>
-            </div>
-            <button className="inline-flex items-center gap-2 px-5 py-3 squared-xl text-sm font-medium 
-  text-gray-700 border border-gray-300 bg-gray-100 
-  hover:bg-gray-200 hover:border-gray-400 
-  transition-all duration-200 cursor-pointer">
-
+          {/* Buttons */}
+          <div className="flex items-center gap-3 flex-wrap justify-center [@media(min-width:1300px)]:justify-start pt-1">
+            <button className="inline-flex items-center gap-2 px-6 py-3 text-white text-sm font-semibold
+              bg-blue-500 hover:bg-blue-600 transition-all duration-200 border-0 cursor-pointer">
+              Get Started
+            </button>
+            <button className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium
+              text-gray-700 border border-gray-300 bg-gray-100
+              hover:bg-gray-200 hover:border-gray-400 transition-all duration-200 cursor-pointer">
               Learn More
             </button>
+          </div>
 
+          {/* Feature chips — shown below buttons on mobile too */}
+          <div className="flex flex-wrap gap-2 justify-center [@media(min-width:1300px)]:justify-start
+                          [@media(min-width:1300px)]:hidden">
+            {[
+              { Icon: ShieldIcon, label: "E2E Encrypted" },
+              { Icon: ZapIcon, label: "AI Noise Cancel" },
+              { Icon: GlobeIcon, label: "Global PoPs" },
+              { Icon: SignalIcon, label: "HD Voice" },
+            ].map(({ Icon, label }) => (
+              <div key={label} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-blue-100 text-[0.72rem] font-medium text-blue-700/80">
+                <span className="text-blue-500"><Icon /></span>
+                {label}
+              </div>
+            ))}
           </div>
 
         </div>
 
-        {/* ══ RIGHT CARD ══ */}
-        <div className="anim-fade-right flex flex-col gap-3 mr-[25px] w-[600px] -mt-8">
+        {/* ══ RIGHT CARD — hidden below 1300px ══ */}
+        <div className="hidden [@media(min-width:1300px)]:flex flex-col gap-3 mr-[25px] w-[600px] -mt-8">
 
           {/* main glass card */}
           <div className="card-shine relative rounded-[20px] bg-white/80 border border-gray-400 backdrop-blur-2xl p-6 overflow-hidden flex-1">
@@ -453,7 +308,7 @@ leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]"
             {/* card header */}
             <div className="flex justify-between items-start mb-4">
               <div>
-                <p className=" font-default text-xl text-slate-900">Live Call Analytics</p>
+                <p className="font-default text-xl text-slate-900">Live Call Analytics</p>
                 <p className="text-sm text-orange-400 mt-0.5">Real-time quality monitoring</p>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500 border border-green-500">
@@ -464,25 +319,20 @@ leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]"
 
             {/* waveform */}
             <div className="mb-4 mt-[20px] flex items-center ml-[80px]">
-
-              {/* Play Button */}
               <button className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-500 text-white">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </button>
-
-              {/* Waveform */}
               <div className="-ml-1">
                 <Waveform bars={40} />
               </div>
-
             </div>
 
             {/* active calls strip */}
             <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-blue-50/60 border border-blue-100 mb-4 mt-[60px]">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-400 flex items-center justify-center  text-white">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-400 flex items-center justify-center text-white">
                   <PhoneIcon />
                 </div>
                 <div>
@@ -505,10 +355,7 @@ leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]"
                   key={id}
                   onClick={() => setActiveTab(id)}
                   className={`flex-1 flex items-center justify-center gap-1 py-1.5 rounded-[9px] text-[0.68rem] font-medium transition-all duration-200
-        ${activeTab === id
-                      ? `${active} shadow-sm`
-                      : `${inactive}`
-                    }`}
+                    ${activeTab === id ? `${active} shadow-sm` : `${inactive}`}`}
                 >
                   <Icon />
                   {label}
@@ -520,7 +367,7 @@ leading-6 sm:leading-7 tracking-normal text-justify max-w-full lg:max-w-[620px]"
             <div key={activeTab}>{tabContent[activeTab]}</div>
           </div>
 
-          {/* feature chips */}
+          {/* feature chips — desktop only (inside right col) */}
           <div className="flex flex-wrap gap-2">
             {[
               { Icon: ShieldIcon, label: "E2E Encrypted" },

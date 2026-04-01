@@ -45,6 +45,7 @@ export default function CountryScroller() {
           }}
         >
           <h1
+            className="cs-heading"
             style={{
               color: "#ffffff",
               fontSize: "2.25rem",
@@ -56,6 +57,7 @@ export default function CountryScroller() {
           </h1>
 
           <p
+            className="cs-subtext"
             style={{
               color: "rgba(207,250,254,0.9)",
               fontSize: "1.125rem",
@@ -80,31 +82,25 @@ export default function CountryScroller() {
             overflow: "hidden",
           }}
         >
-          {/* ✅ animation controlled here */}
           <div
-            className="flex gap-6 whitespace-nowrap animate-scroll"
+            className="cs-scroll-track animate-scroll"
             style={{
               animationPlayState: isPaused ? "paused" : "running",
             }}
           >
-            {[...countries, ...countries].map((c, i) => (
+            {[...countries, ...countries, ...countries].map((c, i) => (
               <div
                 key={i}
+                className="cs-card"
                 onMouseEnter={(e) => {
                   setIsPaused(true);
-
-                  e.currentTarget.style.transform =
-                    "translateY(-6px) scale(1.08)";
-                  e.currentTarget.style.boxShadow =
-                    "0 18px 40px rgba(0,0,0,0.25)";
+                  e.currentTarget.style.transform = "translateY(-6px) scale(1.08)";
+                  e.currentTarget.style.boxShadow = "0 18px 40px rgba(0,0,0,0.25)";
                 }}
                 onMouseLeave={(e) => {
                   setIsPaused(false);
-
-                  e.currentTarget.style.transform =
-                    "translateY(0) scale(1)";
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 20px rgba(0,0,0,0.12)";
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.12)";
                 }}
                 style={{
                   display: "flex",
@@ -118,6 +114,7 @@ export default function CountryScroller() {
                   minWidth: "260px",
                   transition: "all 0.35s ease",
                   cursor: "pointer",
+                  flexShrink: 0,
                 }}
               >
                 {/* Flag */}
@@ -174,15 +171,81 @@ export default function CountryScroller() {
         </div>
       </div>
 
-      {/* Animations */}
+      {/* Animations + Mobile Styles */}
       <style>{`
         @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
         }
 
         .animate-scroll {
-          animation: scroll 25s linear infinite;
+          animation: scroll 18s linear infinite;
+        }
+
+        /* Scroll track: flex row, no wrapping */
+        .cs-scroll-track {
+          display: flex;
+          gap: 1.5rem;
+          white-space: nowrap;
+          width: max-content;
+        }
+
+        /* ── MOBILE STYLES (≤ 640px) ── */
+        @media (max-width: 640px) {
+
+          /* Reduce section vertical padding */
+          .cs-section-wrap {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+          }
+
+          /* Shrink heading font size */
+          .cs-heading {
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+            margin-bottom: 0.75rem !important;
+          }
+
+          /* Shrink subtext */
+          .cs-subtext {
+            font-size: 0.9375rem !important;
+          }
+
+          /* Reduce gap below heading block */
+          .cs-heading-block {
+            margin-bottom: 2rem !important;
+          }
+
+          /* Smaller cards on mobile */
+          .cs-card {
+            min-width: 180px !important;
+            padding: 0.75rem 1rem !important;
+            gap: 0.75rem !important;
+            border-radius: 0.625rem !important;
+          }
+
+          /* Slightly smaller flag */
+          .cs-card img {
+            width: 2.25rem !important;
+            height: 1.5rem !important;
+          }
+
+          /* Faster scroll on mobile (fewer pixels to cover) */
+          .animate-scroll {
+            animation-duration: 14s !important;
+          }
+        }
+
+        /* ── TABLET STYLES (641px – 1023px) ── */
+        @media (min-width: 641px) and (max-width: 1023px) {
+
+          .cs-heading {
+            font-size: 1.875rem !important;
+          }
+
+          .cs-card {
+            min-width: 220px !important;
+          }
         }
       `}</style>
     </div>

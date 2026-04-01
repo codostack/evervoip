@@ -22,126 +22,138 @@ export default function AboutUs() {
       </div>
 
       {/* SECTION 1 - VOIP ROUTES */}
-      <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+      {/* Mobile: image → title → description | Desktop: image left, text right */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-20">
 
+        {/* Image — always first on mobile */}
         <img
           src={aboutImg}
           alt="VoIP Routes"
-          className="w-full h-[520px] object-cover rounded-xl"
+          className="w-full h-64 sm:h-80 md:h-[520px] object-cover rounded-xl"
         />
 
-<div className="max-w-[41rem]">
+        {/* Text — below image on mobile, right col on desktop */}
+        <div className="max-w-[41rem]">
           <h2 className="text-2xl font-default mb-4">
             <span className="text-gray-600">VoIP</span>{" "}
             <span className="text-blue-500">CC & CLI Routes</span>
           </h2>
 
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Our VoIP routing solutions are continuously monitored and optimized to
-  maintain performance consistency even during peak traffic conditions.
-  By utilizing intelligent load balancing and advanced carrier management,
-  we ensure stable communication channels that support mission-critical
-  business operations without compromise.
-</p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify mb-4">
+            Our VoIP routing solutions are continuously monitored and optimized to
+            maintain performance consistency even during peak traffic conditions.
+            By utilizing intelligent load balancing and advanced carrier management,
+            we ensure stable communication channels that support mission-critical
+            business operations without compromise.
+          </p>
 
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Dial Infinity focuses on delivering secure and scalable routing
-  environments that adapt to changing business requirements. Whether
-  supporting call centers, enterprise communication, or international
-  outreach campaigns, our infrastructure is designed to provide reliable
-  voice delivery, improved call success rates, and enhanced customer
-  interaction experiences.
-</p>
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Our routing architecture is built with redundancy and real-time quality
-  monitoring to ensure uninterrupted communication across global networks.
-  By continuously analyzing call performance and optimizing routing paths,
-  Dial Infinity delivers consistent voice clarity, reduced latency, and
-  dependable connectivity that businesses can rely on for both daily
-  operations and large-scale communication demands.
-</p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify mb-4">
+            Dial Infinity focuses on delivering secure and scalable routing
+            environments that adapt to changing business requirements. Whether
+            supporting call centers, enterprise communication, or international
+            outreach campaigns, our infrastructure is designed to provide reliable
+            voice delivery, improved call success rates, and enhanced customer
+            interaction experiences.
+          </p>
+
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+            Our routing architecture is built with redundancy and real-time quality
+            monitoring to ensure uninterrupted communication across global networks.
+            By continuously analyzing call performance and optimizing routing paths,
+            Dial Infinity delivers consistent voice clarity, reduced latency, and
+            dependable connectivity that businesses can rely on for both daily
+            operations and large-scale communication demands.
+          </p>
         </div>
       </div>
 
       {/* SECTION 2 - DIALER */}
-      <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+      {/* Mobile: image → title → description | Desktop: text left, image right */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-20">
 
-<div className="max-w-[41rem]">
+        {/* Image — first on mobile, second on desktop */}
+        <img
+          src={aboutImg2}
+          alt="Dialer"
+          className="w-full h-64 sm:h-80 md:h-[500px] object-cover rounded-xl order-first md:order-last"
+        />
+
+        {/* Text — below image on mobile, left col on desktop */}
+        <div className="max-w-[41rem] order-last md:order-first">
           <h2 className="text-2xl font-default mb-4">
             <span className="text-gray-600">Advanced</span>{" "}
             <span className="text-blue-500">Dialer Solutions</span>
           </h2>
 
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Our dialer platforms are engineered with intelligent automation
-  capabilities that help businesses optimize workforce productivity while
-  maintaining consistent communication quality. Features such as call
-  scheduling, automated workflows, and smart queue management allow teams
-  to execute campaigns efficiently and achieve better operational results.
-</p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify mb-4">
+            Our dialer platforms are engineered with intelligent automation
+            capabilities that help businesses optimize workforce productivity while
+            maintaining consistent communication quality. Features such as call
+            scheduling, automated workflows, and smart queue management allow teams
+            to execute campaigns efficiently and achieve better operational results.
+          </p>
 
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Security and reliability remain at the core of our dialer technology.
-  With secure data handling, role-based access controls, and performance
-  monitoring tools, organizations can manage communication activities
-  confidently while maintaining compliance and operational transparency
-  across departments.
-</p>
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Designed for scalability and flexibility, our dialer solutions adapt to
-  businesses of all sizes, from growing teams to large enterprise call
-  centers. With seamless integration capabilities and real-time performance
-  insights, organizations can optimize calling strategies, improve agent
-  efficiency, and deliver more personalized customer interactions while
-  maintaining operational control and communication excellence.
-</p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify mb-4">
+            Security and reliability remain at the core of our dialer technology.
+            With secure data handling, role-based access controls, and performance
+            monitoring tools, organizations can manage communication activities
+            confidently while maintaining compliance and operational transparency
+            across departments.
+          </p>
+
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+            Designed for scalability and flexibility, our dialer solutions adapt to
+            businesses of all sizes, from growing teams to large enterprise call
+            centers. With seamless integration capabilities and real-time performance
+            insights, organizations can optimize calling strategies, improve agent
+            efficiency, and deliver more personalized customer interactions while
+            maintaining operational control and communication excellence.
+          </p>
         </div>
-
-        <img
-          src={aboutImg2}
-          alt="Dialer"
-          className="w-full object-cover rounded-xl mt-[40px]"
-        />
       </div>
 
       {/* SECTION 3 - DID NUMBERS */}
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Mobile: image → title → description | Desktop: image left, text right */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
-<img
-  src={aboutImg3}
-  alt="DID Numbers"
-  className="w-full max-w-[90%] h-[520px] object-cover rounded-xl"
-/>
+        {/* Image — always first on mobile */}
+        <img
+          src={aboutImg3}
+          alt="DID Numbers"
+          className="w-full h-64 sm:h-80 md:h-[520px] object-cover rounded-xl"
+        />
 
-<div className="max-w-[41rem]">
+        {/* Text — below image on mobile, right col on desktop */}
+        <div className="max-w-[41rem]">
           <h2 className="text-2xl font-default mb-4">
             <span className="text-gray-600">Global</span>{" "}
             <span className="text-blue-500">DID Numbers</span>
           </h2>
 
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Dial Infinity’s global DID network allows businesses to expand their
-  reach without investing in physical infrastructure. Companies can
-  instantly establish regional communication channels, enabling local
-  customer engagement while managing all calls through a centralized
-  cloud-based system.
-</p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify mb-4">
+            Dial Infinity's global DID network allows businesses to expand their
+            reach without investing in physical infrastructure. Companies can
+            instantly establish regional communication channels, enabling local
+            customer engagement while managing all calls through a centralized
+            cloud-based system.
+          </p>
 
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  Our platform supports flexible call forwarding, IVR integration, and
-  advanced routing options that ensure every incoming call reaches the
-  right destination efficiently. This improves response times, strengthens
-  brand presence, and creates a professional communication experience for
-  customers worldwide.
-</p>
-<p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
-  With instant activation and easy scalability, Dial Infinity’s DID services
-  allow businesses to quickly adapt to changing communication needs across
-  multiple regions. Our reliable infrastructure ensures high availability,
-  clear voice quality, and seamless connectivity, helping organizations
-  deliver consistent customer experiences while expanding their global
-  presence with confidence.
-</p>
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify mb-4">
+            Our platform supports flexible call forwarding, IVR integration, and
+            advanced routing options that ensure every incoming call reaches the
+            right destination efficiently. This improves response times, strengthens
+            brand presence, and creates a professional communication experience for
+            customers worldwide.
+          </p>
+
+          <p className="text-[#4d5156] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.75] tracking-[0.01em] font-normal text-justify">
+            With instant activation and easy scalability, Dial Infinity's DID services
+            allow businesses to quickly adapt to changing communication needs across
+            multiple regions. Our reliable infrastructure ensures high availability,
+            clear voice quality, and seamless connectivity, helping organizations
+            deliver consistent customer experiences while expanding their global
+            presence with confidence.
+          </p>
         </div>
       </div>
 
