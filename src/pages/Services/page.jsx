@@ -11,12 +11,9 @@ export default function Services() {
     <div>
       <VoipHeader />
       <VoipCommonPage />
-      {/* <VoIPPage/> */}
       <Content4 />
       <VoipFeatures />
       <ServiceContent2 />
-
-      {/* <RegistrationPage/> */}
     </div>
 
   );

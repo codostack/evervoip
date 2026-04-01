@@ -67,7 +67,6 @@ export default function AnimatedFooter() {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [hoveredFeat, setHoveredFeat] = useState(null);
   const [hoveredBadge, setHoveredBadge] = useState(null);
-  const [openSection, setOpenSection] = useState(null);
 
   const handleSubscribe = () => {
     if (email) {

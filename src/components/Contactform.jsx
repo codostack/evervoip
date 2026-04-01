@@ -34,7 +34,7 @@ function Field({
         {label} <span className="text-red-400">*</span>
       </label>
 
-      <div className="relative group">
+      <div className="relative">
         <span className="absolute left-4 top-1/2 -translate-y-1/2 opacity-50">
           {icon}
         </span>
@@ -46,7 +46,7 @@ function Field({
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl bg-gray-50 border transition-all
+            className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl bg-gray-50 border transition
             ${
               error
                 ? "border-red-400"
@@ -61,7 +61,7 @@ function Field({
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl bg-gray-50 border transition-all
+            className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl bg-gray-50 border transition
             ${
               error
                 ? "border-red-400"
@@ -80,11 +80,13 @@ function Field({
 /* ───────────────── SUCCESS ───────────────── */
 function SuccessScreen({ name, email }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#004c4c] to-[#002626] flex items-center justify-center">
-      <div className="bg-white rounded-3xl p-16 text-center shadow-2xl max-w-md">
-        <span className="text-6xl">🎉</span>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#004c4c] to-[#002626] px-4">
+      <div className="bg-white rounded-3xl p-8 sm:p-12 text-center shadow-2xl max-w-md w-full">
+        <span className="text-5xl sm:text-6xl">🎉</span>
 
-        <h2 className="text-2xl font-extrabold mt-5">You're all set!</h2>
+        <h2 className="text-xl sm:text-2xl font-extrabold mt-4">
+          You're all set!
+        </h2>
 
         <p className="text-gray-500 mt-3 text-sm leading-7">
           Welcome <strong>{name}</strong>! We'll contact you at{" "}
@@ -138,35 +140,36 @@ export default function RegistrationPage() {
   return (
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
 
-      {/* BACKGROUND GLOW */}
+      {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#004c4c22,transparent_60%)]" />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-14 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
-        {/* ───────── LEFT SIDE ───────── */}
-        <div className="space-y-10">
+        {/* LEFT SIDE */}
+        <div className="space-y-8 text-center lg:text-left">
 
-          {/* HERO */}
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
               Build Faster With{" "}
-              <span className="text-[#004c4c]">Modern Infrastructure</span>
+              <span className="text-[#004c4c]">
+                Modern Infrastructure
+              </span>
             </h1>
 
-            <p className="text-gray-500 mt-5 max-w-lg leading-relaxed">
+            <p className="text-gray-500 mt-4 max-w-lg mx-auto lg:mx-0 leading-relaxed text-sm sm:text-base">
               A premium platform trusted by developers and enterprises worldwide
               to launch scalable digital experiences faster than ever.
             </p>
           </div>
 
           {/* STATS */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             {STATS.map((s, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-center hover:shadow-md transition"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 text-center hover:shadow-md transition"
               >
-                <div className="text-xl font-extrabold text-[#004c4c]">
+                <div className="text-lg sm:text-xl font-extrabold text-[#004c4c]">
                   {s.val}
                 </div>
                 <div className="text-xs text-gray-400 mt-1">
@@ -177,14 +180,14 @@ export default function RegistrationPage() {
           </div>
 
           {/* FEATURES */}
-          <div className="bg-white rounded-2xl border p-6 shadow-sm">
+          <div className="bg-white rounded-2xl border p-5 sm:p-6 shadow-sm text-left">
             <h3 className="font-bold text-gray-900 mb-4">
               Why people choose us
             </h3>
 
             {FEATURES.map((f, i) => (
               <div key={i} className="flex gap-4">
-                <div className="w-11 h-11 rounded-xl bg-[#004c4c]/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-[#004c4c]/10 flex items-center justify-center">
                   {f.icon}
                 </div>
                 <div>
@@ -200,10 +203,10 @@ export default function RegistrationPage() {
           </div>
         </div>
 
-        {/* ───────── FORM CARD ───────── */}
-        <div className="bg-white rounded-3xl border border-gray-100 shadow-2xl p-10">
+        {/* FORM */}
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-2xl p-6 sm:p-8 lg:p-10 w-full">
 
-          <h2 className="text-2xl font-extrabold mb-6">
+          <h2 className="text-xl sm:text-2xl font-extrabold mb-6 text-center lg:text-left">
             Create Free Account
           </h2>
 
@@ -262,7 +265,7 @@ export default function RegistrationPage() {
               {hoverBtn ? "✨ Let's Go →" : "Create My Free Account"}
             </button>
 
-            <div className="flex justify-center gap-6 text-xs text-gray-400 pt-2">
+            <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-400 pt-2">
               <span>🔒 SSL Secured</span>
               <span>🛡 No Spam</span>
               <span>✅ Free Forever</span>
