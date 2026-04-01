@@ -77,10 +77,6 @@ export default function AnimatedFooter() {
     }
   };
 
-  const toggleSection = (section) => {
-    setOpenSection(openSection === section ? null : section);
-  };
-
   return (
     <>
       <style>{`
