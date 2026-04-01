@@ -64,6 +64,7 @@ function Waveform({ bars = 32 }) {
         const y = (52 - h) / 2;
         return (
           <rect
+          data-no-translate
             key={i} x={i * 9 + 2} y={y} width={5} height={h} rx={2.5}
             fill="url(#wg)" opacity={0.65 + (i % 4) * 0.09}
             style={{
@@ -94,7 +95,7 @@ function TabQuality() {
             <span className={`text-[0.68rem] font-semibold ${text}`}>{pct}</span>
           </div>
           <div className={`h-1 rounded-full ${bg} overflow-hidden`}>
-            <div className={`h-full rounded-full bg-gradient-to-r ${color} shadow-[0_0_6px_rgba(0,0,0,0.2)]`} style={{ width: w }} />
+            <div data-no-translate className={`h-full rounded-full bg-gradient-to-r ${color} shadow-[0_0_6px_rgba(0,0,0,0.2)]`} style={{ width: w }} />
           </div>
         </div>
       ))}
@@ -147,7 +148,7 @@ function TabRegions() {
         <div key={r.name} className="flex items-center gap-3">
           <span className={`w-20 text-[0.67rem] ${r.text}/70 shrink-0`}>{r.name}</span>
           <div className={`flex-1 h-1.5 rounded-full ${r.bg} overflow-hidden`}>
-            <div className={`h-full rounded-full bg-gradient-to-r ${r.bar} transition-all duration-500`} style={{ width: `${r.load}%` }} />
+            <div data-no-translate className={`h-full rounded-full bg-gradient-to-r ${r.bar} transition-all duration-500`} style={{ width: `${r.load}%` }} />
           </div>
           <span className={`w-8 text-right text-[0.65rem] font-semibold ${r.text}`}>{r.ms}</span>
         </div>
@@ -209,7 +210,7 @@ export default function VoipHeader() {
   return (
     <div className="relative min-h-[81vh] w-full bg-white overflow-hidden">
 
-      <style>{`
+      <style data-no-translate>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'DM Sans', sans-serif; }
         @keyframes wavePulse { 0%,100%{transform:scaleY(0.25)} 50%{transform:scaleY(1)} }

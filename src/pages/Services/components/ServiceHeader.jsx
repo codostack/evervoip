@@ -111,7 +111,7 @@ export default function VoipLanding() {
       {/* Hero Section */}
       <main
         className="flex-1 flex items-center justify-center w-full mx-auto px-6 py-14 sm:px-10 sm:py-16"
-        style={{ maxWidth: "87rem" }}
+        
       >
         <div
           className="flex flex-col items-center w-full gap-10

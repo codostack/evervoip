@@ -76,7 +76,7 @@ export default function VOIPAboutHeader() {
 
   return (
     <>
-      <style>{`
+      <style data-no-translate>{`
         @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500&display=swap');
 
         @keyframes fadeUp      { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }

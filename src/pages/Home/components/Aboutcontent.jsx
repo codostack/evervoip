@@ -256,7 +256,7 @@ export default function VoIPLanding() {
 
   return (
     <>
-      <style>{`
+      <style data-no-translate>{`
         @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
       `}</style>
 

@@ -591,7 +591,7 @@ export default function VoipFAQ() {
 
   return (
     <div className="faq-root">
-      <style>{styles}</style>
+      <style data-no-translate>{styles}</style>
       <section className="faq-section">
         <div className="faq-container">
 

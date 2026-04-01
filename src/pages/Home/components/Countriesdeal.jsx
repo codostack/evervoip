@@ -172,7 +172,7 @@ export default function CountryScroller() {
       </div>
 
       {/* Animations + Mobile Styles */}
-      <style>{`
+      <style data-no-translate>{`
         @keyframes scroll {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-33.333%); }

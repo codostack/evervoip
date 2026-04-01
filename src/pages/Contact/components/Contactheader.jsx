@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
   MdAnalytics,
   MdVoicemail,
-  MdFiberManualRecord,
   MdAltRoute,
   MdPersonPinCircle
 } from "react-icons/md";
@@ -383,7 +382,6 @@ function IntegrationHub() {
 const VOIP_CHIPS = [
   { icon: <MdAnalytics size={13} />, label: "Call Analytics" },
   { icon: <MdVoicemail size={13} />, label: "Smart Voicemail" },
-  { icon: <MdFiberManualRecord size={13} />, label: "Call Recording" },
   { icon: <MdAltRoute size={13} />, label: "Advanced Routing" },
   { icon: <MdPersonPinCircle size={13} />, label: "User Presence" },
 ];
@@ -398,7 +396,7 @@ export default function ContactSection() {
 
   return (
     <>
-      <style>{`
+      <style data-no-translate>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap');
         * { box-sizing: border-box; }
 
