@@ -246,7 +246,7 @@ export default function VoipHeader() {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[81vh] px-6 py-16 sm:px-10 sm:py-20
                       [@media(min-width:1300px)]:flex-row [@media(min-width:1300px)]:items-center
                       [@media(min-width:1300px)]:justify-between [@media(min-width:1300px)]:px-16">
-
+ 
         {/* ══ LEFT ══ */}
         <div className="flex flex-col items-center text-center gap-6 w-full max-w-2xl
                         [@media(min-width:1300px)]:items-start [@media(min-width:1300px)]:text-left
