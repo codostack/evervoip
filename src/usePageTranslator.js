@@ -1,81 +1,128 @@
-// src/usePageTranslator.js
 import { useEffect, useRef, useState } from "react";
 import { batchTranslateText } from "./libreTranslate";
 
 export default function usePageTranslator(language) {
-  const originalTextsRef = useRef([]);
-  const [loading, setLoading] = useState(false); // <-- loader state
+  const nodesRef = useRef([]);
+  const originalsRef = useRef([]);
+  const initializedRef = useRef(false);
 
-  useEffect(() => {
-    if (!language) return;
+  const [loading, setLoading] = useState(false);
+  const [ready, setReady] = useState(false); // ✅ NEW
 
-    const getTextNodes = (node) => {
-      let nodes = [];
+  // ------------------------------------------------
+  // COLLECT TEXT NODES ONLY ONCE
+  // ------------------------------------------------
+  const collectNodes = () => {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          if (!node.nodeValue.trim())
+            return NodeFilter.FILTER_REJECT;
 
-      // Skip style, script, noscript
-      if (node.nodeType === Node.ELEMENT_NODE &&
-          ["STYLE", "SCRIPT", "NOSCRIPT"].includes(node.tagName)) {
-        return [];
+          const parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+
+          const skipTags = [
+            "SCRIPT",
+            "STYLE",
+            "NOSCRIPT",
+            "SVG",
+            "PATH"
+          ];
+
+          if (skipTags.includes(parent.tagName))
+            return NodeFilter.FILTER_REJECT;
+
+          if (parent.closest("[data-no-translate]"))
+            return NodeFilter.FILTER_REJECT;
+
+          return NodeFilter.FILTER_ACCEPT;
+        }
       }
+    );
 
-      if (
-        node.nodeType === Node.TEXT_NODE &&
-        node.textContent.trim() !== "" &&
-        !node.parentElement?.closest("[data-no-translate]")
-      ) {
-        nodes.push(node);
-      } else {
-        node.childNodes.forEach((child) => {
-          nodes = nodes.concat(getTextNodes(child));
-        });
-      }
+    const nodes = [];
+    let node;
 
-      return nodes;
-    };
-
-    const nodes = getTextNodes(document.body);
-
-    if (originalTextsRef.current.length === 0) {
-      originalTextsRef.current = nodes.map((n) => n.textContent);
+    while ((node = walker.nextNode())) {
+      nodes.push(node);
     }
 
-    const translateAll = async () => {
-      setLoading(true); // start loader
-      const originals = originalTextsRef.current;
+    return nodes;
+  };
 
-      const pathParts = window.location.pathname.split("/").filter(Boolean);
-      const page = pathParts.length > 0 ? pathParts[0] : "home";
+  // ------------------------------------------------
+  // INITIALIZE (RUN ONLY ONCE)
+  // ------------------------------------------------
+  useEffect(() => {
+    if (initializedRef.current) return;
 
-      // ⚡ Skip translation if home page AND language is Korean
-      if (page === "home" && language === "ko") {
-        nodes.forEach((n, i) => (n.textContent = originals[i]));
-        setLoading(false); // stop loader
-        return;
-      }
+    requestAnimationFrame(() => {
+      const nodes = collectNodes();
 
-      // Reset to English if selected
+      nodesRef.current = nodes;
+      originalsRef.current = nodes.map(n => n.nodeValue);
+
+      initializedRef.current = true;
+      setReady(true); // ✅ SIGNAL READY
+    });
+  }, []);
+
+  // ------------------------------------------------
+  // TRANSLATE WHEN LANGUAGE OR READY CHANGES
+  // ------------------------------------------------
+  useEffect(() => {
+    if (!ready) return;      // ✅ WAIT FOR DOM
+    if (!language) return;
+
+    const translate = async () => {
+      setLoading(true);
+
+      const nodes = nodesRef.current;
+      const originals = originalsRef.current;
+
+      // Restore English instantly
       if (language === "en") {
-        nodes.forEach((n, i) => (n.textContent = originals[i]));
-        setLoading(false); // stop loader
+        nodes.forEach((node, i) => {
+          node.nodeValue = originals[i];
+        });
+        setLoading(false);
         return;
       }
+
+      const pathParts = window.location.pathname
+        .split("/")
+        .filter(Boolean);
+
+      const page = pathParts[0] || "home";
 
       try {
-        const translated = await batchTranslateText(originals, page, language);
+        const translated = await batchTranslateText(
+          originals,
+          page,
+          language
+        );
 
         translated.forEach((text, i) => {
-          const clean = (text || "").replace(/\(.*?\)/g, "").trim();
-          nodes[i].textContent = clean || originals[i];
+          if (!nodes[i]) return;
+
+          const clean = (text || "")
+            .replace(/\(.*?\)/g, "")
+            .trim();
+
+          nodes[i].nodeValue = clean || originals[i];
         });
-      } catch (error) {
-        console.error("Translation failed:", error);
+      } catch (err) {
+        console.error("Translation error:", err);
       } finally {
-        setLoading(false); // stop loader
+        setLoading(false);
       }
     };
 
-    translateAll();
-  }, [language]);
+    translate();
+  }, [language, ready]); // ✅ IMPORTANT
 
-  return loading; // <-- expose loader state
+  return loading;
 }

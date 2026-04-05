@@ -233,17 +233,6 @@ export default function VoipHeader() {
         }
       `}</style>
 
-      {/* ── Hero layout ── */}
-      {/*
-        Mobile / tablet (< 1300px):
-          - Single column, centered
-          - Right card hidden
-          - Left content centered with text-center on small screens
-
-        Desktop (≥ 1300px):
-          - Two columns side by side (original layout)
-          - Right card visible
-      */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[81vh] px-6 py-16 sm:px-10 sm:py-20
                       [@media(min-width:1300px)]:flex-row [@media(min-width:1300px)]:items-center
                       [@media(min-width:1300px)]:justify-between [@media(min-width:1300px)]:px-16">
@@ -257,7 +246,7 @@ export default function VoipHeader() {
           {/* Heading */}
           <h1 className="font-['Syne',sans-serif] font-default text-3xl sm:text-4xl leading-[1.08] tracking-relaxing text-gray-700">
             Connecting Through
-            <span className="text-blue-500"> Smart VoIP</span>
+            Smart VoIP
           </h1>
 
 {/* Subtext */}

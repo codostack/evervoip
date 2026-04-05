@@ -11,8 +11,7 @@ export default function AboutUs() {
       {/* MAIN HEADING */}
       <div className="max-w-6xl mx-auto text-center mb-16">
         <h1 className="text-4xl md:text-3xl font-default text-gray-900 mb-4">
-          Our Telecom & VoIP
-          <span className="text-blue-500"> Services</span>
+          Our Telecom & VoIP Services
         </h1>
 
         <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">

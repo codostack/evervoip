@@ -418,10 +418,9 @@ export default function AnimatedFooter() {
             className="footer-columns-grid slide-up-2 grid gap-10"
             style={{ gridTemplateColumns: "2fr 1fr 1fr 1fr" }}
           >
-            {/* About */}
             <div className="footer-about-col">
               <h4 className="text-xs font-semibold tracking-widest uppercase mb-5" style={{ color: "rgb(255, 255, 255)" }}>
-                About
+                About Us
               </h4>
               <p className="text-sm font-light leading-7 max-w-[260px]" style={{ color: "rgba(199,210,254,0.85)" }}>
                 Building the future one pixel at a time. We craft beautiful, high-performance digital experiences that connect brands with the people they serve.

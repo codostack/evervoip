@@ -11,8 +11,7 @@ export default function AboutUs() {
       {/* MAIN HEADING */}
       <div className="max-w-6xl mx-auto text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-default text-gray-900 mb-4">
-          Smart Communication Solutions by
-          <span className="text-blue-500"> Dial Infinity</span>
+          Smart Communication Solutions by Dial Infinity
         </h2>
         <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
           DialInfinity provides smart VoIP and telecom solutions for seamless communication,

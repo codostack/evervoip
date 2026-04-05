@@ -266,8 +266,7 @@ export default function VoIPLanding() {
         <div className="bg-white border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 text-center">
         <h2 className="text-3xl md:text-4xl font-default text-gray-900 mb-4">
-              Communication that{" "}
-              <span className="text-blue-600">scales with you</span>
+              Communication that scales with you
             </h2>
             {/* Hero animation: hidden below 620px, visible from sm (640px) and above */}
             <div className="hidden sm:block w-full overflow-hidden">

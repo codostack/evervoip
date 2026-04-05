@@ -1,23 +1,22 @@
-// src/libreTranslate.js
 export async function batchTranslateText(texts, page, targetLang) {
-  const API_URL = "https://translator.cloudqlobe.com/translate"; // Flask backend
+  const API_URL = "https://translator.cloudqlobe.com/translate";
 
   try {
-    const response = await fetch(API_URL, {
+    const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        texts: texts,
+        texts,
         lang: targetLang,
-        page: page,
+        page,
         project: "evershine"
-      }),
+      })
     });
 
-    const data = await response.json();
-    return data.translatedTexts || texts;
+    const data = await res.json();
+    return data.translatedTexts ?? texts;
   } catch (err) {
-    console.error("Batch translation failed:", err);
+    console.error(err);
     return texts;
   }
 }
